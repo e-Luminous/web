@@ -9,8 +9,8 @@ using src.Models;
 namespace src.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191101151602_InitialAuth")]
-    partial class InitialAuth
+    [Migration("20191101160026_InitialAuthMigration")]
+    partial class InitialAuthMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -12,4 +12,25 @@
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Account\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Account\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\Account\Create.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Delete.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Details.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Index.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Create.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Delete.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Details.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Views\Account\Index.cshtml" />
+    </ItemGroup>
+
 </Project>
