@@ -5,7 +5,6 @@ namespace src.Models
     public class Account
     {
         [Key]
-        [Required]
         public string UserId { get; set; }
 
         public string UserName { get; set; }
