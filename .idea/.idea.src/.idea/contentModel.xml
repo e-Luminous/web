@@ -8,6 +8,7 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="src" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="Controllers" t="Include">
           <e p="HomeController.cs" t="Include" />
         </e>
@@ -44,6 +45,27 @@
         </e>
         <e p="src.csproj" t="IncludeRecursive" />
         <e p="wwwroot" t="Include">
+          <e p="app" t="Include">
+            <e p="lib" t="Include">
+              <e p="images" t="Include">
+                <e p="5dadf56c77ae7437679054.gif" t="Include" />
+                <e p="master.svg" t="Include" />
+                <e p="undraw_alien_science_nonm.svg" t="Include" />
+                <e p="undraw_hologram_fjwp.svg" t="Include" />
+                <e p="undraw_science_fqhl.png" t="Include" />
+                <e p="undraw_science_fqhl.svg" t="Include" />
+                <e p="undraw_task_31wc.svg" t="Include" />
+              </e>
+              <e p="scripts" t="Include">
+                <e p="materialize.js" t="Include" />
+                <e p="materialize.min.js" t="Include" />
+              </e>
+              <e p="stylesheets" t="Include">
+                <e p="materialize.css" t="Include" />
+                <e p="materialize.min.css" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="css" t="Include">
             <e p="site.css" t="Include" />
           </e>
