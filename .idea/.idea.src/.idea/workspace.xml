@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/__initilize___.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initialize__.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/src.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initilize___.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initialize___.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,14 +26,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/__initilize___.js" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initialize__.css" />
+        <option value="$PROJECT_DIR$/src/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
       </list>
     </option>
   </component>
@@ -108,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572613264180</updated>
       <workItem from="1572613271015" duration="7000" />
-      <workItem from="1572613292755" duration="1828000" />
+      <workItem from="1572613292755" duration="2418000" />
     </task>
     <servers />
   </component>
