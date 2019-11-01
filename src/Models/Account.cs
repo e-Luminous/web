@@ -9,6 +9,7 @@ namespace src.Models
         public string UserId { get; set; }
 
         public string UserName { get; set; }
+        public string Role { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Models/Account.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/CustomUser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/src.csproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +31,8 @@
     <setting file="file://$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Models/CustomUser.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -38,8 +43,9 @@
         <option value="$PROJECT_DIR$/src/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Home/Privacy.cshtml" />
-        <option value="$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" />
         <option value="$PROJECT_DIR$/src/Models/Account.cs" />
+        <option value="$PROJECT_DIR$/src/Models/CustomUser.cs" />
+        <option value="$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" />
       </list>
     </option>
   </component>
@@ -111,7 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572613264180</updated>
       <workItem from="1572613271015" duration="7000" />
-      <workItem from="1572613292755" duration="6181000" />
+      <workItem from="1572613292755" duration="6831000" />
     </task>
     <servers />
   </component>
