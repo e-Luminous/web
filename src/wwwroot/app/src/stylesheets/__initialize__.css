@@ -1,0 +1,163 @@
+#page-logo{
+    font-family: 'Product Sans', monospace;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-top: -2px;
+}
+#page-logo-icon{
+    margin-right: 1px;
+}
+.materialize-indigo {
+    background-color:#3A53AF !important
+}
+
+.nav-fixed{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.nav-fixed {
+    top: 0;
+}
+
+#contents{
+    display: none;
+    margin-top: 120px;
+}
+
+#classCards{
+    margin-top: 100px;
+}
+
+#reg {
+    margin-top: 60px;
+}
+
+#load{
+    margin-top: 64px;
+}
+
+h2 {
+    font-family: 'Product Sans', monospace;
+}
+
+h6{
+    font-family: 'Product Sans', monospace;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #fff, #000, #fff);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 2.5s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+#dropdown1{
+    width: 220px !important;
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+    100% {
+        background-position: 500%;
+    }
+}
+
+/*mobile*/
+/*mobile*/
+@media only screen and (max-width: 600px) {
+    #load{
+        margin-top: 55px;
+    }
+}
+
+.justifyText{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/*rounded*/
+.card{
+    border-radius: 9px;
+}
+
+/*Profile Card*/
+
+#profile-card .card-image
+{
+    height: 150px;
+}
+
+#profile-card .card-profile-image
+{
+    position: absolute;
+    z-index: 1;
+    top: 110px;
+
+    width: 70px;
+
+    cursor: pointer;
+}
+
+#profile-card .btn-move-up
+{
+    position: relative;
+    top: -40px;
+    right: -18px;
+
+    margin-right: 10px !important;
+}
+
+#profile-card .card-content .profile-card-i
+{
+    position: relative;
+    top: 6px;
+
+    margin-right: 10px;
+}
+
+#profile-card .card-content p
+{
+    font-size: 1rem;
+
+    margin: 10px 0 12px;
+}
+
+#profile-card .card-reveal i.material-icons
+{
+    position: relative;
+    top: 6px;
+}
+
+
+.materialize-indigo {
+    background-color: #3A53AF !important
+}
+
+#contents {
+    display: none;
+    margin-top: 90px;
+}
+
+#classbody {
+    margin-top: 80px;
+}
+
+img {
+    height: 200px;
+}
+.card{
+    border-radius: 10px;
+}
+
+.modal{
+    width: 50%;
+}

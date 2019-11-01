@@ -4,45 +4,83 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - src</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/app/lib/images/favicon.ico">
+    
+    <!-- Fonts & Icons Required To Enhance The Look -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:400&amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500&amp;lang=en" rel="stylesheet">
+    
+    <!-- Stylesheets that are going to work in Development Environment -->
+    <environment include="Development">
+        <link rel="stylesheet" href="~/app/lib/stylesheets/materialize.css" >
+        <link rel="stylesheet" href="~/app/src/stylesheets/__initialize__.css" >
+    </environment>
+    
+    <!-- Stylesheets that are going to work in Non-Development Environment -->
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/app/lib/stylesheets/materialize.min.css" >
+    </environment>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">src</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <nav class="nav-extended nav-fixed white">
+                <div class="nav-wrapper">
+                    <a class="brand-logo grey-text text-darken-3" id="page-logo">
+                        <i class="material-icons teal-text text-darken-1" id="page-logo-icon">brightness_7</i> &nbsp; eLuminous
+                    </a>
+                    <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                        <i class="material-icons grey-text text-darken-4">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <!-- Dropdown Trigger -->
+                        <li>
+                            <a class='dropdown-trigger grey-text text-darken-4' href='#' data-target='dropdown1'>
+                               <i class="material-icons left grey-text text-darken-2">arrow_drop_down</i>Connect
+                            </a>
+    
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a class="grey-text text-darken-3" href="#"><i class="material-icons cyan-text text-darken-3">accessibility_new</i>Access</a></li>
+                                <li><a class="grey-text text-darken-3" href="#"><i class="material-icons yellow-text text-darken-3">school</i>Join Classroom</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - src - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </nav>
+            <ul class="sidenav yellow-text text-darken-3" id="mobile-nav">
+                <li>
+                    <a target="_blank" class="title" href="https://github.com/e-Luminous/ui">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </li>
+                <li><a target="_blank" class="title" href="#">Login</a></li>
+                <li><a target="_blank" class="title" href="#">Registration</a></li>
+            </ul>
+        </header>
+    
+        <div id="load" class="progress light-teal lighten-3">
+            <div class="indeterminate teal"></div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <div id="contents" class="container">
+            @RenderBody()
+        </div>
+    
+<!-- Scripts that are going to work in Development Environment -->
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/app/lib/scripts/materialize.js"></script>
+        <script src="~/app/src/scripts/__initialize___.js"></script>
+    </environment>
+
+    <!-- Scripts that are going to work in Non-Development Environment -->
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/app/lib/scripts/materialize.min.js"></script>
+    </environment>    
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
