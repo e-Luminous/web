@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Models/Account.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +24,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Models/Account.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Home/Privacy.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -33,6 +37,9 @@
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initialize__.css" />
         <option value="$PROJECT_DIR$/src/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Home/Privacy.cshtml" />
+        <option value="$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" />
+        <option value="$PROJECT_DIR$/src/Models/Account.cs" />
       </list>
     </option>
   </component>
@@ -104,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572613264180</updated>
       <workItem from="1572613271015" duration="7000" />
-      <workItem from="1572613292755" duration="3978000" />
+      <workItem from="1572613292755" duration="6181000" />
     </task>
     <servers />
   </component>
