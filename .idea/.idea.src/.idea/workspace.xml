@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/scripts/materialize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/scripts/materialize.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/stylesheets/materialize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/stylesheets/materialize.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/__initilize___.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initialize__.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/src.csproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +16,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/.gitignore" />
+        <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/__initilize___.js" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initialize__.css" />
       </list>
     </option>
   </component>
@@ -31,6 +45,13 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -87,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572613264180</updated>
       <workItem from="1572613271015" duration="7000" />
-      <workItem from="1572613292755" duration="1062000" />
+      <workItem from="1572613292755" duration="1828000" />
     </task>
     <servers />
   </component>

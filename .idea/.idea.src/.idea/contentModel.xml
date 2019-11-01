@@ -48,7 +48,8 @@
           <e p="app" t="Include">
             <e p="lib" t="Include">
               <e p="images" t="Include">
-                <e p="5dadf56c77ae7437679054.gif" t="Include" />
+                <e p="favicon.ico" t="Include" />
+                <e p="home_astr.gif" t="Include" />
                 <e p="master.svg" t="Include" />
                 <e p="undraw_alien_science_nonm.svg" t="Include" />
                 <e p="undraw_hologram_fjwp.svg" t="Include" />
@@ -63,6 +64,14 @@
               <e p="stylesheets" t="Include">
                 <e p="materialize.css" t="Include" />
                 <e p="materialize.min.css" t="Include" />
+              </e>
+            </e>
+            <e p="src" t="Include">
+              <e p="scripts" t="Include">
+                <e p="__initilize___.js" t="Include" />
+              </e>
+              <e p="stylesheets" t="Include">
+                <e p="__initialize__.css" t="Include" />
               </e>
             </e>
           </e>
