@@ -18,6 +18,11 @@
       <_ContentIncludedByDefault Remove="Views\Account\Details.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\Edit.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Institution\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Institution\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Institution\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Institution\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Institution\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
