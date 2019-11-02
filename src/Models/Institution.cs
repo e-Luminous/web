@@ -7,7 +7,7 @@ namespace src.Models
     public class Institution
     {
         [Key]
-        public int InstitutionId { get; set; }
+        public string InstitutionId { get; set; }
         public string InstitutionName { get; set; }
         public string InstitutionLocation { get; set; }
         public string Longitude { get; set; }

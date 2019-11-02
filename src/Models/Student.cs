@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace src.Models
@@ -13,6 +14,8 @@ namespace src.Models
         
         // Relations
         public Account Account { get; set; }
+        public List<Submission> Submissions { get; set; }
+        public List<StudentEnrollment> StudentEnrollments { get; set; }
         public Institution Institution { get; set; }
     }
 }
