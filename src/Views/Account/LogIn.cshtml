@@ -1,0 +1,40 @@
+@model src.Data.AuthUser
+
+@{
+    ViewData["Title"] = "User SignIn";
+}
+
+<div class="card hoverable">
+    <div class="card-content">
+        <div class="card-title">
+            <span>Access your account</span>
+        </div>
+        <form method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input required aria-required="true" asp-for="UserEmail" class="validate">
+                    <label asp-for="UserEmail">Email</label>
+                </div>
+                <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <input required aria-required="true" asp-for="UserPassword" class="validate">
+                    <label asp-for="UserPassword">Password</label>
+                </div>
+                <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn teal">SignIn</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

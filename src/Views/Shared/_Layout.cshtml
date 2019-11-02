@@ -42,8 +42,8 @@
     
                             <!-- Dropdown Structure -->
                             <ul id='dropdown1' class='dropdown-content'>
-                                <li><a class="grey-text text-darken-3" href="#"><i class="material-icons cyan-text text-darken-3">accessibility_new</i>Access</a></li>
-                                <li><a class="grey-text text-darken-3" href="#"><i class="material-icons yellow-text text-darken-3">school</i>Join Classroom</a></li>
+                                <li><a class="grey-text text-darken-3" asp-action="LogIn" asp-controller="Account"><i class="material-icons cyan-text text-darken-3">accessibility_new</i>Access</a></li>
+                                <li><a class="grey-text text-darken-3" asp-action="Register" asp-controller="Account"><i class="material-icons yellow-text text-darken-3">school</i>Join Classroom</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -52,11 +52,11 @@
             <ul class="sidenav yellow-text text-darken-3" id="mobile-nav">
                 <li>
                     <a target="_blank" class="title" href="https://github.com/e-Luminous/ui">
-                        <i class="fab fa-github"></i> GitHub
+                        <i class="fab fa-github grey-text"></i> GitHub
                     </a>
                 </li>
-                <li><a target="_blank" class="title" href="#">Login</a></li>
-                <li><a target="_blank" class="title" href="#">Registration</a></li>
+                <li><a target="_blank" class="title" asp-action="LogIn" asp-controller="Account">SignIn</a></li>
+                <li><a target="_blank" class="title" asp-action="Register" asp-controller="Account">Registration</a></li>
             </ul>
         </header>
     
