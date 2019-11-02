@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using src.Models;
 
 namespace src
@@ -27,6 +29,14 @@ namespace src
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            
+            /*
+             * https://stackoverflow.com/questions/57912012
+             * net-core-3-upgrade-cors-and-json cycle-xmlhttprequest-error
+             */
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddDbContextPool<ApplicationDbContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DbConnectionString")));
