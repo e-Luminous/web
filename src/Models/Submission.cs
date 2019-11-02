@@ -10,25 +10,14 @@ namespace src.Models
     {
         [Key]
         public string SubmissionId { get; set; }
-        
-        private string _apiData;
-        [NotMapped]
-        public JObject ApiData
-        {
-            get => JsonConvert.DeserializeObject<JObject>(string.IsNullOrEmpty(_apiData) ? "{}" : _apiData);
-            set => _apiData = value.ToString();
-        }
-        
+        public string ApiData { get; set; }
         public float MarksGiven { get; set; }
         public float MarksScale { get; set; }
         public string Status { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime LastUpdated { get; set; }
-        
-        
-        
+
         //Relations 
-        
         public Student Student { get; set; }
         public Experiment Experiment { get; set; }
         public Classroom Classroom { get; set; }

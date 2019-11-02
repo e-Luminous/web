@@ -19,10 +19,8 @@ namespace src.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Submission>()
-                .Property<string>("ApiDataStr")
-                .HasField("_apiData");
-
+            base.OnModelCreating(builder);
+            
             builder.Entity<StudentEnrollment>().HasKey(sc => new
             {
                 sc.StudentSerial,
