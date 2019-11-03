@@ -9,6 +9,7 @@
             <span>Create an account</span>
         </div>
         <form method="post">
+            <div asp-validation-summary="All" class="red-text"></div>
             <div class="row">
                 <div class="input-field col s12">
                     <input required aria-required="true" asp-for="UserEmail" class="validate">
