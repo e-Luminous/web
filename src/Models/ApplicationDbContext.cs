@@ -16,6 +16,7 @@ namespace src.Models
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<StudentEnrollment> StudentEnrollments { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

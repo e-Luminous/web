@@ -10,6 +10,7 @@
             <span>Access your account</span>
         </div>
         <form method="post">
+            <div asp-validation-summary="ModelOnly" class="red-text"></div>
             <div class="row">
                 <div class="input-field col s12">
                     <input required aria-required="true" asp-for="UserEmail" class="validate">
@@ -17,7 +18,7 @@
                 </div>
                 <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
             </div>
-            
+
             <div class="row">
                 <div class="input-field col s12">
                     <input required aria-required="true" asp-for="UserPassword" class="validate">
