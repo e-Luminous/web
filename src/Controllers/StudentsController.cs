@@ -39,6 +39,11 @@ namespace src.Controllers
         
         public IActionResult __init__(string sid)
         {
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            
             if (_getAccountRoleFromUserId(sid) != "Student")
             {
                 return RedirectToAction("__init__", "Teachers", new { tid = _getCurrentlyLoggedInUser() });
