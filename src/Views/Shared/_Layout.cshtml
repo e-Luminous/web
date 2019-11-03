@@ -39,12 +39,13 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <!-- Dropdown Trigger -->
                         <li>
-                            
                             @if (SignInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item">
                                     <form method="post" asp-action="Logout" asp-controller="Account">
-                                        <button type="submit" class="btn green nav-link text-dark"> Logout @User.Identity.Name </button>
+                                        <a onclick="$(this).closest('form').submit();" class="btn-floating tooltipped btn-small waves-effect waves-light teal" data-position="left" data-tooltip="Logout @User.Identity.Name">
+                                            <i class="material-icons">power_settings_new</i>
+                                        </a>
                                     </form>
                                 </li>   
                             }

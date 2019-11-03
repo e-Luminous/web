@@ -15,9 +15,9 @@ $(document).ready(function(){
 
 function lazyLoad() {
     $('.progress').show(function(e) {
-        $('#contents').fadeOut(500);
-    }).delay(2000).fadeOut(function(ex) {
-        $('#contents').fadeIn(1500);
+        $('#contents').fadeOut(400);
+    }).delay(300).fadeOut(function(ex) {
+        $('#contents').fadeIn(300);
     });
 }
 

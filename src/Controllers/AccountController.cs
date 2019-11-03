@@ -89,6 +89,11 @@ namespace src.Controllers
                     await _signInManager.SignInAsync(userObject, isPersistent: false);
                     return RedirectToAction("__init__", "Students", new {sid = account.UserId});
                 }
+
+                foreach (var error in userCreationResult.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
             return View(account);
         }
