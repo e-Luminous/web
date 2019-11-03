@@ -1,7 +1,9 @@
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using src.Models;
 
 namespace src.Controllers
@@ -36,7 +38,7 @@ namespace src.Controllers
         }
         
         
-        public IActionResult __init__(string sid)
+        public async Task<IActionResult> __init__(string sid)
         {
             if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
             {
@@ -50,11 +52,13 @@ namespace src.Controllers
 
             if (sid != _getCurrentlyLoggedInUser() || sid == null || Regex.Replace(sid, @"\s+", "") == "")
             {
-                __init__(_getCurrentlyLoggedInUser());
+                await __init__(_getCurrentlyLoggedInUser());
             }
 
-            ViewBag.id = sid;
-            return View();
+            var student = await _context.Students
+                .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
+            
+            return View(student);
         }
     }
 }
