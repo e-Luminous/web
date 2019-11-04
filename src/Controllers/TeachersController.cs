@@ -32,7 +32,7 @@ namespace src.Controllers
                 var acc = _context.Account.Find(userId);
                 return acc.Role;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -135,9 +135,13 @@ namespace src.Controllers
                 await __classrooms___(_getCurrentlyLoggedInUser());
             }
             
+            // For Layout asp-route-tid
             ViewBag.teacherAccountId = tid;
+
+            var teacher = await _context.Teachers
+                .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
             
-            return View();
+            return View(teacher);
         }
         
         private bool TeacherExists(int id)

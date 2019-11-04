@@ -1,9 +1,24 @@
+@model Teacher
+
 @{
     Layout = "_LayoutTeacher";
 }
-<br/><br/><br/><br/>
-Yo booro
+<br/>
+@if (Model.Classrooms == null)
+{
+    <h5 class="center-align">You have no classroom yet</h5>
+    <p class="center-align"><a class="waves-effect waves-light btn-small materialize-indigo modal-trigger" href="#createClassroomModal"><i class="material-icons left">add</i>Create A New One</a></p>
+}
 
+<div id="createClassroomModal" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
