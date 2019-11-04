@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Teacher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -158,13 +147,13 @@
         <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Account/Register.cshtml" />
-        <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
         <option value="$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" />
         <option value="$PROJECT_DIR$/src/Controllers/AccountController.cs" />
         <option value="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" />
         <option value="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" />
+        <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
       </list>
     </option>
   </component>
@@ -295,7 +284,7 @@
       <workItem from="1572696028464" duration="13419000" />
       <workItem from="1572749140542" duration="3864000" />
       <workItem from="1572760952047" duration="22764000" />
-      <workItem from="1572851945835" duration="17496000" />
+      <workItem from="1572851945835" duration="18656000" />
     </task>
     <servers />
   </component>

@@ -88,7 +88,36 @@ namespace src.Controllers
         [HttpPost]
         public async Task<IActionResult> __init__(Teacher teacher)
         {
-            return Ok(teacher);
+            var courseSelected =
+                await _context.Courses.SingleOrDefaultAsync(c => c.CourseId == teacher.Course.CourseId);
+            var institutionSelected =
+                await _context.Institutions.SingleOrDefaultAsync(i =>
+                    i.InstitutionId == teacher.Institution.InstitutionId);
+           
+            teacher.Course = courseSelected;
+            teacher.Institution = institutionSelected;
+            
+            if (!ModelState.IsValid) return View(teacher);
+            
+            try
+            {
+                _context.Update(teacher);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TeacherExists(teacher.Serial))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            await __init__(_getCurrentlyLoggedInUser());
+            return View(teacher);
         }
 
         public async Task<IActionResult>__classrooms___(string tid)
@@ -111,6 +140,11 @@ namespace src.Controllers
             ViewBag.teacherAccountId = tid;
             
             return View();
+        }
+        
+        private bool TeacherExists(int id)
+        {
+            return _context.Teachers.Any(e => e.Serial == id);
         }
     }
 }
