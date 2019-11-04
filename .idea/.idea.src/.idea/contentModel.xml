@@ -72,6 +72,8 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="eLuminous.db" t="Include" />
+        <e p="eLuminous.db-shm" t="Include" />
+        <e p="eLuminous.db-wal" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -85,8 +87,12 @@
             <e p="lib" t="Include">
               <e p="images" t="Include">
                 <e p="favicon.ico" t="Include" />
+                <e p="flat-mat.jpg" t="Include" />
                 <e p="home_astr.gif" t="Include" />
+                <e p="ill1.png" t="Include" />
                 <e p="master.svg" t="Include" />
+                <e p="materialdesign.jpg" t="Include" />
+                <e p="sun_above_the_clouds-wallpaper-2560x1440.jpg" t="Include" />
                 <e p="undraw_alien_science_nonm.svg" t="Include" />
                 <e p="undraw_hologram_fjwp.svg" t="Include" />
                 <e p="undraw_science_fqhl.png" t="Include" />

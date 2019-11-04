@@ -81,7 +81,6 @@ namespace src.Controllers
             }
 
             ViewBag.teacherAccountId = tid;
-            
             return View(teacher);
         }
         
@@ -116,8 +115,7 @@ namespace src.Controllers
                 }
             }
 
-            await __init__(_getCurrentlyLoggedInUser());
-            return View(teacher);
+            return RedirectToAction("__init__", "Teachers", new {tid = _getCurrentlyLoggedInUser()});
         }
 
         public async Task<IActionResult>__classrooms___(string tid)

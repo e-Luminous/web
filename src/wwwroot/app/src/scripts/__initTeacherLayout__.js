@@ -40,7 +40,7 @@ function lazyLoad() {
     }, 400);
 
     setTimeout(function() {
-        $('#contents').slideDown(200);
+        $('#contents').fadeIn(300);
     }, 1200);
     
 }

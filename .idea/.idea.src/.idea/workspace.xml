@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/flat-mat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/ill1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/materialdesign.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/lib/images/sun_above_the_clouds-wallpaper-2560x1440.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,17 +153,17 @@
         <option value="$PROJECT_DIR$/src/Controllers/StudentsController.cs" />
         <option value="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initialize___.js" />
-        <option value="$PROJECT_DIR$/src/Models/Teacher.cs" />
         <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Account/Register.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" />
         <option value="$PROJECT_DIR$/src/Controllers/AccountController.cs" />
-        <option value="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" />
-        <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" />
-        <option value="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" />
+        <option value="$PROJECT_DIR$/src/Models/Teacher.cs" />
         <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" />
       </list>
     </option>
   </component>
@@ -255,12 +265,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cadb60ca" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1ad0cf59" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cadb60ca" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4511fb79" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@1ad0cf59" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6b5749cd" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -284,7 +294,7 @@
       <workItem from="1572696028464" duration="13419000" />
       <workItem from="1572749140542" duration="3864000" />
       <workItem from="1572760952047" duration="22764000" />
-      <workItem from="1572851945835" duration="18656000" />
+      <workItem from="1572851945835" duration="29309000" />
     </task>
     <servers />
   </component>
