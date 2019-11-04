@@ -3,53 +3,57 @@
 @{
     ViewData["Title"] = "User Registration";
 }
-<div class="card hoverable">
-    <div class="card-content">
-        <div class="card-title">
-            <span>Create an account</span>
+<div class="container">
+    <div class="card hoverable z-depth-1-half">
+        <div class="card-content">
+            <div class="card-title">
+                <span>Create an account</span>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="All" class="red-text"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="someone@gmail.com" required aria-required="true" asp-for="UserEmail" class="validate">
+                        <label asp-for="UserEmail">Email</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="+8801700000000" required aria-required="true" asp-for="UserPhone" class="validate">
+                        <label asp-for="UserPhone">Your Phone Number</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserPhone"></span>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p>
+                            <label>Choose account type</label>
+                            <label>
+                                <input class="with-gap" asp-for="Role" id="Teacher" value="Teacher" type="radio" checked/>
+                                <span>Teacher</span>
+                            </label>
+                            <label>
+                                <input class="with-gap" asp-for="Role" id="Student" value="Student" type="radio"/>
+                                <span>Student</span>
+                            </label>
+                        </p>
+                        <span class="red-text text-darken-1" asp-validation-for="Role"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Six digit, uppercase, lowercase, numeric & symbol" required aria-required="true" asp-for="UserPassword" class="validate">
+                        <label asp-for="UserPassword">Password</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
+                </div>
+                <p class="center-align"> <button type="submit" class="btn teal darken-1"><i class="material-icons left">save</i>Register</button></p>
+            </form><br/>
+            <div class="row">
+                <p class="center-align">Already have account? <a class="teal-text text-accent-4" asp-action="LogIn" asp-controller="Account">Sign-In</a></p>
+            </div>
         </div>
-        <form method="post">
-            <div asp-validation-summary="All" class="red-text"></div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserEmail" class="validate">
-                    <label asp-for="UserEmail">Email</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserPhone" class="validate">
-                    <label asp-for="UserPhone">Your Phone Number</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserPhone"></span>
-            </div>
-            <div class="row">
-                <p>
-                    <label>
-                        <input class="with-gap" asp-for="Role" id="Teacher" value="Teacher" type="radio" checked/>
-                        <span>Teacher</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input class="with-gap" asp-for="Role" id="Student" value="Student" type="radio"/>
-                        <span>Student</span>
-                    </label>
-                </p>
-                <span class="red-text text-darken-1" asp-validation-for="Role"></span>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserPassword" class="validate">
-                    <label asp-for="UserPassword">Password</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn teal">Register</button>
-            </div>
-        </form>
     </div>
 </div>
 

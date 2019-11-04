@@ -133,7 +133,6 @@ namespace src.Controllers
             return View(authUser);
         }
         
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

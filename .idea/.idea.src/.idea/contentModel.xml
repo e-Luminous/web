@@ -3,6 +3,7 @@
   <component name="ContentModelStore">
     <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_src.-1628584896.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
@@ -10,13 +11,32 @@
       <e p="src" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
         <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="StudentsController.cs" t="Include" />
+          <e p="TeachersController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="AuthUser.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20191102065651_InitialModelDesigner.Designer.cs" t="Include" />
+          <e p="20191102065651_InitialModelDesigner.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Account.cs" t="Include" />
           <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="Classroom.cs" t="Include" />
+          <e p="Course.cs" t="Include" />
           <e p="CustomUser.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
+          <e p="Experiment.cs" t="Include" />
+          <e p="Institution.cs" t="Include" />
+          <e p="Student.cs" t="Include" />
+          <e p="StudentEnrollment.cs" t="Include" />
+          <e p="Submission.cs" t="Include" />
+          <e p="Teacher.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -24,6 +44,10 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
+          <e p="Account" t="Include">
+            <e p="LogIn.cshtml" t="Include" />
+            <e p="Register.cshtml" t="Include" />
+          </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
@@ -31,7 +55,15 @@
           <e p="Shared" t="Include">
             <e p="Error.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_LayoutTeacher.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+          </e>
+          <e p="Students" t="Include">
+            <e p="__init__.cshtml" t="Include" />
+          </e>
+          <e p="Teachers" t="Include">
+            <e p="__classrooms___.cshtml" t="Include" />
+            <e p="__init__.cshtml" t="Include" />
           </e>
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
@@ -39,6 +71,7 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="eLuminous.db" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -52,8 +85,12 @@
             <e p="lib" t="Include">
               <e p="images" t="Include">
                 <e p="favicon.ico" t="Include" />
+                <e p="flat-mat.jpg" t="Include" />
                 <e p="home_astr.gif" t="Include" />
+                <e p="ill1.png" t="Include" />
                 <e p="master.svg" t="Include" />
+                <e p="materialdesign.jpg" t="Include" />
+                <e p="sun_above_the_clouds-wallpaper-2560x1440.jpg" t="Include" />
                 <e p="undraw_alien_science_nonm.svg" t="Include" />
                 <e p="undraw_hologram_fjwp.svg" t="Include" />
                 <e p="undraw_science_fqhl.png" t="Include" />
@@ -71,9 +108,11 @@
             </e>
             <e p="src" t="Include">
               <e p="scripts" t="Include">
+                <e p="__initTeacherLayout__.js" t="Include" />
                 <e p="__initialize___.js" t="Include" />
               </e>
               <e p="stylesheets" t="Include">
+                <e p="__initTeacherLayout__.css" t="Include" />
                 <e p="__initialize__.css" t="Include" />
               </e>
             </e>

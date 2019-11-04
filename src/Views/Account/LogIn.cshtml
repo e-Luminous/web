@@ -4,32 +4,37 @@
     ViewData["Title"] = "User SignIn";
 }
 
-<div class="card hoverable">
-    <div class="card-content">
-        <div class="card-title">
-            <span>Access your account</span>
+<div class="container">
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="card-title">
+                <span>Access your account</span>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="red-text"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="someone@gmail.com" required aria-required="true" asp-for="UserEmail" class="validate">
+                        <label asp-for="UserEmail">Email</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
+                </div>
+    
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Your password" required aria-required="true" asp-for="UserPassword" class="validate">
+                        <label asp-for="UserPassword">Password</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
+                </div>
+                <div class="row">
+                    <p class="center-align"><button type="submit" class="btn teal">SignIn</button></p>
+                </div>
+            </form>
+            <div class="row">
+                <p class="center-align">Don't have account? <a class="teal-text text-accent-4" asp-action="Register" asp-controller="Account">Sign-up</a></p>
+            </div>
         </div>
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="red-text"></div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserEmail" class="validate">
-                    <label asp-for="UserEmail">Email</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserPassword" class="validate">
-                    <label asp-for="UserPassword">Password</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn teal">SignIn</button>
-            </div>
-        </form>
     </div>
 </div>
 

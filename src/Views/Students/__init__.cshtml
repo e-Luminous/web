@@ -1,1 +1,3 @@
-<p>@ViewBag.id = Student</p>
+@model Student
+
+<p>@Html.Raw(Json.Serialize(Model));</p>
