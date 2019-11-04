@@ -55,12 +55,14 @@
           <e p="Shared" t="Include">
             <e p="Error.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_LayoutTeacher.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           </e>
           <e p="Students" t="Include">
             <e p="__init__.cshtml" t="Include" />
           </e>
           <e p="Teachers" t="Include">
+            <e p="__classrooms___.cshtml" t="Include" />
             <e p="__init__.cshtml" t="Include" />
           </e>
           <e p="_ViewImports.cshtml" t="Include" />
@@ -102,9 +104,11 @@
             </e>
             <e p="src" t="Include">
               <e p="scripts" t="Include">
+                <e p="__initTeacherLayout__.js" t="Include" />
                 <e p="__initialize___.js" t="Include" />
               </e>
               <e p="stylesheets" t="Include">
+                <e p="__initTeacherLayout__.css" t="Include" />
                 <e p="__initialize__.css" t="Include" />
               </e>
             </e>

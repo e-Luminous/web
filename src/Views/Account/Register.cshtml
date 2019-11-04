@@ -3,53 +3,55 @@
 @{
     ViewData["Title"] = "User Registration";
 }
-<div class="card hoverable">
-    <div class="card-content">
-        <div class="card-title">
-            <span>Create an account</span>
+<div class="container">
+    <div class="card hoverable">
+        <div class="card-content">
+            <div class="card-title">
+                <span>Create an account</span>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="All" class="red-text"></div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required aria-required="true" asp-for="UserEmail" class="validate">
+                        <label asp-for="UserEmail">Email</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required aria-required="true" asp-for="UserPhone" class="validate">
+                        <label asp-for="UserPhone">Your Phone Number</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserPhone"></span>
+                </div>
+                <div class="row">
+                    <p>
+                        <label>
+                            <input class="with-gap" asp-for="Role" id="Teacher" value="Teacher" type="radio" checked/>
+                            <span>Teacher</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" asp-for="Role" id="Student" value="Student" type="radio"/>
+                            <span>Student</span>
+                        </label>
+                    </p>
+                    <span class="red-text text-darken-1" asp-validation-for="Role"></span>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required aria-required="true" asp-for="UserPassword" class="validate">
+                        <label asp-for="UserPassword">Password</label>
+                    </div>
+                    <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn teal">Register</button>
+                </div>
+            </form>
         </div>
-        <form method="post">
-            <div asp-validation-summary="All" class="red-text"></div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserEmail" class="validate">
-                    <label asp-for="UserEmail">Email</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserEmail"></span>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserPhone" class="validate">
-                    <label asp-for="UserPhone">Your Phone Number</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserPhone"></span>
-            </div>
-            <div class="row">
-                <p>
-                    <label>
-                        <input class="with-gap" asp-for="Role" id="Teacher" value="Teacher" type="radio" checked/>
-                        <span>Teacher</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input class="with-gap" asp-for="Role" id="Student" value="Student" type="radio"/>
-                        <span>Student</span>
-                    </label>
-                </p>
-                <span class="red-text text-darken-1" asp-validation-for="Role"></span>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input required aria-required="true" asp-for="UserPassword" class="validate">
-                    <label asp-for="UserPassword">Password</label>
-                </div>
-                <span class="red-text text-darken-1" asp-validation-for="UserPassword"></span>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn teal">Register</button>
-            </div>
-        </form>
     </div>
 </div>
 

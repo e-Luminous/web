@@ -1,0 +1,120 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<CustomUser> SignInManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - src</title>
+    <link rel="icon" href="~/app/lib/images/favicon.ico">
+    
+    <!-- Fonts & Icons Required To Enhance The Look -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:400&amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500&amp;lang=en" rel="stylesheet">
+    
+    <!-- Stylesheets that are going to work in Development Environment -->
+    <environment include="Development">
+        <link rel="stylesheet" href="~/app/lib/stylesheets/materialize.css" >
+        <link rel="stylesheet" href="~/app/src/stylesheets/__initTeacherLayout__.css" >
+    </environment>
+    
+    <!-- Stylesheets that are going to work in Non-Development Environment -->
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/app/lib/stylesheets/materialize.min.css" >
+    </environment>
+</head>
+<body>
+    <header>
+        <nav id="navExt" class="nav-extended nav-fixed teal darken-1 z-depth-0">
+            <div class="nav-wrapper">
+                <a class="brand-logo" id="page-logo">
+                    <i class="material-icons" id="page-logo-icon">brightness_7</i> &nbsp; eLuminous
+                </a>
+                <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <i class="material-icons left">menu</i>
+                            </a>
+                                
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown2' class='dropdown-content'>
+                                <li><a class="grey-text text-darken-3" asp-action="Index" asp-controller="Home"><i class="material-icons left">home</i>Home</a></li>
+                                <li><a class="grey-text text-darken-3" asp-action="Logout" asp-controller="Account"><i class="material-icons left">home</i>SignOut</a></li>
+                            </ul>
+                        }
+                            
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+                            <a class='dropdown-trigger grey-text text-darken-4' href='#' data-target='dropdown1'>
+                                <i class="material-icons left grey-text text-darken-2">arrow_drop_down</i>Connect
+                            </a>
+                                
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a class="grey-text text-darken-3" asp-action="LogIn" asp-controller="Account"><i class="material-icons cyan-text text-darken-3">accessibility_new</i>Access</a></li>
+                                <li><a class="grey-text text-darken-3" asp-action="Register" asp-controller="Account"><i class="material-icons yellow-text text-darken-3">school</i>Join Classroom</a></li>
+                            </ul>
+                                
+                        }
+                            
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="nav-content teal">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab">
+                        <a id="_tabTeacherProfile" target="_self" asp-action="__init__" asp-controller="Teachers" asp-route-tid="@ViewBag.teacherAccountId">Profile</a>
+                    </li>
+                    <li class="tab">
+                        <a id="_tabTeacherClassroom" target="_self" asp-action="__classrooms___" asp-controller="Teachers" asp-route-tid="@ViewBag.teacherAccountId">Classrooms</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        
+        <ul class="sidenav yellow-text text-darken-3" id="mobile-nav">
+                <li>
+                    <a target="_blank" class="title" href="https://github.com/e-Luminous/ui">
+                        <i class="fab fa-github grey-text"></i> GitHub
+                    </a>
+                </li>
+                <li><a target="_blank" class="title" asp-action="LogIn" asp-controller="Account">SignIn</a></li>
+                <li><a target="_blank" class="title" asp-action="Register" asp-controller="Account">Registration</a></li>
+            </ul>
+        </header>
+        
+        <div id="load" class="progress orange lighten-5">
+            <div id="progressBar" class="determinate orange lighten-2" style="width: 0%"></div>
+        </div>
+
+        <div id="contents">
+            @RenderBody()
+        </div>
+    
+<!-- Scripts that are going to work in Development Environment -->
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/app/lib/scripts/materialize.js"></script>
+        <script src="~/app/src/scripts/__initTeacherLayout__.js"></script>
+    </environment>
+
+    <!-- Scripts that are going to work in Non-Development Environment -->
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/app/lib/scripts/materialize.min.js"></script>
+    </environment>    
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

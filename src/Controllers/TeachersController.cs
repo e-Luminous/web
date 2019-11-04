@@ -1,8 +1,10 @@
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using src.Models;
 
@@ -55,8 +57,60 @@ namespace src.Controllers
 
             var teacher = await _context.Teachers
                 .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
+
+            var courseList = await _context.Courses.ToListAsync();
+
+            foreach (var course in courseList)
+            {
+                teacher.Courses.Add(new SelectListItem
+                {
+                    Value = course.CourseId,
+                    Text = course.CourseName
+                });
+            }
+
+            var institutionList = await _context.Institutions.ToListAsync();
+
+            foreach (var institution in institutionList)
+            {
+                teacher.Institutions.Add(new SelectListItem
+                {
+                    Value = institution.InstitutionId,
+                    Text = institution.InstitutionName
+                });
+            }
+
+            ViewBag.teacherAccountId = tid;
             
             return View(teacher);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> __init__(Teacher teacher)
+        {
+            return Ok(teacher);
+        }
+
+        public async Task<IActionResult>__classrooms___(string tid)
+        {
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            
+            if (_getAccountRoleFromUserId(tid) != "Teacher")
+            {
+                return RedirectToAction("__init__", "Students", new { sid = _getCurrentlyLoggedInUser() });
+            }
+
+            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
+            {
+                await __classrooms___(_getCurrentlyLoggedInUser());
+            }
+            
+            ViewBag.teacherAccountId = tid;
+            
+            return View();
         }
     }
 }

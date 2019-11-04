@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Teacher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Account/Register.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,6 +122,8 @@
     <setting file="file://$PROJECT_DIR$/src/Models/Classroom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Controllers/StudentsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Models/Account.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Controllers/TeachersController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -133,25 +142,29 @@
         <option value="$PROJECT_DIR$/src/Models/Account.cs" />
         <option value="$PROJECT_DIR$/src/Models/StudentEnrollment.cs" />
         <option value="$PROJECT_DIR$/src/Models/Classroom.cs" />
-        <option value="$PROJECT_DIR$/src/Models/Teacher.cs" />
         <option value="$PROJECT_DIR$/src/Models/Course.cs" />
         <option value="$PROJECT_DIR$/src/Models/Experiment.cs" />
         <option value="$PROJECT_DIR$/src/Models/Institution.cs" />
         <option value="$PROJECT_DIR$/src/Models/Student.cs" />
         <option value="$PROJECT_DIR$/src/Models/Submission.cs" />
         <option value="$PROJECT_DIR$/src/Startup.cs" />
-        <option value="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" />
         <option value="$PROJECT_DIR$/src/Models/ApplicationDbContext.cs" />
-        <option value="$PROJECT_DIR$/src/Views/Account/Register.cshtml" />
-        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initialize___.js" />
-        <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1839676c-dce1-491c-8229-581b3f01caa1/console.sql" />
-        <option value="$PROJECT_DIR$/src/Controllers/AccountController.cs" />
         <option value="$PROJECT_DIR$/src/Controllers/HomeController.cs" />
-        <option value="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" />
-        <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
         <option value="$PROJECT_DIR$/src/Controllers/StudentsController.cs" />
         <option value="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initialize___.js" />
+        <option value="$PROJECT_DIR$/src/Models/Teacher.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Account/LogIn.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Account/Register.cshtml" />
+        <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Teachers/__classrooms___.cshtml" />
+        <option value="$PROJECT_DIR$/src/Controllers/AccountController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Teachers/__init__.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initTeacherLayout__.css" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" />
+        <option value="$PROJECT_DIR$/src/Views/Shared/_LayoutTeacher.cshtml" />
       </list>
     </option>
   </component>
@@ -281,7 +294,8 @@
       <workItem from="1572667554018" duration="9648000" />
       <workItem from="1572696028464" duration="13419000" />
       <workItem from="1572749140542" duration="3864000" />
-      <workItem from="1572760952047" duration="12392000" />
+      <workItem from="1572760952047" duration="22764000" />
+      <workItem from="1572851945835" duration="17496000" />
     </task>
     <servers />
   </component>

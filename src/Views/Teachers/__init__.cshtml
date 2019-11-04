@@ -1,3 +1,39 @@
 @model Teacher
 
-<p>@Html.Raw(Json.Serialize(Model));</p>
+@{
+    Layout = "_LayoutTeacher";
+}
+<br/>
+<form id="_formTeacherInfo" method="post">
+    <input type="hidden" asp-for="Serial"/>
+    <div class="row">
+        <div class="input-field col l6 s12">
+            <input asp-for="CollegeId" value="@Model.CollegeId" type="text" class="validate">
+            <label class="active" asp-for="CollegeId">@Html.DisplayNameFor(m => m.CollegeId)</label>
+        </div>
+        <div class="input-field col l6 s12">
+            <select asp-for="Shift" asp-items="Model.Shifts"></select>
+            <label asp-for="Shift">@Html.DisplayNameFor(m=> m.Shift)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col l6 s12">
+            <select asp-for="Course.CourseId" asp-items="Model.Courses"></select>
+            <label asp-for="Course.CourseId">Select Your Course</label>
+        </div>
+        <div class="input-field col l6 s12">
+            <select asp-for="Institution.InstitutionId" asp-items="Model.Institutions"></select>
+            <label asp-for="Institution.InstitutionId">Select Your Institution</label>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-small">Submit</button>
+    </div>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+       $("#_tabTeacherProfile").attr('class', 'active');
+    });
+</script>
