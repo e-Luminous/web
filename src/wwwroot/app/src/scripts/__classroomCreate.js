@@ -68,12 +68,11 @@ function getClassRoom() {
             for (var i = res.length - 1; i >= 0; i--){
                 var randomIndex = Math.floor(Math.random() * 21);
                 
-                var eachClassroomCard = "<div class=\"col s12 l3\">\n" +
+                var eachClassroomCard = "<div class=\"col s12 l4\">\n" +
                     "      <div class=\"card \">\n" +
                     "        <div class=\"card-content "+colorArray[randomIndex]+" white-text\">\n" +
-                    "          <span class=\"card-title\">"+res[i]["classroomTitle"]+"</span>\n" +
-                    "          <p>I am a very simple card. I am good at containing small bits of information.\n" +
-                    "          I am convenient because I require little markup to use effectively.</p>\n" +
+                    "          <span class=\"card-title\">" +res[i]["classroomTitle"]+"</span>\n" +
+                    "          <p>Access Code : " + res[i]["accessCode"] + "<\p>"+
                     "        </div>\n" +
                     "        <div class=\"card-action\">\n" +
                     "          <a target='_blank' href=\"/Classrooms/__teacher__/"+temptid+"/"+res[i]["classroomId"]+"\">This is a link</a>\n" +
