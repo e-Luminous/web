@@ -108,10 +108,30 @@ namespace src.Controllers
             return RedirectToAction("__init__", "Students", new {tid = _getCurrentlyLoggedInUser()});
         }
 
-        public async Task<IActionResult> __classrooms___()
+        public async Task<IActionResult>__classrooms___(string sid)
         {
-           
-            return View();
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            
+            if (_getAccountRoleFromUserId(sid) != "Student")
+            {
+                return RedirectToAction("__init__", "Teachers", new { tid = _getCurrentlyLoggedInUser() });
+            }
+
+            if (sid != _getCurrentlyLoggedInUser() || sid == null || Regex.Replace(sid, @"\s+", "") == "")
+            {
+                await __init__(_getCurrentlyLoggedInUser());
+            }
+            
+            // For Layout asp-route-tid
+            ViewBag.studentAccountId = sid;
+            
+            var student = await _context.Students
+                .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
+            
+            return View(student);
         }
         
         private bool StudentExists(int id)
