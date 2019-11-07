@@ -60,5 +60,10 @@ namespace src.Controllers
             
             return View(student);
         }
+
+        public async Task<IActionResult> __classrooms___()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,34 @@
+@model Student
+
+@{
+    Layout = "_LayoutStudent";
+}
+<br/>
+
+
+<div id="createClassroomModal" class="modal">
+  <form id="classroomForm">
+    <div class="modal-content">
+      <h5>Classroom Title</h5>
+        <input placeholder="Ex: Physics Lab" required aria-required="true" id="ClassroomTitle" class="validate">
+        <input id="teacher_id" hidden class="validate" value="@ViewBag.teacherAccountId">
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+  </form>
+</div>
+
+<div id="classRooms">
+    <input id="temptid" hidden value="@ViewBag.teacherAccountId" type="text"/>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/app/src/scripts/__classroomCreate.js"></script>
+
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+      $("#_tabTeacherClassroom").attr('class', 'active');
+    });
+</script>
