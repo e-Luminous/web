@@ -38,6 +38,7 @@ namespace src.Controllers
             }
         }
         
+        
         public async Task<IActionResult>__init__(string tid)
         {
             if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
@@ -83,7 +84,7 @@ namespace src.Controllers
             ViewBag.teacherAccountId = tid;
             return View(teacher);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> __init__(Teacher teacher)
         {
@@ -92,7 +93,7 @@ namespace src.Controllers
             var institutionSelected =
                 await _context.Institutions.SingleOrDefaultAsync(i =>
                     i.InstitutionId == teacher.Institution.InstitutionId);
-           
+
             teacher.Course = courseSelected;
             teacher.Institution = institutionSelected;
             
@@ -137,11 +138,54 @@ namespace src.Controllers
             
             // For Layout asp-route-tid
             ViewBag.teacherAccountId = tid;
-
+            
             var teacher = await _context.Teachers
                 .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
             
             return View(teacher);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult>__classrooms___(string cTitle, string tid)
+        {
+            
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return Json("Fail");
+            }
+            
+            if (_getAccountRoleFromUserId(tid) != "Teacher")
+            {
+                return Json("Fail");
+            }
+
+            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
+            {
+                await __classrooms___(_getCurrentlyLoggedInUser());
+            }
+
+            try
+            {
+                var teacher = await _context.Teachers
+                    .Include(tea => tea.Course)
+                    .Include((tea => tea.Institution))
+                    .FirstOrDefaultAsync(tea => tea.Account.UserId == tid);
+                
+                if (teacher.Course == null)
+                {
+                    return Json("SelectCource");
+                }
+                return Json("success");
+              
+            }
+            catch (Exception e)
+            {
+                return Json("SelectCource");
+                //return Json(e);
+            }
+
+            //return Json(cTitle + " " + tid);
+
         }
         
         private bool TeacherExists(int id)
