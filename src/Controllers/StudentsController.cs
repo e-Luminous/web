@@ -1,9 +1,13 @@
 using System;
+using System.CodeDom.Compiler;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using src.Models;
 
 namespace src.Controllers
@@ -58,12 +62,61 @@ namespace src.Controllers
             var student = await _context.Students
                 .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
             
+            var institutionList = await _context.Institutions.ToListAsync();
+
+            foreach (var institution in institutionList)
+            {
+                student.Institutions.Add(new SelectListItem
+                {
+                    Value = institution.InstitutionId,
+                    Text = institution.InstitutionName
+                });
+            }
+
+            ViewBag.studentAccountId = sid;
             return View(student);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> __init__(Student student)
+        {
+            var institutionSelected =
+                await _context.Institutions.SingleOrDefaultAsync(i =>
+                    i.InstitutionId == student.Institution.InstitutionId);
+            
+            student.Institution = institutionSelected;
+            
+            if (!ModelState.IsValid) return View(student);
+            
+            try
+            {
+                _context.Update(student);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StudentExists(student.Serial))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction("__init__", "Students", new {tid = _getCurrentlyLoggedInUser()});
         }
 
         public async Task<IActionResult> __classrooms___()
         {
+           
             return View();
+        }
+        
+        private bool StudentExists(int id)
+        {
+            return _context.Students.Any(e => e.Serial == id);
         }
     }
 }

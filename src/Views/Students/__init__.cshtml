@@ -38,7 +38,8 @@
                     <div class="col s6 m6 l6 center-align">
                         <div class="flight-info">
                             <p class="small"><span class="grey-text text-lighten-4">Shift:</span> @if(Model.Shift != null){ @Html.DisplayFor(m=>m.Shift) }</p>
-                            <p class="small"><span class="grey-text text-lighten-4">Employee Id:</span>@if(Model.CollegeId != null){ @Html.DisplayFor(m=>m.CollegeId) }</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Student Id:</span>@if(Model.CollegeId != null){ @Html.DisplayFor(m=>m.CollegeId) }</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Hsc Batch:</span>@if(Model.HscBatch != null){ @Html.DisplayFor(m=>m.HscBatch) }</p>
                         </div>
                     </div>
                     <div class="col s6 m6 l6 center-align flight-state-two">
@@ -74,6 +75,9 @@
                   <select asp-for="Institution.InstitutionId" asp-items="Model.Institutions"></select>
                   <label asp-for="Institution.InstitutionId">Select Your Institution</label>
               </div>
+              <div class="input-field col l6 s12">
+                    <input asp-for="HscBatch" value="@Model.HscBatch" type="text" class="validate">
+                    <label class="active" asp-for="HscBatch">@Html.DisplayNameFor(m => m.HscBatch)</label></div>
           </div>
           <div class="row">
               <p class="center-align">
@@ -91,6 +95,6 @@
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-       $("#_tabTeacherProfile").attr('class', 'active');
+       $("#_tabStudentProfile").attr('class', 'active');
     });
 </script>
