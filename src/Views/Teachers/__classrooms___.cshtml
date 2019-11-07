@@ -4,11 +4,7 @@
     Layout = "_LayoutTeacher";
 }
 <br/>
-@if (Model.Classrooms == null)
-{
-    <h5 class="center-align">You have no classroom yet</h5>
-    <p class="center-align"><a class="waves-effect waves-light btn-small materialize-indigo modal-trigger" href="#createClassroomModal"><i class="material-icons left">add</i>Create A New One</a></p>
-}
+
 
 <div id="createClassroomModal" class="modal">
   <form id="classroomForm">
@@ -21,6 +17,10 @@
       <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
   </form>
+</div>
+
+<div id="classRooms">
+    <input id="temptid" hidden value="@ViewBag.teacherAccountId" type="text"/>
 </div>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>

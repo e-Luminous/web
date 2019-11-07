@@ -1,4 +1,5 @@
 using System;
+using System.CodeDom.Compiler;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using src.Models;
 
 namespace src.Controllers
@@ -175,6 +177,18 @@ namespace src.Controllers
                 {
                     return Json("SelectCource");
                 }
+                
+                
+                var classroomobj = new Classroom
+                {
+                    ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),
+                    ClassroomTitle = cTitle,
+                    AccessCode = StringGenerator(Guid.NewGuid().ToString().Replace("-", "")),
+                    Course = teacher.Course,
+                    Teacher = teacher
+                };
+                _context.Add(classroomobj);
+                await _context.SaveChangesAsync();
                 return Json("success");
               
             }
@@ -187,10 +201,26 @@ namespace src.Controllers
             //return Json(cTitle + " " + tid);
 
         }
-        
+
+        private string StringGenerator(string str)
+        {
+            return str.Substring(2, 6);
+        }
         private bool TeacherExists(int id)
         {
             return _context.Teachers.Any(e => e.Serial == id);
+        }
+        
+        public async Task<JsonResult>__getClassRoom___(string tid)
+        {
+            var classroomsOfTeacher =
+                await _context.Classrooms
+                    .Include(c => c.Teacher)
+                    .Include(c => c.Teacher.Account)
+                    .Where(tec => tec.Teacher.Account.UserId == tid)
+                    .ToListAsync();
+            
+            return Json(classroomsOfTeacher);
         }
     }
 }
