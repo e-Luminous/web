@@ -115,6 +115,7 @@
             </e>
             <e p="src" t="Include">
               <e p="scripts" t="Include">
+                <e p="__ClassroomJoin.js" t="Include" />
                 <e p="__classroomCreate.js" t="Include" />
                 <e p="__initStudentLayout__.js" t="Include" />
                 <e p="__initTeacherLayout__.js" t="Include" />

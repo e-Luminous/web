@@ -134,6 +134,65 @@ namespace src.Controllers
             return View(student);
         }
         
+        [HttpPost]
+        public async Task<IActionResult>__classrooms___(string accessCode, string sid)
+        {
+            
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return RedirectToAction("LogIn", "Account");
+            }
+            
+            if (_getAccountRoleFromUserId(sid) != "Student")
+            {
+                return RedirectToAction("__init__", "Teachers", new { tid = _getCurrentlyLoggedInUser() });
+            }
+
+            if (sid != _getCurrentlyLoggedInUser() || sid == null || Regex.Replace(sid, @"\s+", "") == "")
+            {
+                await __init__(_getCurrentlyLoggedInUser());
+            }
+
+            try
+            {
+                var classroom = await _context.Classrooms
+                    .FirstOrDefaultAsync(cls => cls.AccessCode == accessCode);
+                var student = await _context.Students
+                    .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
+
+                if (classroom.AccessCode != accessCode)
+                {
+                    return Json("codeinvalid");
+                }
+                var enrollment = new StudentEnrollment
+                {
+                    ClassroomId = classroom.ClassroomId,
+                    StudentSerial = student.Serial,
+                    EnrollmentDateTime = DateTime.Now.Date
+                    
+                };
+                _context.Add(enrollment);
+                await _context.SaveChangesAsync();
+                return Json("success");
+            }
+            catch (Exception e)
+            {
+                return Json("failed");
+                
+            }
+            
+        }
+        
+        public async Task<JsonResult>__getClassRoom___(string sid)
+        {
+            var classroomsOfStudent =
+                await _context.StudentEnrollments
+                    .Where(tec => tec.Student.Account.UserId == sid)
+                    .ToListAsync();
+            
+            return Json(classroomsOfStudent);
+        }
+        
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Serial == id);
