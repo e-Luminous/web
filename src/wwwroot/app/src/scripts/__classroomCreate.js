@@ -3,6 +3,11 @@
 
 // Write your JavaScript code.
 var temptid = $('#temptid').val();
+var colorArray = [
+    "red darken-1", "teal darken-1", "indigo darken-1", "blue-grey darken-1",
+    "purple darken-3", "blue lighten-1", "blue accent-2", "light-blue"
+];
+
 
 $(document).ready(function () {
     getClassRoom();
@@ -58,15 +63,17 @@ function getClassRoom() {
             cardsForEachClassrooms += "<div class=\"row\">"
             
             for (var i = res.length - 1; i >= 0; i--){
-                var eachClassroomCard = "<div class=\"col s12 m6\">\n" +
-                    "      <div class=\"card blue-grey darken-1\">\n" +
-                    "        <div class=\"card-content white-text\">\n" +
+                var randomIndex = Math.floor(Math.random() * 8);
+                
+                var eachClassroomCard = "<div class=\"col s12 l4\">\n" +
+                    "      <div class=\"card \">\n" +
+                    "        <div class=\"card-content "+colorArray[randomIndex]+" white-text\">\n" +
                     "          <span class=\"card-title\">"+res[i]["classroomTitle"]+"</span>\n" +
                     "          <p>I am a very simple card. I am good at containing small bits of information.\n" +
                     "          I am convenient because I require little markup to use effectively.</p>\n" +
                     "        </div>\n" +
                     "        <div class=\"card-action\">\n" +
-                    "          <a href=\"#\">This is a link</a>\n" +
+                    "          <a target='_blank' href=\"/Classrooms/__teacher__/"+temptid+"/"+res[i]["classroomId"]+"\">This is a link</a>\n" +
                     "          <a href=\"#\">This is a link</a>\n" +
                     "        </div>\n" +
                     "      </div>\n" +
