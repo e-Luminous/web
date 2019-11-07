@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/__teacher__.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -294,7 +295,8 @@
       <workItem from="1572851945835" duration="33781000" />
       <workItem from="1573037365805" duration="5002000" />
       <workItem from="1573062068051" duration="10691000" />
-      <workItem from="1573104849669" duration="21012000" />
+      <workItem from="1573104849669" duration="21805000" />
+      <workItem from="1573146622235" duration="1230000" />
     </task>
     <servers />
   </component>

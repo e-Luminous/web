@@ -4,8 +4,11 @@
 // Write your JavaScript code.
 var temptid = $('#temptid').val();
 var colorArray = [
-    "red darken-1", "teal darken-1", "indigo darken-1", "blue-grey darken-1",
-    "purple darken-3", "blue lighten-1", "blue accent-2", "light-blue"
+    "red darken-1", "teal darken-1", "indigo darken-1", "blue accent-3",
+    "purple darken-2", "pink darken-2", "red darken-2", "blue lighten-2",
+    "indigo", "deep-purple", "blue accent-1", "deep-purple accent-3",
+    "cyan lighten-3", "light-blue lighten-1", "cyan", "cyan accent-3",
+    "green", "light-green", "lime", "orange", "blue-grey lighten-1"
 ];
 
 
@@ -63,9 +66,9 @@ function getClassRoom() {
             cardsForEachClassrooms += "<div class=\"row\">"
             
             for (var i = res.length - 1; i >= 0; i--){
-                var randomIndex = Math.floor(Math.random() * 8);
+                var randomIndex = Math.floor(Math.random() * 21);
                 
-                var eachClassroomCard = "<div class=\"col s12 l4\">\n" +
+                var eachClassroomCard = "<div class=\"col s12 l3\">\n" +
                     "      <div class=\"card \">\n" +
                     "        <div class=\"card-content "+colorArray[randomIndex]+" white-text\">\n" +
                     "          <span class=\"card-title\">"+res[i]["classroomTitle"]+"</span>\n" +
