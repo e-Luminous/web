@@ -1,4 +1,5 @@
 using System;
+using System.CodeDom.Compiler;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using src.Models;
 
 namespace src.Controllers
@@ -37,6 +39,7 @@ namespace src.Controllers
                 return null;
             }
         }
+        
         
         public async Task<IActionResult>__init__(string tid)
         {
@@ -83,7 +86,7 @@ namespace src.Controllers
             ViewBag.teacherAccountId = tid;
             return View(teacher);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> __init__(Teacher teacher)
         {
@@ -92,7 +95,7 @@ namespace src.Controllers
             var institutionSelected =
                 await _context.Institutions.SingleOrDefaultAsync(i =>
                     i.InstitutionId == teacher.Institution.InstitutionId);
-           
+
             teacher.Course = courseSelected;
             teacher.Institution = institutionSelected;
             
@@ -137,16 +140,87 @@ namespace src.Controllers
             
             // For Layout asp-route-tid
             ViewBag.teacherAccountId = tid;
-
+            
             var teacher = await _context.Teachers
                 .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
             
             return View(teacher);
         }
         
+        [HttpPost]
+        public async Task<IActionResult>__classrooms___(string cTitle, string tid)
+        {
+            
+            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
+            {
+                return Json("Fail");
+            }
+            
+            if (_getAccountRoleFromUserId(tid) != "Teacher")
+            {
+                return Json("Fail");
+            }
+
+            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
+            {
+                await __classrooms___(_getCurrentlyLoggedInUser());
+            }
+
+            try
+            {
+                var teacher = await _context.Teachers
+                    .Include(tea => tea.Course)
+                    .Include((tea => tea.Institution))
+                    .FirstOrDefaultAsync(tea => tea.Account.UserId == tid);
+                
+                if (teacher.Course == null)
+                {
+                    return Json("SelectCource");
+                }
+                
+                
+                var classroomobj = new Classroom
+                {
+                    ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),
+                    ClassroomTitle = cTitle,
+                    AccessCode = StringGenerator(Guid.NewGuid().ToString().Replace("-", "")),
+                    Course = teacher.Course,
+                    Teacher = teacher
+                };
+                _context.Add(classroomobj);
+                await _context.SaveChangesAsync();
+                return Json("success");
+              
+            }
+            catch (Exception e)
+            {
+                return Json("SelectCource");
+                //return Json(e);
+            }
+
+            //return Json(cTitle + " " + tid);
+
+        }
+
+        private string StringGenerator(string str)
+        {
+            return str.Substring(2, 6);
+        }
         private bool TeacherExists(int id)
         {
             return _context.Teachers.Any(e => e.Serial == id);
+        }
+        
+        public async Task<JsonResult>__getClassRoom___(string tid)
+        {
+            var classroomsOfTeacher =
+                await _context.Classrooms
+                    .Include(c => c.Teacher)
+                    .Include(c => c.Teacher.Account)
+                    .Where(tec => tec.Teacher.Account.UserId == tid)
+                    .ToListAsync();
+            
+            return Json(classroomsOfTeacher);
         }
     }
 }

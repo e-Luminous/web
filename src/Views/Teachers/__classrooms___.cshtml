@@ -4,26 +4,31 @@
     Layout = "_LayoutTeacher";
 }
 <br/>
-@if (Model.Classrooms == null)
-{
-    <h5 class="center-align">You have no classroom yet</h5>
-    <p class="center-align"><a class="waves-effect waves-light btn-small materialize-indigo modal-trigger" href="#createClassroomModal"><i class="material-icons left">add</i>Create A New One</a></p>
-}
+
 
 <div id="createClassroomModal" class="modal">
+  <form id="classroomForm">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h5>Classroom Title</h5>
+        <input placeholder="Ex: Physics Lab" required aria-required="true" id="ClassroomTitle" class="validate">
+        <input id="teacher_id" hidden class="validate" value="@ViewBag.teacherAccountId">
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
     </div>
+  </form>
+</div>
+
+<div id="classRooms">
+    <input id="temptid" hidden value="@ViewBag.teacherAccountId" type="text"/>
 </div>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/app/src/scripts/__classroomCreate.js"></script>
+
 
 <script type="text/javascript">
     $( document ).ready(function() {
-       $("#_tabTeacherClassroom").attr('class', 'active');
+      $("#_tabTeacherClassroom").attr('class', 'active');
     });
 </script>
