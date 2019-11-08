@@ -50,10 +50,10 @@ function getClassRoom() {
 
     $.get('/Students/__getClassRoom___', {sid : loggedInSid}, function (res) {
         if(res.length == 0){
-            var modalForCreateNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
+            var modalToJoinNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
                 "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
 
-            classrooms.html(modalForCreateNewClassroom);
+            classrooms.html(modalToJoinNewClassroom);
         }else{
             var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"loggedInSid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
