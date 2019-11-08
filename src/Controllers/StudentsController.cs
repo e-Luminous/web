@@ -190,6 +190,7 @@ namespace src.Controllers
                     .Include(c => c.Student)
                     .Include(c => c.Student.Account)
                     .Include(c => c.Classroom)
+                    .Include(c => c.Classroom.Teacher.Account)
                     .Where(tec => tec.Student.Account.UserId == sid)
                     .ToListAsync();
             
