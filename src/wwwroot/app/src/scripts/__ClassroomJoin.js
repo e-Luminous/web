@@ -16,13 +16,15 @@ $("#classroomForm").submit(function (e) {
     $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
         if(responseData === "failed"){
             showMaterialToast("Invalid Request", "red darken-1");
+            $('#AccessCode').val("");
         }else if(responseData === "codeinvalid"){
             showMaterialToast("Enter a valid classroom code", "amber darken-3");
+            $('#AccessCode').val("");
         }
         else if(responseData === "success"){
             showMaterialToast("Classroom join Successfully", "teal darken-1");
 
-            $('#ClassroomTitle').val("");
+            $('#AccessCode').val("");
             getClassRoom();
         }else{
 
@@ -49,11 +51,11 @@ function getClassRoom() {
     $.get('/Students/__getClassRoom___', {sid : tempsid}, function (res) {
         if(res.length == 0){
             var modalForCreateNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
-                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
+                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
 
             classrooms.html(modalForCreateNewClassroom);
         }else{
-            var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
+            var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"tempsid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
