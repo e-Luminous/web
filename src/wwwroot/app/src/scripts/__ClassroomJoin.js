@@ -1,4 +1,4 @@
-var tempsid = $('#tempsid').val();
+var loggedInSid = $('#loggedInSid').val();
 
 var colorArray = [
     "red darken-1", "teal darken-1", "indigo darken-1", "blue-grey darken-1",
@@ -45,10 +45,10 @@ function showMaterialToast(data, style) {
 function getClassRoom() {
 
     var classrooms = $('#classRooms');
-    console.log("sid is : " + tempsid);
+    console.log("sid is : " + loggedInSid);
     console.log("classroom is : " + classrooms);
 
-    $.get('/Students/__getClassRoom___', {sid : tempsid}, function (res) {
+    $.get('/Students/__getClassRoom___', {sid : loggedInSid}, function (res) {
         if(res.length == 0){
             var modalForCreateNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
                 "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
@@ -56,7 +56,7 @@ function getClassRoom() {
             classrooms.html(modalForCreateNewClassroom);
         }else{
             var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
-            cardsForEachClassrooms += "<input id=\"tempsid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
+            cardsForEachClassrooms += "<input id=\"loggedInSid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
             for (var i = res.length - 1; i >= 0; i--){
@@ -70,7 +70,7 @@ function getClassRoom() {
                     " </div>\n" +
                     " <div class=\"card-content\ "+colorArray[randomIndex]+" white-text\">\n" +
                     /*" <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n"+*/
-                    " <a class=\"btn-floating activator btn-move-up waves-effect waves-light blue darken-3 z-depth-4 right\" href=\"/Classrooms/__student__/"+tempsid+"/"+res[i]["classroom"]["classroomId"]+"\">\n" +
+                    " <a class=\"btn-floating activator btn-move-up waves-effect waves-light blue darken-3 z-depth-4 right\" href=\"/Classrooms/__student__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">\n" +
                     " <i class=\"material-icons\ "+colorArray[randomIndex]+" white-text\">send</i>" +
                     " </a>\n" +
                     " <h1 class=\"card-title\">"+res[i]["classroom"]["classroomTitle"]+"</h1>\n" +
@@ -79,22 +79,7 @@ function getClassRoom() {
                     " </div>\n" +
                     " </div>";
                 
-                
-         /*       var eachClassroomCard = "<div class=\"col s12 l4\">\n" +
-                    "      <div class=\"card \">\n" +
-                    "        <div class=\"card-content "+colorArray[randomIndex]+" white-text\">\n" +
-                    "          <span class=\"card-title\">"+res[i]["classroom"]["classroomTitle"]+"</span>\n" +
-                    "          <p>I am a very simple card. I am good at containing small bits of information.\n" +
-                    "          I am convenient because I require little markup to use effectively.</p>\n" +
-                    "        </div>\n" +
-                    "        <div class=\"card-action\">\n" +
-                    "          <a target='_blank' href=\"/Classrooms/__student__/"+tempsid+"/"+res[i]["classroom"]["classroomId"]+"\">This is a link</a>\n" +
-                    "          <a href=\"#\">This is a link</a>\n" +
-                    "        </div>\n" +
-                    "      </div>\n" +
-                    "    </div>";*/
-
-                cardsForEachClassrooms += eachClassroomCard;
+               cardsForEachClassrooms += eachClassroomCard;
             }
             cardsForEachClassrooms += "</div>";
 

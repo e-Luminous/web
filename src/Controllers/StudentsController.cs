@@ -105,7 +105,7 @@ namespace src.Controllers
                 }
             }
 
-            return RedirectToAction("__init__", "Students", new {tid = _getCurrentlyLoggedInUser()});
+            return RedirectToAction("__init__", "Students", new {sid = _getCurrentlyLoggedInUser()});
         }
 
         public async Task<IActionResult>__classrooms___(string sid)
@@ -135,24 +135,8 @@ namespace src.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult>__classrooms___(string accessCode, string sid)
+        public async Task<JsonResult>__classrooms___(string accessCode, string sid)
         {
-            
-            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
-            {
-                return RedirectToAction("LogIn", "Account");
-            }
-            
-            if (_getAccountRoleFromUserId(sid) != "Student")
-            {
-                return RedirectToAction("__init__", "Teachers", new { tid = _getCurrentlyLoggedInUser() });
-            }
-
-            if (sid != _getCurrentlyLoggedInUser() || sid == null || Regex.Replace(sid, @"\s+", "") == "")
-            {
-                await __init__(_getCurrentlyLoggedInUser());
-            }
-
             try
             {
                 var classroom = await _context.Classrooms
@@ -191,7 +175,7 @@ namespace src.Controllers
                     .Include(c => c.Student.Account)
                     .Include(c => c.Classroom)
                     .Include(c => c.Classroom.Teacher.Account)
-                    .Where(tec => tec.Student.Account.UserId == sid)
+                    .Where(stu => stu.Student.Account.UserId == sid)
                     .ToListAsync();
             
                         

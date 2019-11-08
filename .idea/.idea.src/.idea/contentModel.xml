@@ -120,6 +120,7 @@
                 <e p="__initialize___.js" t="Include" />
               </e>
               <e p="stylesheets" t="Include">
+                <e p="__initStudentLayout__.css" t="Include" />
                 <e p="__initTeacherLayout__.css" t="Include" />
                 <e p="__initialize__.css" t="Include" />
               </e>

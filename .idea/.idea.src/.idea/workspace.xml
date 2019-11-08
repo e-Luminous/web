@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentLayout__.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Shared/_LayoutStudent.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Shared/_LayoutStudent.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -166,14 +166,15 @@
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initStudentLayout__.js" />
         <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
         <option value="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" />
-        <option value="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" />
-        <option value="$PROJECT_DIR$/src/Controllers/StudentsController.cs" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/app.js" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/home.css" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/app.css" />
-        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" />
         <option value="$PROJECT_DIR$/src/Views/Shared/_LayoutStudent.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentLayout__.css" />
+        <option value="$PROJECT_DIR$/src/Controllers/StudentsController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" />
       </list>
     </option>
   </component>
@@ -312,7 +313,7 @@
       <workItem from="1573143963251" duration="266000" />
       <workItem from="1573144277425" duration="16023000" />
       <workItem from="1573199753458" duration="6971000" />
-      <workItem from="1573212241308" duration="6834000" />
+      <workItem from="1573212241308" duration="11340000" />
     </task>
     <servers />
   </component>
