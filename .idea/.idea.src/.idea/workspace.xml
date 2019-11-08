@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -293,7 +294,8 @@
       <workItem from="1573062068051" duration="10691000" />
       <workItem from="1573104849669" duration="21805000" />
       <workItem from="1573146622235" duration="1230000" />
-      <workItem from="1573152286032" duration="546000" />
+      <workItem from="1573152286032" duration="1760000" />
+      <workItem from="1573213371137" duration="2074000" />
     </task>
     <servers />
   </component>
