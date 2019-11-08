@@ -1,5 +1,10 @@
 var tempsid = $('#tempsid').val();
 
+var colorArray = [
+    "red darken-1", "teal darken-1", "indigo darken-1", "blue-grey darken-1",
+    "purple darken-3", "blue lighten-1", "blue accent-2", "light-blue"
+];
+
 $(document).ready(function () {
     getClassRoom();
 $("#classroomForm").submit(function (e) {
@@ -9,10 +14,10 @@ $("#classroomForm").submit(function (e) {
     console.log("access code: "+AccessCode);
 
     $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
-        if(responseData === "Failed"){
+        if(responseData === "failed"){
             showMaterialToast("Invalid Request", "red darken-1");
         }else if(responseData === "codeinvalid"){
-            showMaterialToast("enter a valid code", "teal darken-1");
+            showMaterialToast("Enter a valid classroom code", "amber darken-3");
         }
         else if(responseData === "success"){
             showMaterialToast("Classroom join Successfully", "teal darken-1");
@@ -39,6 +44,7 @@ function getClassRoom() {
 
     var classrooms = $('#classRooms');
     console.log("sid is : " + tempsid);
+    console.log("classroom is : " + classrooms);
 
     $.get('/Students/__getClassRoom___', {sid : tempsid}, function (res) {
         if(res.length == 0){
@@ -57,12 +63,12 @@ function getClassRoom() {
                 var eachClassroomCard = "<div class=\"col s12 l4\">\n" +
                     "      <div class=\"card \">\n" +
                     "        <div class=\"card-content "+colorArray[randomIndex]+" white-text\">\n" +
-                    "          <span class=\"card-title\">"+res[i]["classroomTitle"]+"</span>\n" +
+                    "          <span class=\"card-title\">"+res[i]["classroom"]["classroomTitle"]+"</span>\n" +
                     "          <p>I am a very simple card. I am good at containing small bits of information.\n" +
                     "          I am convenient because I require little markup to use effectively.</p>\n" +
                     "        </div>\n" +
                     "        <div class=\"card-action\">\n" +
-                    "          <a target='_blank' href=\"/Classrooms/__teacher__/"+temptid+"/"+res[i]["classroomId"]+"\">This is a link</a>\n" +
+                    "          <a target='_blank' href=\"/Classrooms/__student__/"+tempsid+"/"+res[i]["classroom"]["classroomId"]+"\">This is a link</a>\n" +
                     "          <a href=\"#\">This is a link</a>\n" +
                     "        </div>\n" +
                     "      </div>\n" +

@@ -160,7 +160,7 @@ namespace src.Controllers
                 var student = await _context.Students
                     .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
 
-                if (classroom.AccessCode != accessCode)
+                if (classroom == null)
                 {
                     return Json("codeinvalid");
                 }
@@ -187,9 +187,13 @@ namespace src.Controllers
         {
             var classroomsOfStudent =
                 await _context.StudentEnrollments
+                    .Include(c => c.Student)
+                    .Include(c => c.Student.Account)
+                    .Include(c => c.Classroom)
                     .Where(tec => tec.Student.Account.UserId == sid)
                     .ToListAsync();
             
+                        
             return Json(classroomsOfStudent);
         }
         

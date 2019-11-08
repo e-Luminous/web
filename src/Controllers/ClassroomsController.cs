@@ -24,5 +24,12 @@ namespace src.Controllers
             return Ok(tid + " " + cid);
         }
         
+        [HttpGet("Classrooms/__student__/{sid}/{cid}")]
+        public async Task<IActionResult> __student__(string sid, string cid)
+        {
+            return Ok(sid + " " + cid);
+        }
+
+        
     }
 }
