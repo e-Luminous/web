@@ -1,0 +1,241 @@
+#page-logo{
+    font-family: 'Product Sans', monospace;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-top: -2px;
+}
+#page-logo-icon{
+    margin-right: 1px;
+}
+.materialize-indigo {
+    background-color:#3A53AF !important
+}
+
+.nav-fixed{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.nav-fixed {
+    top: 0;
+}
+
+#contents{
+    display: none;
+    margin-top: 117px;
+}
+
+#classCards{
+    margin-top: 100px;
+}
+
+#reg {
+    margin-top: 60px;
+}
+
+#load{
+    margin-top: 118px;
+}
+
+h2 {
+    font-family: 'Product Sans', monospace;
+}
+
+h5 {
+    font-family: 'Product Sans', monospace;
+}
+
+
+h6{
+    font-family: 'Product Sans', monospace;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #fff, #000, #fff);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 2.5s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+#dropdown1{
+    width: 220px !important;
+}
+
+#dropdown2{
+    width: 220px !important;
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+    100% {
+        background-position: 500%;
+    }
+}
+
+.modal{
+    width: 50%;
+}
+
+/*mobile*/
+/*mobile*/
+@media only screen and (max-width: 600px) {
+    #load{
+        margin-top: 109px;
+    }
+    #contents{
+        display: none;
+        margin-top: 109px;
+    }
+    .modal{
+        width: 95%;
+    }
+}
+
+.justifyText{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/*rounded*/
+.card{
+    border-radius: 9px;
+}
+
+/*Profile Card*/
+
+#profile-card .card-image
+{
+    height: 150px;
+}
+
+#profile-card .card-profile-image
+{
+    position: absolute;
+    z-index: 1;
+    top: 110px;
+
+    width: 70px;
+
+    cursor: pointer;
+}
+
+#profile-card .btn-move-up
+{
+    position: relative;
+    top: -40px;
+    right: -18px;
+
+    margin-right: 10px !important;
+}
+
+#profile-card .card-content .profile-card-i
+{
+    position: relative;
+    top: 6px;
+
+    margin-right: 10px;
+}
+
+#profile-card .card-content p
+{
+    font-size: 1rem;
+
+    margin: 10px 0 12px;
+}
+
+#profile-card .card-reveal i.material-icons
+{
+    position: relative;
+    top: 6px;
+}
+
+
+.materialize-indigo {
+    background-color: #3A53AF !important
+}
+
+#classbody {
+    margin-top: 80px;
+}
+
+img {
+    height: 200px;
+}
+.card{
+    border-radius: 10px;
+}
+
+
+
+.accent-5 {
+    background-color: #05a686;
+}
+
+.nav-content{
+    margin-top: 5px;
+}
+
+/*flight-card*/
+
+#flight-card .card-header .card-title {
+    padding: 20px;
+}
+#flight-card .flight-card-title {
+    margin: 0;
+    font-weight: 300;
+}
+#flight-card .flight-card-date {
+    font-size: 1.0rem;
+    margin: 0;
+}
+#flight-card .flight-state {
+    padding-bottom: 15px;
+}
+#flight-card .flight-state-two {
+    border-left: 1px dashed #9e9e9e;
+}
+#flight-card .flight-icon {
+    font-size: 2.2rem;
+    display: block;
+    -webkit-transform: rotate(90deg);
+    /* Safari */
+
+    -moz-transform: rotate(90deg);
+    /* Firefox */
+
+    -ms-transform: rotate(90deg);
+    /* IE */
+
+    -o-transform: rotate(90deg);
+}
+#flight-card .card-content-bg {
+    background: url('../../lib/images/sun_above_the_clouds-wallpaper-2560x1440.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#flight-card .card-content {
+    background: rgba(0, 0, 0, 0.25);
+}
+#flight-card .flight-state-wrapper {
+    margin: 0 0 100px 0 !important;
+}
+
+.wrapper {
+    margin-right: auto; /* 1 */
+    margin-left:  auto; /* 1 */
+
+    max-width: 1200px; /* 2 */
+
+    padding-right: 5px; /* 3 */
+    padding-left:  5px; /* 3 */
+}

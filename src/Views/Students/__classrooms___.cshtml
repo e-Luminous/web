@@ -1,0 +1,33 @@
+@model Student
+
+@{
+    Layout = "_LayoutStudent";
+}
+<br/>
+
+
+<div id="joinClassroomModal" class="modal">
+  <form id="classroomForm">
+    <div class="modal-content">
+      <h5>Classroom Access Code</h5>
+        <input placeholder="Enter a valid Classroom Code" required aria-required="true" id="AccessCode" class="validate">
+        <input id="student_id" hidden class="validate" value="@ViewBag.studentAccountId">
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+  </form>
+</div>
+
+<div id="classRooms">
+    <input id="loggedInSid" hidden value="@ViewBag.studentAccountId" type="text"/>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/app/src/scripts/__ClassroomJoin.js"></script>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+      $("#_tabStudentClassroom").attr('class', 'active');
+    });
+</script>
