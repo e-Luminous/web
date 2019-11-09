@@ -55,12 +55,10 @@ function removeInputFieldDataStudent() {
 }
 
 
-
 function getClassRoomForStudent() {
 
     var classrooms = $('#classRooms');
     console.log("sid is : " + loggedInSid);
-    console.log("classroom is : " + classrooms);
 
     $.get('/Students/__getClassRoom___', {sid : loggedInSid}, function (res) {
         if(res.length == 0){
@@ -68,32 +66,33 @@ function getClassRoomForStudent() {
                 "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
 
             classrooms.html(modalToJoinNewClassroom);
-        }else{
+        }
+        else{
+
             var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"loggedInSid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
             for (var i = res.length - 1; i >= 0; i--){
-                var randomIndex = Math.floor(Math.random() * 8);
+                var randomIndex = Math.floor(Math.random() * 21);
 
+                var eachClassroomCard  = "<div class=\"col s12 l3\">\n" +
+                    "                <div id=\"profile-card\" class=\"card\">\n" +
+                    "                    <div class=\"card-image waves-effect waves-block waves-light\">\n" +
+                    "                        <img class=\"activator\" src=\"https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-72.jpg?size=338&ext=jpg\" alt=\"user bg\" />\n" +
+                    "                    </div>\n" +
+                    "                    <div class=\"card-content\">\n" +
+                    "                        <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n" +
+                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light "+colorArray[randomIndex]+" z-depth-4 right\" href=\"/Classrooms/__student__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">" +
+                    "                            <i class=\"material-icons\">send</i>\n" +
+                    "                        </a>\n" +
+                    "                        <h5 class=\"card-title activator grey-text text-darken-4\">"+res[i]["classroom"]["classroomTitle"]+"</h5>\n" +
+                    "                        <p>Teacher Name : "+res[i]["classroom"]["teacher"]["account"]["userName"]+"</p>\n" +
+                    "                    </div>\n" +
+                    "                </div>\n" +
+                    "            </div>";
 
-            var eachClassroomCard = "<div class=\"col s12 l3\">\n" +
-                    " <div class=\"card\">\n" +
-                    " <div class=\"card-image waves-effect waves-block waves-light\">\n" +
-                    " <img class=\"activator\" src=\"https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-72.jpg?size=338&ext=jpg\" alt=\"user bg\" />\n" +
-                    " </div>\n" +
-                    " <div class=\"card-content\ "+colorArray[randomIndex]+" white-text\">\n" +
-                    /*" <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n"+*/
-                    " <a class=\"btn-floating activator btn-move-up waves-effect waves-light blue darken-3 z-depth-4 right\" href=\"/Classrooms/__student__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">\n" +
-                    " <i class=\"material-icons\ "+colorArray[randomIndex]+" white-text\">send</i>" +
-                    " </a>\n" +
-                    " <h1 class=\"card-title\">"+res[i]["classroom"]["classroomTitle"]+"</h1>\n" +
-                    " <p class=\"card-title\">"+res[i]["classroom"]["teacher"]["account"]["userName"]+"</p>\n" +
-                    " </div>\n" +
-                    " </div>\n" +
-                    " </div>";
-                
-               cardsForEachClassrooms += eachClassroomCard;
+                cardsForEachClassrooms += eachClassroomCard;
             }
             cardsForEachClassrooms += "</div>";
 
