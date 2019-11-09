@@ -22,8 +22,8 @@ $("#classroomForm").submit(function (e) {
             showMaterialToast("Invalid Request", "red darken-1" );
             removeInputFieldDataStudent();
         }
-        else if(responseData === "fill-up Profile") {
-            showMaterialToast("Full Profile Fill-up First", "amber darken-3");
+        else if(responseData === "NeedCompleteStudentProfile") {
+            showMaterialToast("First Complete Student Profile", "amber darken-3");
         }
         else if(responseData === "codeinvalid"){
             showMaterialToast("Enter a valid classroom code", "amber darken-3");
