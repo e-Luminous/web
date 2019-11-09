@@ -148,6 +148,14 @@ namespace src.Controllers
                 {
                     return Json("codeinvalid");
                 }
+
+                //return Json(student);
+                if (student.CollegeId == null || student.HscBatch == null ||
+                    student.Shift == null)
+                {
+                    return Json("fill-up Profile");
+                }
+                
                 var enrollment = new StudentEnrollment
                 {
                     ClassroomId = classroom.ClassroomId,

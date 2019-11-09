@@ -18,15 +18,21 @@ $("#classroomForm").submit(function (e) {
     console.log("access code: "+AccessCode);
 
     $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
+        
+        //console.log(responseData);
         if(responseData === "failed"){
-            showMaterialToast("Invalid Request", "red darken-1 rounded" );
+            showMaterialToast("Invalid Request", "red darken-1" );
             $('#AccessCode').val("");
-        }else if(responseData === "codeinvalid"){
-            showMaterialToast("Enter a valid classroom code", "amber darken-3 rounded");
+        }
+        else if(responseData === "fill-up Profile") {
+            showMaterialToast("Full Profile Fill-up First", "amber darken-3");
+        }
+        else if(responseData === "codeinvalid"){
+            showMaterialToast("Enter a valid classroom code", "amber darken-3");
             $('#AccessCode').val("");
         }
         else if(responseData === "success"){
-            showMaterialToast("Classroom join Successfully", "teal darken-1 rounded");
+            showMaterialToast("Classroom join Successfully", "teal darken-1");
 
             $('#AccessCode').val("");
             getClassRoom();
