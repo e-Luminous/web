@@ -232,7 +232,19 @@ namespace src.Controllers
                             return Json("SelectCourse");
                         }
                 
+                        if (teacher.CollegeId == null || teacher.CollegeId == " " || 
+                            teacher.Shift == null || teacher.Shift == " " ||
+                            teacher.Institution == null)
+                        {
+                            return Json("NeedCompleteTeacherProfile");
+                        }
+                        
+                        if (cTitle == " " || cTitle == null)
+                        {
+                            return Json("SelectTitle");
+                        }
                 
+                        
                         var classroomObject = new Classroom
                         {
                             ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),

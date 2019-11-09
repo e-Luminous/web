@@ -154,7 +154,7 @@ namespace src.Controllers
                 }
                 default:
                     await __init__(currentlyLoggedInUser);
-                    break;
+                     break;
             }
             return RedirectToAction("Logout", "Account");
         }
@@ -164,6 +164,7 @@ namespace src.Controllers
             var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
             var authCommand = __getAuthorizationCommand(sid);
             
+             
             switch (authCommand)
             {
                 case "Login":
@@ -215,6 +216,14 @@ namespace src.Controllers
                         if (classroom == null)
                         {
                             return Json("codeinvalid");
+                        }
+                        
+                        //return Json(student);
+                        if (student.CollegeId == null || student.CollegeId == " " ||
+                            student.HscBatch == null || student.HscBatch == " " ||
+                            student.Shift == null || student.Shift == " ")
+                        {
+                            return Json("NeedCompleteStudentProfile");
                         }
 
                         var enrollment = new StudentEnrollment
