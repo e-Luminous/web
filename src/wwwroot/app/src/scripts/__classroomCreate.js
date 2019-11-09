@@ -27,6 +27,9 @@ $(document).ready(function () {
              }else if(responseData === "SelectCourse"){
                  showMaterialToast("Select Course First", "teal darken-1");
              }
+             else if(responseData === "fill-upEmployeeid"){
+                 showMaterialToast("Fill-up Employee Id First", "teal darken-1");
+             }
              else if (responseData === "SelectTitle") {
                  showMaterialToast("Fill-up Course Title First", "teal darken-1");
              }

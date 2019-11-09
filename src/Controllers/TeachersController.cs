@@ -182,6 +182,11 @@ namespace src.Controllers
                 {
                     return Json("SelectCource");
                 }
+
+                if (teacher.CollegeId == null)
+                {
+                    return Json("fill-upEmployeeid");
+                }
                 
                 
                 var classroomobj = new Classroom
