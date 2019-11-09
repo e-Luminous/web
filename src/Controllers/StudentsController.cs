@@ -154,7 +154,7 @@ namespace src.Controllers
                 }
                 default:
                     await __init__(currentlyLoggedInUser);
-                    break;
+                     break;
             }
             return RedirectToAction("Logout", "Account");
         }
@@ -164,6 +164,7 @@ namespace src.Controllers
             var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
             var authCommand = __getAuthorizationCommand(sid);
             
+             
             switch (authCommand)
             {
                 case "Login":
