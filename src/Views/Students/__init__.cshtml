@@ -1,3 +1,98 @@
 @model Student
+@{
+    Layout = "_LayoutStudent";
+}
 
-<p>@Html.Raw(Json.Serialize(Model));</p>
+<br/>
+<div class="wrapper">
+    <div id="flight-card" class="card">
+        <div class="card-header blue darken-4">
+            <div class="card-title">
+                <h4 class="flight-card-title white-text">@if(Model.Institution != null) {@Html.DisplayFor(m=> m.Institution.InstitutionName)} <a class="card-title modal-trigger" href="#_formModal"><i class="material-icons white-text right">edit</i></a></h4>
+                <p class="flight-card-date white-text">@if(Model.Institution != null) {@Html.DisplayFor(m=>m.Institution.InstitutionLocation)}</p>
+                
+            </div>
+        </div>
+        <div class="card-content-bg white-text">
+            <div class="card-content">
+                <div class="row flight-state-wrapper">
+                    <div class="col s5 m5 l5 center-align">
+                        <div class="flight-state">
+                            <h4 class="margin"><i class="material-icons">mail</i></h4>
+                            <p>@Model.Account.UserEmail</p>
+                        </div>
+                    </div>
+                    <div class="col s2 m2 l2 center-align">
+                        <i class="mdi-device-airplanemode-on flight-icon"></i>
+                    </div>
+                    <div class="col s5 m5 l5 center-align">
+                        <div class="flight-state">
+                            <h4 class="margin"><i class="material-icons big">phone_android</i></h4>
+                            <p class="ultra-small">@Model.Account.UserPhone</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 m6 l6 center-align">
+                        <div class="flight-info">
+                            <p class="small"><span class="grey-text text-lighten-4">Shift:</span> @if(Model.Shift != null){ @Html.DisplayFor(m=>m.Shift) }</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Student Id:</span>@if(Model.CollegeId != null){ @Html.DisplayFor(m=>m.CollegeId) }</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Hsc Batch:</span>@if(Model.HscBatch != null){ @Html.DisplayFor(m=>m.HscBatch) }</p>
+                        </div>
+                    </div>
+                    <div class="col s6 m6 l6 center-align flight-state-two">
+                        <div class="flight-info">
+                            <p class="small"><span class="grey-text text-lighten-4">Longitude:</span> @if(Model.Institution != null) {@Html.DisplayFor(m=>m.Institution.Longitude)}</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Latitude:</span> @if(Model.Institution != null) {@Html.DisplayFor(m=>m.Institution.Latitude)}</p>
+                            <p class="small"><span class="grey-text text-lighten-4">Established:</span> @if(Model.Institution != null) {@Html.DisplayFor(m=>m.Institution.Established)}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="_formModal" class="modal">
+    <div class="modal-content">
+      <form id="_formStudentInfo" method="post">
+          <input type="hidden" asp-for="Serial"/>
+          <div class="row">
+              <div class="input-field col l6 s12">
+                  <input asp-for="CollegeId" value="@Model.CollegeId" type="text" class="validate">
+                  <label class="active" asp-for="CollegeId">@Html.DisplayNameFor(m => m.CollegeId)</label>
+              </div>
+              <div class="input-field col l6 s12">
+                  <select asp-for="Shift" asp-items="Model.Shifts"></select>
+                  <label asp-for="Shift">@Html.DisplayNameFor(m=> m.Shift)</label>
+              </div>
+          </div>
+          <div class="row">
+              
+              <div class="input-field col l6 s12">
+                  <select asp-for="Institution.InstitutionId" asp-items="Model.Institutions"></select>
+                  <label asp-for="Institution.InstitutionId">Select Your Institution</label>
+              </div>
+              <div class="input-field col l6 s12">
+                    <input asp-for="HscBatch" value="@Model.HscBatch" type="text" class="validate">
+                    <label class="active" asp-for="HscBatch">@Html.DisplayNameFor(m => m.HscBatch)</label></div>
+          </div>
+          <div class="row">
+              <p class="center-align">
+                  <button type="submit" class="btn btn-small materialize-indigo">Submit</button>
+              </p>
+          </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+       $("#_tabStudentProfile").attr('class', 'active');
+    });
+</script>

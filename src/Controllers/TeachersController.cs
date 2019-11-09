@@ -166,6 +166,11 @@ namespace src.Controllers
                 await __classrooms___(_getCurrentlyLoggedInUser());
             }
 
+            if (cTitle == " " || cTitle == null)
+            {
+                return Json("SelectTitle");
+            }
+
             try
             {
                 var teacher = await _context.Teachers
