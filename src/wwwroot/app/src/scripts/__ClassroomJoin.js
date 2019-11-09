@@ -9,33 +9,38 @@ var colorArray = [
 ];
 
 $(document).ready(function () {
-    getClassRoom();
-$("#classroomForm").submit(function (e) {
-    e.preventDefault();
-    var AccessCode = $('#AccessCode').val();
-    var studentId = $("#student_id").val();
-    console.log("access code: "+AccessCode);
+    getClassRoomForStudent();
 
-    $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
-        if(responseData === "failed"){
-            showMaterialToast("Invalid Request", "red darken-1 rounded" );
-            $('#AccessCode').val("");
-        }else if(responseData === "codeinvalid"){
-            showMaterialToast("Enter a valid classroom code", "amber darken-3 rounded");
-            $('#AccessCode').val("");
-        }
-        else if(responseData === "success"){
-            showMaterialToast("Classroom join Successfully", "teal darken-1 rounded");
+    $("#classroomForm").submit(function (e) {
+        e.preventDefault();
+        var AccessCode = $('#AccessCode').val();
+        var studentId = $("#student_id").val();
+        console.log("access code: " + AccessCode);
 
-            $('#AccessCode').val("");
-            getClassRoom();
-        }else{
+        $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
+            if(responseData === "failed"){
+                showMaterialToast("Invalid Request", "red darken-1" );
+                removeInputFieldDataStudent();
+            }
+            else if(responseData === "NeedCompleteStudentProfile") {
+                showMaterialToast("First Complete Student Profile", "amber darken-3");
+            }
+            else if(responseData === "codeinvalid"){
+                showMaterialToast("Enter a valid classroom code", "amber darken-3");
+                removeInputFieldDataStudent();
+            }
+            else if(responseData === "success"){
+                showMaterialToast("Classroom join Successfully", "teal darken-1");
 
-        }
+                removeInputFieldDataStudent();
+                getClassRoomForStudent();
+            }else{
 
-        console.log(responseData);
-    });
-})
+            }
+
+            console.log(responseData);
+        });
+    })
 });
 
 function showMaterialToast(data, style) {
@@ -45,7 +50,13 @@ function showMaterialToast(data, style) {
     });
 }
 
-function getClassRoom() {
+function removeInputFieldDataStudent() {
+    $('#AccessCode').val("");
+}
+
+
+
+function getClassRoomForStudent() {
 
     var classrooms = $('#classRooms');
     console.log("sid is : " + loggedInSid);
