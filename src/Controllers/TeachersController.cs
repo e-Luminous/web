@@ -1,5 +1,4 @@
 using System;
-using System.CodeDom.Compiler;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using src.Models;
 
 namespace src.Controllers
@@ -40,169 +38,7 @@ namespace src.Controllers
             }
         }
         
-        
-        public async Task<IActionResult>__init__(string tid)
-        {
-            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
-            {
-                return RedirectToAction("LogIn", "Account");
-            }
-            
-            if (_getAccountRoleFromUserId(tid) != "Teacher")
-            {
-                return RedirectToAction("__init__", "Students", new { sid = _getCurrentlyLoggedInUser() });
-            }
-
-            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
-            {
-                await __init__(_getCurrentlyLoggedInUser());
-            }
-
-            var teacher = await _context.Teachers
-                .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
-
-            var courseList = await _context.Courses.ToListAsync();
-
-            foreach (var course in courseList)
-            {
-                teacher.Courses.Add(new SelectListItem
-                {
-                    Value = course.CourseId,
-                    Text = course.CourseName
-                });
-            }
-
-            var institutionList = await _context.Institutions.ToListAsync();
-
-            foreach (var institution in institutionList)
-            {
-                teacher.Institutions.Add(new SelectListItem
-                {
-                    Value = institution.InstitutionId,
-                    Text = institution.InstitutionName
-                });
-            }
-
-            ViewBag.teacherAccountId = tid;
-            return View(teacher);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> __init__(Teacher teacher)
-        {
-            var courseSelected =
-                await _context.Courses.SingleOrDefaultAsync(c => c.CourseId == teacher.Course.CourseId);
-            var institutionSelected =
-                await _context.Institutions.SingleOrDefaultAsync(i =>
-                    i.InstitutionId == teacher.Institution.InstitutionId);
-
-            teacher.Course = courseSelected;
-            teacher.Institution = institutionSelected;
-            
-            if (!ModelState.IsValid) return View(teacher);
-            
-            try
-            {
-                _context.Update(teacher);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TeacherExists(teacher.Serial))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToAction("__init__", "Teachers", new {tid = _getCurrentlyLoggedInUser()});
-        }
-
-        public async Task<IActionResult>__classrooms___(string tid)
-        {
-            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
-            {
-                return RedirectToAction("LogIn", "Account");
-            }
-            
-            if (_getAccountRoleFromUserId(tid) != "Teacher")
-            {
-                return RedirectToAction("__init__", "Students", new { sid = _getCurrentlyLoggedInUser() });
-            }
-
-            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
-            {
-                await __classrooms___(_getCurrentlyLoggedInUser());
-            }
-            
-            // For Layout asp-route-tid
-            ViewBag.teacherAccountId = tid;
-            
-            var teacher = await _context.Teachers
-                .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
-            
-            return View(teacher);
-        }
-        
-        [HttpPost]
-        public async Task<IActionResult>__classrooms___(string cTitle, string tid)
-        {
-            
-            if (_getCurrentlyLoggedInUser() == "" || _getCurrentlyLoggedInUser() == null)
-            {
-                return Json("Fail");
-            }
-            
-            if (_getAccountRoleFromUserId(tid) != "Teacher")
-            {
-                return Json("Fail");
-            }
-
-            if (tid != _getCurrentlyLoggedInUser() || tid == null || Regex.Replace(tid, @"\s+", "") == "")
-            {
-                await __classrooms___(_getCurrentlyLoggedInUser());
-            }
-
-            try
-            {
-                var teacher = await _context.Teachers
-                    .Include(tea => tea.Course)
-                    .Include((tea => tea.Institution))
-                    .FirstOrDefaultAsync(tea => tea.Account.UserId == tid);
-                
-                if (teacher.Course == null)
-                {
-                    return Json("SelectCource");
-                }
-                
-                
-                var classroomobj = new Classroom
-                {
-                    ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),
-                    ClassroomTitle = cTitle,
-                    AccessCode = StringGenerator(Guid.NewGuid().ToString().Replace("-", "")),
-                    Course = teacher.Course,
-                    Teacher = teacher
-                };
-                _context.Add(classroomobj);
-                await _context.SaveChangesAsync();
-                return Json("success");
-              
-            }
-            catch (Exception e)
-            {
-                return Json("SelectCource");
-                //return Json(e);
-            }
-
-            //return Json(cTitle + " " + tid);
-
-        }
-
-        private string StringGenerator(string str)
+        private static string StringGenerator(string str)
         {
             return str.Substring(2, 6);
         }
@@ -210,17 +46,242 @@ namespace src.Controllers
         {
             return _context.Teachers.Any(e => e.Serial == id);
         }
+
+        private string __getAuthorizationCommand(string tid)
+        {
+            var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
+            
+            if (string.IsNullOrEmpty(currentlyLoggedInUser))
+            {
+                return "Login";
+            }
+
+            if (_getAccountRoleFromUserId(tid) != "Teacher")
+            {
+                return "Student";
+            }
+
+            if (tid != currentlyLoggedInUser)
+            {
+                return _getAccountRoleFromUserId(currentlyLoggedInUser) == "Student" ? "Student" : "Self";
+            }
+
+            return Regex.Replace(tid, @"\s+", "") == "" ? "Self" : "Continue";
+        }
+
+        public async Task<IActionResult>__init__(string tid)
+        {
+            var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
+            var authCommand = __getAuthorizationCommand(tid);
+            
+            switch (authCommand)
+            {
+                case "Login":
+                    return RedirectToAction("LogIn", "Account");
+                case "Student":
+                    return RedirectToAction("__init__", "Students", new { sid = currentlyLoggedInUser });
+                case "Self":
+                    await __init__(currentlyLoggedInUser);
+                    break;
+                case "Continue":
+                {
+                    var teacher = await _context.Teachers
+                        .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
+
+                    var courseList = await _context.Courses.ToListAsync();
+
+                    foreach (var course in courseList)
+                    {
+                        teacher.Courses.Add(new SelectListItem
+                        {
+                            Value = course.CourseId,
+                            Text = course.CourseName
+                        });
+                    }
+
+                    var institutionList = await _context.Institutions.ToListAsync();
+
+                    foreach (var institution in institutionList)
+                    {
+                        teacher.Institutions.Add(new SelectListItem
+                        {
+                            Value = institution.InstitutionId,
+                            Text = institution.InstitutionName
+                        });
+                    }
+
+                    ViewBag.teacherAccountId = tid;
+                    return View(teacher);
+                }
+                default:
+                    await __init__(currentlyLoggedInUser);
+                    break;
+            }
+
+            return RedirectToAction("Logout", "Account");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> __init__(Teacher teacher)
+        {
+            var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
+            var authCommand = __getAuthorizationCommand(currentlyLoggedInUser);
+            
+            switch (authCommand)
+            {
+                case "Login":
+                    return RedirectToAction("LogIn", "Account");
+                case "Student":
+                    return RedirectToAction("__init__", "Students", new { sid = currentlyLoggedInUser });
+                case "Self":
+                    await __init__(currentlyLoggedInUser);
+                    break;
+                case "Continue":
+                {
+                    var courseSelected =
+                        await _context.Courses.SingleOrDefaultAsync(c => c.CourseId == teacher.Course.CourseId);
+                    var institutionSelected =
+                        await _context.Institutions.SingleOrDefaultAsync(i =>
+                            i.InstitutionId == teacher.Institution.InstitutionId);
+
+                    teacher.Course = courseSelected;
+                    teacher.Institution = institutionSelected;
+            
+                    if (!ModelState.IsValid) return View(teacher);
+            
+                    try
+                    {
+                        _context.Update(teacher);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!TeacherExists(teacher.Serial))
+                        {
+                            return NotFound();
+                        }
+                        throw;
+                    }
+
+                    return RedirectToAction("__init__", "Teachers", new {tid = _getCurrentlyLoggedInUser()});
+                }
+                default:
+                    await __init__(currentlyLoggedInUser);
+                    break;
+            }
+
+            return RedirectToAction("Logout", "Account");
+        }
+
+        public async Task<IActionResult>__classrooms___(string tid)
+        {
+            var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
+            var authCommand = __getAuthorizationCommand(tid);
+            
+            switch (authCommand)
+            {
+                case "Login":
+                    return RedirectToAction("LogIn", "Account");
+                case "Student":
+                    return RedirectToAction("__classrooms___", "Students", new { sid = currentlyLoggedInUser });
+                case "Self":
+                    await __classrooms___(currentlyLoggedInUser);
+                    break;
+                case "Continue":
+                {
+                    // For Layout asp-route-tid
+                    ViewBag.teacherAccountId = tid;
+            
+                    var teacher = await _context.Teachers
+                        .SingleOrDefaultAsync(tea => tea.Account.UserId == tid);
+            
+                    return View(teacher);
+                }
+                default:
+                    await __init__(currentlyLoggedInUser);
+                    break;
+            }
+
+            return RedirectToAction("Logout", "Account");
+        }
         
+        [HttpPost]
+        public async Task<JsonResult>__classrooms___(string cTitle, string tid)
+        {
+            var authCommand = __getAuthorizationCommand(tid);
+            
+            switch (authCommand)
+            {
+                case "Login":
+                    return Json("Fail");
+                case "Student":
+                    return Json("Fail");
+                case "Self":
+                    return Json("Fail");
+                case "Continue":
+                {
+                    try
+                    {
+                        var teacher = await _context.Teachers
+                            .Include(tea => tea.Course)
+                            .Include((tea => tea.Institution))
+                            .FirstOrDefaultAsync(tea => tea.Account.UserId == tid);
+                
+                        if (teacher.Course == null)
+                        {
+                            return Json("SelectCource");
+                        }
+                
+                
+                        var classroomObject = new Classroom
+                        {
+                            ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),
+                            ClassroomTitle = cTitle,
+                            AccessCode = StringGenerator(Guid.NewGuid().ToString().Replace("-", "")),
+                            Course = teacher.Course,
+                            Teacher = teacher
+                        };
+                        _context.Add(classroomObject);
+                        await _context.SaveChangesAsync();
+                        return Json("success");
+              
+                    }
+                    catch (Exception)
+                    {
+                        return Json("SelectCource");
+                    }
+                }
+                default:
+                    return Json("Fail");
+            }
+        }
+
         public async Task<JsonResult>__getClassRoom___(string tid)
         {
-            var classroomsOfTeacher =
-                await _context.Classrooms
-                    .Include(c => c.Teacher)
-                    .Include(c => c.Teacher.Account)
-                    .Where(tec => tec.Teacher.Account.UserId == tid)
-                    .ToListAsync();
+            var authCommand = __getAuthorizationCommand(tid);
             
-            return Json(classroomsOfTeacher);
+            switch (authCommand)
+            {
+                case "Login":
+                    return Json("Fail");
+                case "Student":
+                    return Json("Fail");
+                case "Self":
+                    return Json("Fail");
+                case "Continue":
+                {
+                    var classroomsOfTeacher =
+                        await _context.Classrooms
+                            .Include(c => c.Teacher)
+                            .Include(c => c.Teacher.Account)
+                            .Where(tec => tec.Teacher.Account.UserId == tid)
+                            .ToListAsync();
+            
+                    return Json(classroomsOfTeacher); 
+                }
+                default:
+                    return Json("Fail");
+            }
         }
     }
 }
