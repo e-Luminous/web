@@ -232,7 +232,9 @@ namespace src.Controllers
                             return Json("SelectCourse");
                         }
                 
-                        if (teacher.CollegeId == null || teacher.Shift == null || teacher.Institution == null)
+                        if (teacher.CollegeId == null || teacher.CollegeId == " " || 
+                            teacher.Shift == null || teacher.Shift == " " ||
+                            teacher.Institution == null)
                         {
                             return Json("NeedCompleteTeacherProfile");
                         }

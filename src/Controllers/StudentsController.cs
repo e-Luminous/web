@@ -219,8 +219,9 @@ namespace src.Controllers
                         }
                         
                         //return Json(student);
-                        if (student.CollegeId == null || student.HscBatch == null ||
-                            student.Shift == null)
+                        if (student.CollegeId == null || student.CollegeId == " " ||
+                            student.HscBatch == null || student.HscBatch == " " ||
+                            student.Shift == null || student.Shift == " ")
                         {
                             return Json("NeedCompleteStudentProfile");
                         }
