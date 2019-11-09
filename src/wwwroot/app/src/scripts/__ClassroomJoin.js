@@ -1,8 +1,11 @@
 var loggedInSid = $('#loggedInSid').val();
 
 var colorArray = [
-    "red darken-1", "teal darken-1", "indigo darken-1", "blue-grey darken-1",
-    "purple darken-3", "blue lighten-1", "blue accent-2", "light-blue"
+    "red darken-1", "teal darken-1", "indigo darken-1", "blue accent-3",
+    "purple darken-2", "pink darken-2", "red darken-2", "blue lighten-2",
+    "indigo", "deep-purple", "blue accent-1", "deep-purple accent-3",
+    "cyan lighten-3", "light-blue lighten-1", "cyan", "cyan accent-3",
+    "green", "light-green", "lime", "orange", "blue-grey lighten-1"
 ];
 
 $(document).ready(function () {
