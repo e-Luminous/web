@@ -231,8 +231,14 @@ namespace src.Controllers
                         {
                             return Json("SelectCourse");
                         }
+                        
+                        
+                        if (cTitle == " " || cTitle == null)
+                        {
+                            return Json("SelectTitle");
+                        }
                 
-                
+                        
                         var classroomObject = new Classroom
                         {
                             ClassroomId = Guid.NewGuid().ToString().Replace("-", ""),
