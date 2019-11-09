@@ -22,21 +22,27 @@ $(document).ready(function () {
         console.log(classroomTitle, teacherid);
 
          $.post('', {cTitle : classroomTitle, tid : teacherid}, function (responseData) {
+             //console.log("teacher: " + responseData);
              if(responseData === "Fail"){
                  showMaterialToast("Invalid Request", "red darken-1");
-             }else if(responseData === "SelectCourse"){
-                 showMaterialToast("Select Course First", "amber darken-3");
+                 removeInputFieldDataTeacher();
              }
-             else if(responseData === "fill-upEmployeeid"){
-                 showMaterialToast("Fill-up Employee Id First", "teal darken-1");
+             else if(responseData === "SelectCourse"){
+                 showMaterialToast("Select Course First", "amber darken-3");
+                 removeInputFieldDataTeacher();
+             }
+             else if(responseData === "NeedCompleteTeacherProfile"){
+                 showMaterialToast("First Complete Teacher Profile", "teal darken-1");
+                 removeInputFieldDataTeacher();
              }
              else if (responseData === "SelectTitle") {
                  showMaterialToast("Fill-up Course Title First", "teal darken-1");
+                 removeInputFieldDataTeacher();
              }
              else if(responseData === "success"){
                  showMaterialToast("Classroom Created Successfully", "teal darken-1");
 
-                 $('#ClassroomTitle').val("");
+                 removeInputFieldDataTeacher();
                  getClassRoom();
              }else{
                  
@@ -47,6 +53,10 @@ $(document).ready(function () {
     })
 });
 
+
+function removeInputFieldDataTeacher() {
+    $('#ClassroomTitle').val("");
+}
 
 function showMaterialToast(data, style) {
     M.toast({

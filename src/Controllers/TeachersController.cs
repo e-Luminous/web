@@ -231,7 +231,11 @@ namespace src.Controllers
                         {
                             return Json("SelectCourse");
                         }
-                        
+                
+                        if (teacher.CollegeId == null || teacher.Shift == null || teacher.Institution == null)
+                        {
+                            return Json("NeedCompleteTeacherProfile");
+                        }
                         
                         if (cTitle == " " || cTitle == null)
                         {
