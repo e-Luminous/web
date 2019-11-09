@@ -14,33 +14,44 @@ var colorArray = [
 
 $(document).ready(function () {
     getClassRoom();
-    
+
     $("#classroomForm").submit(function (e) {
-         e.preventDefault();
+        e.preventDefault();
         var classroomTitle = $('#ClassroomTitle').val();
         var teacherid = $("#teacher_id").val();
         console.log(classroomTitle, teacherid);
 
-         $.post('', {cTitle : classroomTitle, tid : teacherid}, function (responseData) {
-             if(responseData === "Fail"){
-                 showMaterialToast("Invalid Request", "red darken-1");
-             }else if(responseData === "SelectCourse"){
-                 showMaterialToast("Select Course First", "amber darken-3");
-             }
-             else if(responseData === "success"){
-                 showMaterialToast("Classroom Created Successfully", "teal darken-1");
+        $.post('', {cTitle : classroomTitle, tid : teacherid}, function (responseData) {
+            //console.log("teacher: " + responseData);
+            if(responseData === "Fail"){
+                showMaterialToast("Invalid Request", "red darken-1");
+                removeInputFieldDataTeacher();
+            }
+            else if(responseData === "SelectCourse"){
+                showMaterialToast("Select Course First", "amber darken-3");
+                removeInputFieldDataTeacher();
+            }
+            else if(responseData === "NeedCompleteTeacherProfile"){
+                showMaterialToast("First Complete Teacher Profile", "teal darken-1");
+                removeInputFieldDataTeacher();
+            }
+            else if (responseData === "SelectTitle") {
+                showMaterialToast("Fill-up Course Title First", "teal darken-1");
+                removeInputFieldDataTeacher();
+            }
+            else if(responseData === "success"){
+                showMaterialToast("Classroom Created Successfully", "teal darken-1");
 
-                 $('#ClassroomTitle').val("");
-                 getClassRoom();
-             }else{
-                 
-             }
+                removeInputFieldDataTeacher();
+                getClassRoom();
+            }else{
 
-             console.log(responseData);
-         });
+            }
+
+            console.log(responseData);
+        });
     })
 });
-
 
 function showMaterialToast(data, style) {
     M.toast({
@@ -48,6 +59,11 @@ function showMaterialToast(data, style) {
         classes : style
     });
 }
+
+function removeInputFieldDataTeacher() {
+    $('#ClassroomTitle').val("");
+}
+
 
 function getClassRoom() {
     
