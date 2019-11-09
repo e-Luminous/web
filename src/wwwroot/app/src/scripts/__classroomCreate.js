@@ -21,8 +21,8 @@ $(document).ready(function () {
          $.post('', {cTitle : classroomTitle, tid : teacherid}, function (responseData) {
              if(responseData === "Fail"){
                  showMaterialToast("Invalid Request", "red darken-1");
-             }else if(responseData === "SelectCource"){
-                 showMaterialToast("Select Cource First", "teal darken-1");
+             }else if(responseData === "SelectCourse"){
+                 showMaterialToast("Select Course First", "amber darken-3");
              }
              else if(responseData === "success"){
                  showMaterialToast("Classroom Created Successfully", "teal darken-1");

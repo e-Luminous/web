@@ -229,7 +229,7 @@ namespace src.Controllers
                 
                         if (teacher.Course == null)
                         {
-                            return Json("SelectCource");
+                            return Json("SelectCourse");
                         }
                 
                 
@@ -248,7 +248,7 @@ namespace src.Controllers
                     }
                     catch (Exception)
                     {
-                        return Json("SelectCource");
+                        return Json("SelectCourse");
                     }
                 }
                 default:
