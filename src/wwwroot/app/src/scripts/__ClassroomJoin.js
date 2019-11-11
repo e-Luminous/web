@@ -9,6 +9,9 @@ var colorArray = [
 ];
 
 $(document).ready(function () {
+
+    // get Request on StudentController(/Students/__getClassRoom___ using sid) and find login student all classrooms info 
+    // and push info on Dynamic cards and show this Descending order Cards (Classrooms) without Reload page
     getClassRoomForStudent();
 
     $("#classroomForm").submit(function (e) {
@@ -17,6 +20,8 @@ $(document).ready(function () {
         var studentId = $("#student_id").val();
         console.log("access code: " + AccessCode);
 
+        // post Request on StudentsController using (AccessCode & studentId) param
+        // and got some response then send a get request and find current student classrooms
         $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
             if(responseData === "failed"){
                 showMaterialToast("Invalid Request", "red darken-1" );
@@ -43,6 +48,10 @@ $(document).ready(function () {
     })
 });
 
+// Show a material toast notification
+// @Param data -> our message Data
+// @Param style -> toast body style
+
 function showMaterialToast(data, style) {
     M.toast({
         html : data,
@@ -50,11 +59,14 @@ function showMaterialToast(data, style) {
     });
 }
 
+// Remove Input field Data
 function removeInputFieldDataStudent() {
     $('#AccessCode').val("");
 }
 
 
+// get Request on StudentController(/Students/__getClassRoom___ using sid) and find login student all classrooms info 
+// and push info on Dynamic cards and show this Descending order Cards (Classrooms) without Reload page
 function getClassRoomForStudent() {
 
     var classrooms = $('#classRooms');
