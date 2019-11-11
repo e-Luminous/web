@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" afterDir="false" />
-    </list>
+    <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +307,7 @@
       <workItem from="1573277269420" duration="8792000" />
       <workItem from="1573304017338" duration="3364000" />
       <workItem from="1573486351897" duration="186000" />
-      <workItem from="1573487250205" duration="5917000" />
+      <workItem from="1573487250205" duration="6233000" />
     </task>
     <servers />
   </component>
