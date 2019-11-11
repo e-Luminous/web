@@ -219,9 +219,9 @@ namespace src.Controllers
                         }
                         
                         //return Json(student);
-                        if (student.CollegeId == null || student.CollegeId == " " ||
-                            student.HscBatch == null || student.HscBatch == " " ||
-                            student.Shift == null || student.Shift == " ")
+                        if (trimAndNullCheckStd(student.CollegeId) ||
+                            trimAndNullCheckStd(student.HscBatch) || 
+                            trimAndNullCheckStd(student.Shift))
                         {
                             return Json("NeedCompleteStudentProfile");
                         }
@@ -245,6 +245,13 @@ namespace src.Controllers
                 default:
                     return Json("failed");
             }
+        }
+
+        private bool trimAndNullCheckStd(string str)
+        {
+            str = str.Trim();
+            if (string.IsNullOrEmpty(str)) return true;
+            return false;
         }
         
         public async Task<JsonResult>__getClassRoom___(string sid)
