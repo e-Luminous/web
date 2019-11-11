@@ -346,7 +346,7 @@ namespace src.Controllers
 
         
         /*
-         * Get Request from Teacher Classrooms and find login teacher class room information
+         * Get Request from Teacher Classrooms and find login teacher's classroom information
          * @Param tid -> First we authorize user using tid.
          * @Return JSON responseData
          */
