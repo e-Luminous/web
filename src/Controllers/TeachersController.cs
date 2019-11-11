@@ -232,8 +232,8 @@ namespace src.Controllers
                             return Json("SelectCourse");
                         }
                 
-                        if (teacher.CollegeId == null || teacher.CollegeId == " " || 
-                            teacher.Shift == null || teacher.Shift == " " ||
+                        if (trimAndNullCheckTeacher(teacher.CollegeId) || 
+                            trimAndNullCheckTeacher(teacher.Shift) ||
                             teacher.Institution == null)
                         {
                             return Json("NeedCompleteTeacherProfile");
@@ -266,6 +266,13 @@ namespace src.Controllers
                 default:
                     return Json("Fail");
             }
+        }
+        
+        private bool trimAndNullCheckTeacher(string str)
+        {
+            str = str.Trim();
+            if (string.IsNullOrEmpty(str)) return true;
+            return false;
         }
 
         public async Task<JsonResult>__getClassRoom___(string tid)

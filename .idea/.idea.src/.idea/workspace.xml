@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b233e9fd-0f5a-464a-93f6-a33f92956fe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StudentsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/TeachersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -312,7 +309,7 @@
       <workItem from="1573277269420" duration="8792000" />
       <workItem from="1573304017338" duration="3364000" />
       <workItem from="1573486351897" duration="186000" />
-      <workItem from="1573487250205" duration="782000" />
+      <workItem from="1573487250205" duration="1030000" />
     </task>
     <servers />
   </component>
