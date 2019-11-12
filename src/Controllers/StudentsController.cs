@@ -21,11 +21,21 @@ namespace src.Controllers
             _userManager = userManager;
         }
         
+        /*
+         * Get current user ID from cookies
+         * @return Current user Identity ID
+         */
         private string _getCurrentlyLoggedInUser()
         {
             return _userManager.GetUserId(HttpContext.User);
         }
         
+        
+        /*
+         * Get current user Role (Ex: Student / Teacher)
+         * @Param userId -> Login Request user ID
+         * @Return Request user Role or null
+         */
         private string _getAccountRoleFromUserId(string userId)
         {
             try
@@ -39,11 +49,26 @@ namespace src.Controllers
             }
         }
         
+        
+        /*
+         * Student serial find from Student Model and return a bool
+         * @Param id -> we match student serial on Students Model using ths param ID
+         * @Return if we find request student info then return true or not
+         */
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Serial == id);
         }
         
+        
+        /*
+         * * Our Authorize Method base on a UserID *
+         * This message return a string base on some condition and we decide some action base on return string
+         * @Param sid -> we authorize a user using this ID and return some info
+         * @Return if this is null or empty then we return Login,
+         * if this tid not a student then we return Teacher string,
+         * if sid is authorize then we check this id Rules then we will get some action
+         */
         private string __getAuthorizationCommand(string sid)
         {
             var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
@@ -67,6 +92,13 @@ namespace src.Controllers
         }
         
         
+        /*
+         * Get Request from Student Profile
+         * First authenticate user, If success then Route Student Profile page 
+         * @Param sid -> First we authorize user using sid, if Failed then Redirect some page OR
+         * Route Student home page (Student Profile)
+         * @Return Call Student/__init__ View
+         */
         public async Task<IActionResult> __init__(string sid)
         {
             var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
@@ -108,6 +140,14 @@ namespace src.Controllers
             return RedirectToAction("Logout", "Account");
         }
         
+        
+        
+        /*
+         * Post Request from Student Profile
+         * First authenticate user, If success then Route Student Profile Edit page and Update Information
+         * @Param student object -> using student object save student Update Information
+         * @Return Route Student Profile page
+         */
         [HttpPost]
         public async Task<IActionResult> __init__(Student student)
         {
@@ -159,6 +199,14 @@ namespace src.Controllers
             return RedirectToAction("Logout", "Account");
         }
 
+        
+        /*
+         * Get Request from Student Classrooms
+         * First authenticate user, If success then Route Student Classroom page 
+         * @Param sid -> First we authorize user using sid, if Failed then Redirect some page OR
+         * Route Student Classroom page
+         * @Return Call Student/__classrooms___ View
+         */
         public async Task<IActionResult>__classrooms___(string sid)
         {
             var currentlyLoggedInUser = _getCurrentlyLoggedInUser();
@@ -191,6 +239,15 @@ namespace src.Controllers
             return RedirectToAction("Logout", "Account");
         }
         
+        
+        /*
+         * Post Request from Student Classrooms
+         * Join a classroom using classroom accessCode & Student ID
+         * First authenticate user, If success then Join a Student new classroom (Pre authenticate Information)
+         * @Param accessCode -> Request Join a new classroom using accessCode
+         * @Param sid -> Join a new classroom on this user id
+         * @Return some JSON responseData
+         */
         [HttpPost]
         public async Task<JsonResult>__classrooms___(string accessCode, string sid)
         {
@@ -219,9 +276,9 @@ namespace src.Controllers
                         }
                         
                         //return Json(student);
-                        if (student.CollegeId == null || student.CollegeId == " " ||
-                            student.HscBatch == null || student.HscBatch == " " ||
-                            student.Shift == null || student.Shift == " ")
+                        if (trimAndNullCheckStd(student.CollegeId) ||
+                            trimAndNullCheckStd(student.HscBatch) || 
+                            trimAndNullCheckStd(student.Shift))
                         {
                             return Json("NeedCompleteStudentProfile");
                         }
@@ -246,7 +303,26 @@ namespace src.Controllers
                     return Json("failed");
             }
         }
+
+        /*
+         * Trim String and check string null or empty
+         * @Param str -> our checking string
+         * @Return if trim string is null or empty then return true or
+         * return false
+         */
+        private bool trimAndNullCheckStd(string str)
+        {
+            str = str.Trim();
+            if (string.IsNullOrEmpty(str)) return true;
+            return false;
+        }
         
+        
+        /*
+         * Get Request from Student Classrooms and find login Student's classroom information
+         * @Param sid -> First we authorize user using sid.
+         * @Return JSON responseData
+         */
         public async Task<JsonResult>__getClassRoom___(string sid)
         {
             var authCommand = __getAuthorizationCommand(sid);

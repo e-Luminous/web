@@ -153,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/Views/Students/__classrooms__.cshtml" />
         <option value="$PROJECT_DIR$/src/Models/Student.cs" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initStudentLayout__.js" />
-        <option value="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/app.js" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/home.css" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/app.css" />
@@ -161,10 +160,11 @@
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentLayout__.css" />
         <option value="$PROJECT_DIR$/src/Views/Students/__init__.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" />
-        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" />
         <option value="$PROJECT_DIR$/src/Controllers/TeachersController.cs" />
-        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" />
         <option value="$PROJECT_DIR$/src/Controllers/StudentsController.cs" />
+        <option value="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" />
       </list>
     </option>
   </component>
@@ -305,7 +305,9 @@
       <workItem from="1573199753458" duration="6971000" />
       <workItem from="1573212241308" duration="12597000" />
       <workItem from="1573277269420" duration="8792000" />
-      <workItem from="1573304017338" duration="958000" />
+      <workItem from="1573304017338" duration="3364000" />
+      <workItem from="1573486351897" duration="186000" />
+      <workItem from="1573487250205" duration="6233000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 var temptid = $('#temptid').val();
+
 var colorArray = [
     "red darken-1", "teal darken-1", "indigo darken-1", "blue accent-3",
     "purple darken-2", "pink darken-2", "red darken-2", "blue lighten-2",
@@ -13,6 +14,10 @@ var colorArray = [
 
 
 $(document).ready(function () {
+    
+    // get Request on TeachersController(/Teachers/__getClassRoom___ using tid) and find login teachers all classrooms info 
+    // and push info on Dynamic cards and show this Descending order Cards (Classrooms) without Reload page 
+    
     getClassRoom();
 
     $("#classroomForm").submit(function (e) {
@@ -21,6 +26,8 @@ $(document).ready(function () {
         var teacherid = $("#teacher_id").val();
         console.log(classroomTitle, teacherid);
 
+        // post Request on TeachersController using (classroomTitle & teacherid) param
+        // and got some response then send a get request and find current teacher classrooms
         $.post('', {cTitle : classroomTitle, tid : teacherid}, function (responseData) {
             //console.log("teacher: " + responseData);
             if(responseData === "Fail"){
@@ -53,6 +60,10 @@ $(document).ready(function () {
     })
 });
 
+// Show a material toast notification
+// @Param data -> our message Data
+// @Param style -> toast body style
+
 function showMaterialToast(data, style) {
     M.toast({
         html : data,
@@ -60,10 +71,14 @@ function showMaterialToast(data, style) {
     });
 }
 
+// Remove Input field Data
 function removeInputFieldDataTeacher() {
     $('#ClassroomTitle').val("");
 }
 
+
+// get Request on TeachersController(/Teachers/__getClassRoom___ using tid) and find login teachers all classrooms info 
+// and push info on Dynamic cards and show this Descending order Cards (Classrooms) without Reload page
 
 function getClassRoom() {
 
