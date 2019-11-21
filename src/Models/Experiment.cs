@@ -10,6 +10,16 @@ namespace src.Models
         public string ExperimentId { get; set; }
         public string ExperimentName { get; set; }
         
+        /**************************************
+         * Extending features
+         * prior to override described in doc
+         **************************************/
+        [DataType(DataType.Html)]
+        public string ExperimentTableHeaderMarkUp { get; set; }
+
+        [DataType(DataType.Html)]
+        public string ExperimentalTableBodyMarkUp { get; set; }
+        
         //Relations 
         public Course Course { get; set; }
         public List<Submission> Submissions { get; set; }
