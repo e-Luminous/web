@@ -23,27 +23,11 @@ $(document).ready(function () {
         // post Request on StudentsController using (AccessCode & studentId) param
         // and got some response then send a get request and find current student classrooms
         $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
-            if(responseData === "failed"){
-                showMaterialToast("Invalid Request", "red darken-1" );
-                removeInputFieldDataStudent();
-            }
-            else if(responseData === "NeedCompleteStudentProfile") {
-                showMaterialToast("First Complete Student Profile", "amber darken-3");
-            }
-            else if(responseData === "codeinvalid"){
-                showMaterialToast("Enter a valid classroom code", "amber darken-3");
-                removeInputFieldDataStudent();
-            }
-            else if(responseData === "success"){
-                showMaterialToast("Classroom join Successfully", "teal darken-1");
-
-                removeInputFieldDataStudent();
+            if(responseData["ErrorMessage"] === "Null"){
                 getClassRoomForStudent();
-            }else{
-
             }
-
-            console.log(responseData);
+            showMaterialToast(responseData["toastDescription"], responseData["toastColor"]);
+            removeInputFieldDataStudent();
         });
     })
 });
