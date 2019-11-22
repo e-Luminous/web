@@ -95,7 +95,7 @@ function getClassRoomForStudent() {
                     "                    </div>\n" +
                     "                    <div class=\"card-content\">\n" +
                     "                        <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n" +
-                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light "+colorArray[randomIndex]+" z-depth-4 right\" href=\"/Classrooms/__student__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">" +
+                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light "+colorArray[randomIndex]+" z-depth-4 right\" href=\"/Classrooms/__StudentExperiments__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">" +
                     "                            <i class=\"material-icons\">send</i>\n" +
                     "                        </a>\n" +
                     "                        <h5 class=\"card-title activator grey-text text-darken-4\">"+res[i]["classroom"]["classroomTitle"]+"</h5>\n" +

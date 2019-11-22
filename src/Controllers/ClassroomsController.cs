@@ -26,24 +26,35 @@ namespace src.Controllers
          * @Return just check tid & cid
          */
         [HttpGet("Classrooms/__teacher__/{tid}/{cid}")]
-        public async Task<IActionResult> __teacher__(string tid, string cid)
+        public IActionResult __teacher__(string tid, string cid)
         {
             return Ok("Teacher Id: "+tid + " " +"Classroom Id: "+ cid);
         }
         
         
-        /*
-         * Get Request from Classrooms Student 
-         * @Param sid -> login Student id.
-         * @Param cid -> login Student's classroom id.
-         * @Return just check sid & cid
-         */
-        [HttpGet("Classrooms/__student__/{sid}/{cid}")]
-        public async Task<IActionResult> __student__(string sid, string cid)
+        [HttpGet("Classrooms/__StudentNotices__/{sid}/{cid}")]
+        public IActionResult __StudentNotices__(string sid, string cid)
         {
-            return Ok("Student Id: "+sid + " " +"Classroom Id: "+ cid);
+            ViewBag.SID = sid;
+            ViewBag.CID = cid;
+            return View();
         }
-
+        
+        [HttpGet("Classrooms/__StudentExperiments__/{sid}/{cid}")]
+        public IActionResult __StudentExperiments__(string sid, string cid)
+        {
+            ViewBag.SID = sid;
+            ViewBag.CID = cid;
+            return View();
+        }
+        
+        [HttpGet("Classrooms/__StudentFriends__/{sid}/{cid}")]
+        public IActionResult __StudentFriends__(string sid, string cid)
+        {
+            ViewBag.SID = sid;
+            ViewBag.CID = cid;
+            return View();
+        }
         
     }
 }
