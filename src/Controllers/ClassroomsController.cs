@@ -1,7 +1,10 @@
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using src.Data;
 using src.Models;
 
 namespace src.Controllers
@@ -63,5 +66,31 @@ namespace src.Controllers
             return View();
         }
         
+        
+        /** API **/
+        
+        public async Task<JsonResult> GetPhysicsSubmissionOfTheStudent(string studentId, string classroomId)
+        {
+            try
+            {
+                var allSubmissionsOfTheStudentInTheClassroomAsync = await _context
+                                                    .Submissions
+                                                    .Include(sub => sub.Experiment)
+                                                    .Where(submission => submission.Student.Account.UserId == studentId)
+                                                    .Where(submission => submission.Classroom.ClassroomId == classroomId)
+                                                    .ToListAsync();
+                return Json(allSubmissionsOfTheStudentInTheClassroomAsync);
+            }
+            catch (Exception e)
+            {
+                return Json(new ToastErrorModel
+                {
+                    ErrorMessage = "Something Went Wrong",
+                    ToastColor = "red darken-1",
+                    ToastDescription = e.Message,
+                    ErrorContentDetails = e.StackTrace
+                });
+            }
+        }
     }
 }
