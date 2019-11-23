@@ -23,6 +23,8 @@ namespace src.Models
         [DataType(DataType.MultilineText)]
         public string ExperimentalTableJsonStructure { get; set; }
         
+        public string ScriptFunctionToEvaluateExperiment { get; set; }
+        
         //Relations 
         public Course Course { get; set; }
         public List<Submission> Submissions { get; set; }
