@@ -10,3 +10,14 @@
       $("#tabStudentExperiments").attr('class', 'active');
     });
 </script>
+
+@{ var courseName = ViewBag.CourseName; }
+@if (courseName == "Physics")
+{
+    <script>alert("Physics");</script>
+}
+@if (courseName == "Chemistry")
+{
+    <script>alert("Chemistry");</script>
+}
+

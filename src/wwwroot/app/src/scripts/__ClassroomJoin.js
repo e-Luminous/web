@@ -23,7 +23,7 @@ $(document).ready(function () {
         // post Request on StudentsController using (AccessCode & studentId) param
         // and got some response then send a get request and find current student classrooms
         $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
-            if(responseData["ErrorMessage"] === "Null"){
+            if(responseData["errorMessage"] === "Null"){
                 getClassRoomForStudent();
             }
             showMaterialToast(responseData["toastDescription"], responseData["toastColor"]);

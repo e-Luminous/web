@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using src.Models;
 
 namespace src.Controllers
@@ -40,8 +42,14 @@ namespace src.Controllers
         }
         
         [HttpGet("Classrooms/__StudentExperiments__/{sid}/{cid}")]
-        public IActionResult __StudentExperiments__(string sid, string cid)
+        public async Task<IActionResult>__StudentExperiments__(string sid, string cid)
         {
+            var classroomInformationAsync = await _context
+                                            .Classrooms
+                                            .Include(cls => cls.Course)
+                                            .SingleOrDefaultAsync(cls => cls.ClassroomId == cid);
+            
+            ViewBag.CourseName = classroomInformationAsync.Course.CourseName;
             ViewBag.SID = sid;
             ViewBag.CID = cid;
             return View();
