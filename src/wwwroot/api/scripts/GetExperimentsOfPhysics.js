@@ -4,43 +4,36 @@ $(document).ready(function () {
 
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', { studentId: studentId, classroomId : classroomId }, function(data) {
         for (var i=0; i< data.length; i++){
-            window[data[i]["experiment"]["experimentalTableJsonStructure"]](data[i]["experiment"]);
+            window[data[i]["experiment"]["scriptFunctionToEvaluateExperiment"]](data[i]["experiment"]);
         }
     });
 });
 
 function InitiatePhy01(experiment) {
-    console.log(experiment);
+    var exp01 = JSON.parse(experiment["experimentalTableJsonStructure"]);
+    
 }
 
 function InitiatePhy02(experiment) {
-    console.log(experiment);
+    var exp02 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
 
 function InitiatePhy03(experiment) {
-    console.log(experiment);
+    var exp03 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
 
 function InitiatePhy04(experiment) {
-    console.log(experiment);
+    var exp04 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
 
 function InitiatePhy05(experiment) {
-    console.log(experiment);
+    var exp05 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
 
 function InitiatePhy06(experiment) {
-    console.log(experiment);
+    var exp06 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
 
 function InitiatePhy07(experiment) {
-    console.log(experiment);
-}
-
-function InitiatePhy08(experiment) {
-    console.log(experiment);
-}
-
-function InitiatePhy09(experiment) {
-    console.log(experiment);
+    var exp07 = JSON.parse(experiment["experimentalTableJsonStructure"]);
 }
