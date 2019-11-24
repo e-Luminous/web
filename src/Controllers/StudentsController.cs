@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using src.Data;
 using src.Models;
 
 namespace src.Controllers
@@ -256,23 +257,40 @@ namespace src.Controllers
             switch (authCommand)
             {
                 case "Login":
-                    return Json("failed");
+                    return Json(new ToastErrorModel
+                    {
+                        ErrorMessage = "Session Dropped", ToastDescription = "Session Dropped", ToastColor = "red darken-1", ErrorContentDetails = "Null"
+                    });
                 case "Teacher":
-                    return Json("failed");
+                    return Json(new ToastErrorModel
+                    {
+                        ErrorMessage = "Invalid Role", ToastDescription = "Invalid Role Request", ToastColor = "amber darken-1", ErrorContentDetails = "Null"
+                    });
                 case "Self":
-                    return Json("failed");
+                    return Json(new ToastErrorModel
+                    {
+                        ErrorMessage = "Invalid Request", ToastDescription = "Something went wrong", ToastColor = "grey darken-1", ErrorContentDetails = "Null"
+                    });
                 case "Continue":
                 {
                     try
                     {
                         var classroom = await _context.Classrooms
+                            .Include(cls => cls.Course)
+                            .Include(cls => cls.Course.Experiments)
+                            .Include(cls => cls.Teacher)
                             .FirstOrDefaultAsync(cls => cls.AccessCode == accessCode);
+                        
+                        
                         var student = await _context.Students
                             .SingleOrDefaultAsync(stu => stu.Account.UserId == sid);
 
                         if (classroom == null)
                         {
-                            return Json("codeinvalid");
+                            return Json(new ToastErrorModel
+                            {
+                                ErrorMessage = "Invalid Request", ToastDescription = "Classroom Doesn't Exist", ToastColor = "pink darken-1", ErrorContentDetails = "Null"
+                            });
                         }
                         
                         //return Json(student);
@@ -280,7 +298,10 @@ namespace src.Controllers
                             trimAndNullCheckStd(student.HscBatch) || 
                             trimAndNullCheckStd(student.Shift))
                         {
-                            return Json("NeedCompleteStudentProfile");
+                            return Json(new ToastErrorModel
+                            {
+                                ErrorMessage = "Invalid Request", ToastDescription = "Your Student Profile Is Incomplete", ToastColor = "purple darken-1", ErrorContentDetails = "Null"
+                            });
                         }
 
                         var enrollment = new StudentEnrollment
@@ -291,16 +312,46 @@ namespace src.Controllers
 
                         };
                         _context.Add(enrollment);
+
+                        
+                        // Initiating Submission For The Student In That Classroom While Joining
+                        // Begin
+                        var experimentsOfTheClassroom = classroom.Course.Experiments;
+                        
+                        foreach (var submission in 
+                            experimentsOfTheClassroom.Select(
+                                eachExperiment => new Submission {
+                                SubmissionId = Guid.NewGuid().ToString().Replace("-", ""),
+                                Status = "Pending",
+                                Student = student,
+                                Experiment = eachExperiment,
+                                Classroom = classroom,
+                                Teacher = classroom.Teacher
+                            })){
+                            _context.Add(submission);
+                        }
+                        // End
+                        
+                        
                         await _context.SaveChangesAsync();
-                        return Json("success");
+                        return Json(new ToastErrorModel
+                        {
+                            ErrorMessage = "Null", ToastDescription = "Classroom Joining Successful", ToastColor = "teal darken-1", ErrorContentDetails = "Null"
+                        });
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        return Json("failed");
+                        return Json(new ToastErrorModel
+                        {
+                            ErrorMessage = e.Message, ToastDescription = "Something Went Wrong", ToastColor = "pink darken-1", ErrorContentDetails = e.StackTrace
+                        });
                     }
                 }
                 default:
-                    return Json("failed");
+                    return Json(new ToastErrorModel
+                    {
+                        ErrorMessage = "Invalid Request", ToastDescription = "Invalid Request", ToastColor = "red darken-1", ErrorContentDetails = "Null"
+                    });
             }
         }
 

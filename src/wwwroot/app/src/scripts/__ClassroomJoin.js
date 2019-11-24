@@ -23,27 +23,11 @@ $(document).ready(function () {
         // post Request on StudentsController using (AccessCode & studentId) param
         // and got some response then send a get request and find current student classrooms
         $.post('', {accessCode : AccessCode, sid : studentId}, function (responseData) {
-            if(responseData === "failed"){
-                showMaterialToast("Invalid Request", "red darken-1" );
-                removeInputFieldDataStudent();
-            }
-            else if(responseData === "NeedCompleteStudentProfile") {
-                showMaterialToast("First Complete Student Profile", "amber darken-3");
-            }
-            else if(responseData === "codeinvalid"){
-                showMaterialToast("Enter a valid classroom code", "amber darken-3");
-                removeInputFieldDataStudent();
-            }
-            else if(responseData === "success"){
-                showMaterialToast("Classroom join Successfully", "teal darken-1");
-
-                removeInputFieldDataStudent();
+            if(responseData["errorMessage"] === "Null"){
                 getClassRoomForStudent();
-            }else{
-
             }
-
-            console.log(responseData);
+            showMaterialToast(responseData["toastDescription"], responseData["toastColor"]);
+            removeInputFieldDataStudent();
         });
     })
 });
@@ -95,7 +79,7 @@ function getClassRoomForStudent() {
                     "                    </div>\n" +
                     "                    <div class=\"card-content\">\n" +
                     "                        <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n" +
-                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light "+colorArray[randomIndex]+" z-depth-4 right\" href=\"/Classrooms/__student__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">" +
+                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light "+colorArray[randomIndex]+" z-depth-4 right\" href=\"/Classrooms/__StudentExperiments__/"+loggedInSid+"/"+res[i]["classroom"]["classroomId"]+"\">" +
                     "                            <i class=\"material-icons\">send</i>\n" +
                     "                        </a>\n" +
                     "                        <h5 class=\"card-title activator grey-text text-darken-4\">"+res[i]["classroom"]["classroomTitle"]+"</h5>\n" +
