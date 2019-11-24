@@ -14,6 +14,7 @@ function InitiatePhy01(experiment) {
     var exp01Table = $('#exp01Table');
     var columns = setHeaders(exp01, exp01Table);
     setBody(columns, exp01Table, exp01);
+    $('#exp01Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy02(experiment) {
@@ -21,6 +22,7 @@ function InitiatePhy02(experiment) {
     var exp02Table = $('#exp02Table');
     var columns = setHeaders(exp02, exp02Table);
     setBody(columns, exp02Table, exp02);
+    $('#exp02Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy03(experiment) {
@@ -33,6 +35,7 @@ function InitiatePhy03(experiment) {
     var columns = setHeaders(exp03, exp03Table);
     //console.log("columns count : " + columns);
     setBody(columns, exp03Table, exp03);
+    $('#exp03Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy04(experiment) {
@@ -40,6 +43,7 @@ function InitiatePhy04(experiment) {
     var exp04Table = $('#exp04Table');
     var columns = setHeaders(exp04, exp04Table);
     setBody(columns, exp04Table, exp04);
+    $('#exp04Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy05(experiment) {
@@ -47,6 +51,7 @@ function InitiatePhy05(experiment) {
     var exp05Table = $('#exp05Table');
     var columns = setHeaders(exp05, exp05Table);
     setBody(columns, exp05Table, exp05);
+    $('#exp05Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy06(experiment) {
@@ -54,6 +59,7 @@ function InitiatePhy06(experiment) {
     var exp06Table = $('#exp06Table');
     var columns = setHeaders(exp06, exp06Table);
     setBody(columns, exp06Table, exp06);
+    $('#exp06Table td').attr('contenteditable','true');
 }
 
 function InitiatePhy07(experiment) {
@@ -61,6 +67,7 @@ function InitiatePhy07(experiment) {
     var exp07Table = $('#exp07Table');
     var columns = setHeaders(exp07, exp07Table);
     setBody(columns, exp07Table, exp07);
+    $('#exp07Table td').attr('contenteditable','true');
 }
 
 
