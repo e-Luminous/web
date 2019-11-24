@@ -24,9 +24,15 @@ function InitiatePhy02(experiment) {
 function InitiatePhy03(experiment) {
     var exp03 = JSON.parse(experiment["experimentalTableJsonStructure"]);
     
-    console.log(exp03);
+    //console.log(exp03);
+    //console.log("length exp obj : " + exp03.length);
+
     var exp03Table = $('#exp03Table');
-    setHeaders(exp03, exp03Table);
+    //Set Table Headers
+    var columns = setHeaders(exp03, exp03Table);
+    //console.log("columns count : " + columns);
+    //Set Table Body INfo
+    setBody(columns, exp03Table, exp03);
 }
 
 function InitiatePhy04(experiment) {
@@ -54,6 +60,7 @@ function InitiatePhy07(experiment) {
 }
 
 
+/* Set All Table Header */
 function setHeaders(list, expTable) { 
     var columns = []; 
     var header = $('<tr/>'); 
@@ -61,7 +68,7 @@ function setHeaders(list, expTable) {
     for (var each in list) { 
         if ($.inArray(each, columns) == -1) { 
             columns.push(each); 
-            
+            //console.log("Each col Name " + each);
             // Creating the header 
             header.append($('<th/>').html(each)); 
         } 
@@ -69,4 +76,36 @@ function setHeaders(list, expTable) {
     
     // Appending the header to the table 
     $(expTable).append(header); 
+    return columns;
 }	 
+
+
+/* Set All Body Info */
+function setBody(columns, exp03Table, exp03) { 
+
+    // Traversing the JSON data 
+    //for (var i = 0; i < list.length; i++) { 
+        var row = $('<tr/>'); 
+        for (var colIndex = 0; colIndex < columns.length; colIndex++) 
+        { 
+            var val = exp03[columns[colIndex]]; 
+            
+            //console.log("val : " + val + " size : " + val.length);
+
+            if(val.length > 0) {
+                var subRow = $("<tr/>");
+                val.forEach(element => {
+                    subRow.append($('<tr/>').html(element)); 
+                });
+                row.append($('<td/>').html(subRow));
+                continue;
+            }
+
+            if (val == null) val = ""; 
+                row.append($('<td/>').html(val)); 
+        } 
+        
+        // Adding each row to the table 
+        $(exp03Table).append(row); 
+     
+} 
