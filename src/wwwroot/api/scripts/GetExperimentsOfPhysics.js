@@ -33,7 +33,7 @@ function InitiatePhy03(experiment) {
 
     var exp03Table = $('#exp03Table');
     var columns = setHeaders(exp03, exp03Table);
-    //console.log("columns count : " + columns);
+    //console.log("columns count Exp3: " + columns);
     setBody(columns, exp03Table, exp03);
     $('#exp03Table td').attr('contenteditable','true');
 }
@@ -103,6 +103,31 @@ function setBody(columns, expTable, exp) {
             
             //console.log("val : " + val + " size : " + val.length);
 
+            if(columns[0] === "চাপ" && colIndex == 0) {
+                var radioString = ' ';
+
+                console.log("Nth radio checked : " + val);
+
+                if(val == 1){
+                    radioString += '<label><input type="radio" name="group1" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                }
+                else if(val == 2){
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপ</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" name="group1" checked/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                }
+                else if(val == 3){
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপ</span> </label>'+'<br>';
+                    radioString += '<label><input type="radio" name="group1"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" name="group1" checked/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                }
+
+                row.append($('<tr/>').html(radioString));
+                continue;
+            }
+
             if(val.length > 0) {
                 var subRow = $("<tr/>");
                 val.forEach(element => {
@@ -114,6 +139,7 @@ function setBody(columns, expTable, exp) {
 
             if (val == null) val = ""; 
                 row.append($('<td/>').html(val)); 
+            
         } 
         
         // Adding each row to the table 
