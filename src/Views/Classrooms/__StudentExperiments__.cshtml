@@ -2,7 +2,16 @@
     Layout = "_LayoutStudentClassroom";
 }
 
-<div class="row">
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+      $("#tabStudentExperiments").attr('class', 'active');
+    });
+</script>
+
+@if (ViewBag.CourseName == "Physics")
+{
+    <div class="row">
     <div class="col s12 l12">
         <div class="card horizontal hoverable">
             <div class="card-image" id="coverImage">
@@ -62,6 +71,78 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp01Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp02-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp02Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp03-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp03Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp04Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp05Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp06Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card">
+                        <table id="exp07Table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <!-- Experiments -->
         <input type="hidden" id="StudentIdFromViewBag" value="@ViewBag.SID"/>
@@ -71,78 +152,6 @@
         
     </div>
 </div>
-
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script type="text/javascript">
-    $( document ).ready(function() {
-      $("#tabStudentExperiments").attr('class', 'active');
-    });
-</script>
-
-@if (ViewBag.CourseName == "Physics")
-{
-    <!--exp01-->
-    <div class="row">
-        <div class="card">
-            <table id="exp01Table">
-                <tbody id="exp01Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp02-->
-    <div class="row">
-        <div class="card">
-            <table id="exp02Table">
-                <tbody id="exp02Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp03-->
-    <div class="row">
-        <div class="card">
-            <table id="exp03Table">
-                <tbody id="exp03Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp04-->
-    <div class="row">
-        <div class="card">
-            <table id="exp04Table">
-                <tbody id="exp04Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp05-->
-    <div class="row">
-        <div class="card">
-            <table id="exp05Table">
-                <tbody id="exp05Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp06-->
-    <div class="row">
-        <div class="card">
-            <table id="exp06Table">
-                <tbody id="exp06Tbody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!--exp07-->
-    <div class="row">
-        <div class="card">
-            <table id="exp07Table">
-                <tbody id="exp07Tbody"></tbody>
-            </table>
-        </div>
-    </div>
 
     <script src="~/api/scripts/GetExperimentsOfPhysics.js"></script>
 }

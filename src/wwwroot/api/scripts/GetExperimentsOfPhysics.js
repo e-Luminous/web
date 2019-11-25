@@ -4,15 +4,18 @@ $(document).ready(function () {
 
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', { studentId: studentId, classroomId : classroomId }, function(data) {
         for (var i=0; i< data.length; i++){
-            window[data[i]["experiment"]["scriptFunctionToEvaluateExperiment"]](data[i]["experiment"]);
+            window[data[i]["experiment"]["scriptFunctionToEvaluateExperiment"]](data[i]["experiment"], data[i]);
         }
     });
 });
 
-function InitiatePhy01(experiment) {
+function InitiatePhy01(experiment, submission) {
     var exp01 = JSON.parse(experiment["experimentalTableJsonStructure"]);
+    //var submissionAPI = submission.
     var exp01Table = $('#exp01Table');
     var columns = setHeaders(exp01, exp01Table);
+    console.log(exp01.length);
+    console.log(columns);
     setBody(columns, exp01Table, exp01);
     $('#exp01Table td').attr('contenteditable','true');
 }
@@ -28,12 +31,12 @@ function InitiatePhy02(experiment) {
 function InitiatePhy03(experiment) {
     var exp03 = JSON.parse(experiment["experimentalTableJsonStructure"]);
     
-    //console.log(exp03);
+    console.log(exp03);
     //console.log("length exp obj : " + exp03.length);
 
     var exp03Table = $('#exp03Table');
     var columns = setHeaders(exp03, exp03Table);
-    //console.log("columns count Exp3: " + columns);
+    console.log("columns count Exp3: " + columns);
     setBody(columns, exp03Table, exp03);
     $('#exp03Table td').attr('contenteditable','true');
 }
@@ -76,7 +79,7 @@ function setHeaders(list, expTable) {
     var columns = []; 
     var header = $('<tr/>'); 
     
-    for (var each in list) { 
+    for (var each in list[0]) { 
         if ($.inArray(each, columns) == -1) { 
             columns.push(each); 
             //console.log("Each col Name " + each);
@@ -95,11 +98,11 @@ function setHeaders(list, expTable) {
 function setBody(columns, expTable, exp) { 
 
     // Traversing the JSON data 
-    //for (var i = 0; i < list.length; i++) { 
+    for (var i = 0; i < exp.length; i++) { 
         var row = $('<tr/>'); 
         for (var colIndex = 0; colIndex < columns.length; colIndex++) 
         { 
-            var val = exp[columns[colIndex]]; 
+            var val = exp[i][columns[colIndex]]; 
             
             //console.log("val : " + val + " size : " + val.length);
 
@@ -144,5 +147,6 @@ function setBody(columns, expTable, exp) {
         
         // Adding each row to the table 
         $(expTable).append(row); 
+    }
      
 } 
