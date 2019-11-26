@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentClassroomLayout__.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentClassroomLayout__.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +33,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Views/Partials/_ExpPhysicsPartial.cshtml" />
-        <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" />
         <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" />
         <option value="$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" />
@@ -39,6 +43,8 @@
         <option value="$PROJECT_DIR$/src/Views/Classrooms/_ErrorClassroomPartial.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/stylesheets/__initStudentClassroomLayout__.css" />
+        <option value="$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" />
       </list>
     </option>
   </component>
@@ -115,21 +121,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574740156727</updated>
-      <workItem from="1574740158957" duration="8501000" />
+      <workItem from="1574740158957" duration="9462000" />
+      <workItem from="1574782298326" duration="1963000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -4,26 +4,20 @@ $(document).ready(function () {
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', { studentId: studentId, classroomId : classroomId }, function(data) {
-        for (let i=0; i< data.length; i++){
-            InitiateExperiments(data[i], data[i]["experiment"]["experimentId"]);
+        for (let i=0; i< data.length; i++) {
+            InitiateExperiments(data[i]);
         }
     });
 });
 
-function InitiateExperiments(submission, index) {
+function InitiateExperiments(submission) {
     let experimentalBaseMSONStructure = JSON.parse(submission["experiment"]["experimentalTableJsonStructure"]);
-    let tableString = 'exp' + index + 'Table';
-    let expTable = $('#'+tableString);
-    let columns;
-    
-    if(submission["apiData"] == null) {
-        columns = setHeaders(experimentalBaseMSONStructure, expTable);
-        setBody(columns, expTable, experimentalBaseMSONStructure);
-    }else{
-        columns = setHeaders(JSON.parse(submission["apiData"]), expTable);
-        setBody(columns, expTable, JSON.parse(submission["apiData"]));
-    }
-    $('#'+tableString+' td').attr('contenteditable','true');
+    let tableIdQueryable = '#' + submission["experiment"]["scriptFunctionToEvaluateExperiment"];
+    let tableDataQueryable = tableIdQueryable + ' td';
+    let expTable = $(tableIdQueryable);
+
+    null==submission["apiData"]?setBody(setHeaders(experimentalBaseMSONStructure,expTable),expTable,experimentalBaseMSONStructure):setBody(setHeaders(JSON.parse(submission["apiData"]),expTable),expTable,JSON.parse(submission["apiData"]));
+    $(tableDataQueryable).attr('contenteditable','true');
 }
 
 /* Set All Table Header */
