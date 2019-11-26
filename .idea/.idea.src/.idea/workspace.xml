@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +17,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Models/Experiment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -29,9 +28,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/Views/Partials/_ExpPhysicsPartial.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" />
-        <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" />
         <option value="$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__classroomCreate.js" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__ClassroomJoin.js" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initStudentLayout__.js" />
+        <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" />
+        <option value="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
       </list>
     </option>
   </component>
@@ -108,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574740156727</updated>
-      <workItem from="1574740158957" duration="6928000" />
+      <workItem from="1574740158957" duration="7756000" />
     </task>
     <servers />
   </component>

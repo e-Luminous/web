@@ -1,15 +1,16 @@
+@model Course
 @{
     Layout = "_LayoutStudentClassroom";
 }
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
-@if (ViewBag.CourseName == "Physics")
+@if (Model.CourseName == "Physics")
 {
     <partial name="_ExpPhysicsPartial"/>
 }
 
-@if (ViewBag.CourseName == "Chemistry")
+@if (Model.CourseName == "Chemistry")
 {
     <partial name="_ExpChemistryPartial"/>
 }

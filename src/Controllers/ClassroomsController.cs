@@ -52,10 +52,9 @@ namespace src.Controllers
                                             .Include(cls => cls.Course)
                                             .SingleOrDefaultAsync(cls => cls.ClassroomId == cid);
             
-            ViewBag.CourseName = classroomInformationAsync.Course.CourseName;
             ViewBag.SID = sid;
             ViewBag.CID = cid;
-            return View();
+            return View(classroomInformationAsync.Course);
         }
         
         [HttpGet("Classrooms/__StudentFriends__/{sid}/{cid}")]
