@@ -141,3 +141,11 @@ label{
 .card{
     border-radius: 9px;
 }
+
+th {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+td {
+    font-family: 'Hind Siliguri', sans-serif;
+}
