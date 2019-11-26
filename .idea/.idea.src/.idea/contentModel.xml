@@ -54,6 +54,7 @@
             <e p="Register.cshtml" t="Include" />
           </e>
           <e p="Classrooms" t="Include">
+            <e p="_ErrorClassroomPartial.cshtml" t="Include" />
             <e p="_ExpChemistryPartial.cshtml" t="Include" />
             <e p="_ExpPhysicsPartial.cshtml" t="Include" />
             <e p="__StudentExperiments__.cshtml" t="Include" />

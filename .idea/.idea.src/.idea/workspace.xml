@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ErrorClassroomPartial.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/src/Models/Experiment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Students/__classrooms___.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ErrorClassroomPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -35,6 +36,7 @@
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initStudentLayout__.js" />
         <option value="$PROJECT_DIR$/src/wwwroot/app/src/scripts/__initTeacherLayout__.js" />
         <option value="$PROJECT_DIR$/src/Controllers/ClassroomsController.cs" />
+        <option value="$PROJECT_DIR$/src/Views/Classrooms/_ErrorClassroomPartial.cshtml" />
         <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
       </list>
     </option>
@@ -112,7 +114,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574740156727</updated>
-      <workItem from="1574740158957" duration="7756000" />
+      <workItem from="1574740158957" duration="8154000" />
     </task>
     <servers />
   </component>

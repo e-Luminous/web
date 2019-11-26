@@ -5,13 +5,20 @@
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
-@if (Model.CourseName == "Physics")
-{
-    <partial name="_ExpPhysicsPartial"/>
-}
-
-@if (Model.CourseName == "Chemistry")
-{
-    <partial name="_ExpChemistryPartial"/>
+@{
+    switch (Model.CourseName)
+    {
+        case "Physics" :
+            <partial name="_ExpPhysicsPartial"/>
+            break;
+            
+        case "Chemistry" :
+            <partial name="_ExpChemistryPartial"/>
+            break;
+            
+         default:
+             <partial name="_ErrorClassroomPartial"/>
+             break;
+    }
 }
 
