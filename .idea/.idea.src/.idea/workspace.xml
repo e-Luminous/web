@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-11-02T112610.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-11-02T113654.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,14 +19,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ExpPhysicsPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Models/Experiment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
+        <option value="$PROJECT_DIR$/src/Views/Partials/_ExpPhysicsPartial.cshtml" />
         <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" />
+        <option value="$PROJECT_DIR$/src/Views/Classrooms/__StudentExperiments__.cshtml" />
+        <option value="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfChemistry.js" />
+        <option value="$PROJECT_DIR$/src/Views/Classrooms/_ExpChemistryPartial.cshtml" />
       </list>
     </option>
   </component>
@@ -109,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574740156727</updated>
-      <workItem from="1574740158957" duration="3556000" />
+      <workItem from="1574740158957" duration="6928000" />
     </task>
     <servers />
   </component>

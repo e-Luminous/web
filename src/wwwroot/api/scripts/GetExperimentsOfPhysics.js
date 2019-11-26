@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#tabStudentExperiments").attr('class', 'active');
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
