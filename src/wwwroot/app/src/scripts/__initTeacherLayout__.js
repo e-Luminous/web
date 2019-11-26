@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 
 function lazyLoad() {
-    var progress = {
+    let progress = {
         init: function(steps) {
             this.step = 100 / (steps);
             this.status = 0;

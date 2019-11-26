@@ -1,6 +1,6 @@
-var loggedInSid = $('#loggedInSid').val();
+let loggedInSid = $('#loggedInSid').val();
 
-var colorArray = [
+let colorArray = [
     "red darken-1", "teal darken-1", "indigo darken-1", "blue accent-3",
     "purple darken-2", "pink darken-2", "red darken-2", "blue lighten-2",
     "indigo", "deep-purple", "blue accent-1", "deep-purple accent-3",
@@ -16,8 +16,8 @@ $(document).ready(function () {
 
     $("#classroomForm").submit(function (e) {
         e.preventDefault();
-        var AccessCode = $('#AccessCode').val();
-        var studentId = $("#student_id").val();
+        let AccessCode = $('#AccessCode').val();
+        let studentId = $("#student_id").val();
         console.log("access code: " + AccessCode);
 
         // post Request on StudentsController using (AccessCode & studentId) param
@@ -53,26 +53,26 @@ function removeInputFieldDataStudent() {
 // and push info on Dynamic cards and show this Descending order Cards (Classrooms) without Reload page
 function getClassRoomForStudent() {
 
-    var classrooms = $('#classRooms');
+    let classrooms = $('#classRooms');
     console.log("sid is : " + loggedInSid);
 
     $.get('/Students/__getClassRoom___', {sid : loggedInSid}, function (res) {
-        if(res.length == 0){
-            var modalToJoinNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
+        if(res.length === 0){
+            let modalToJoinNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
                 "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
 
             classrooms.html(modalToJoinNewClassroom);
         }
         else{
 
-            var cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
+            let cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"loggedInSid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
-            for (var i = res.length - 1; i >= 0; i--){
-                var randomIndex = Math.floor(Math.random() * 21);
+            for (let i = res.length - 1; i >= 0; i--){
+                let randomIndex = Math.floor(Math.random() * 21);
 
-                var eachClassroomCard  = "<div class=\"col s12 l3\">\n" +
+                let eachClassroomCard  = "<div class=\"col s12 l3\">\n" +
                     "                <div id=\"profile-card\" class=\"card\">\n" +
                     "                    <div class=\"card-image waves-effect waves-block waves-light\">\n" +
                     "                        <img class=\"activator\" src=\"https://img.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-72.jpg?size=338&ext=jpg\" alt=\"user bg\" />\n" +
