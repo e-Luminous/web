@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_src.-1975900731.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
@@ -17,10 +18,15 @@
         </e>
         <e p="Data" t="Include">
           <e p="AuthUser.cs" t="Include" />
+          <e p="ToastErrorModel.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
           <e p="20191102065651_InitialModelDesigner.Designer.cs" t="Include" />
           <e p="20191102065651_InitialModelDesigner.cs" t="Include" />
+          <e p="20191122175422_AddExperimentFeature.Designer.cs" t="Include" />
+          <e p="20191122175422_AddExperimentFeature.cs" t="Include" />
+          <e p="20191123055438_UpdateExperimentalFeature.Designer.cs" t="Include" />
+          <e p="20191123055438_UpdateExperimentalFeature.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -48,6 +54,12 @@
             <e p="Register.cshtml" t="Include" />
           </e>
           <e p="Classrooms" t="Include">
+            <e p="_ErrorClassroomPartial.cshtml" t="Include" />
+            <e p="_ExpChemistryPartial.cshtml" t="Include" />
+            <e p="_ExpPhysicsPartial.cshtml" t="Include" />
+            <e p="__StudentExperiments__.cshtml" t="Include" />
+            <e p="__StudentFriends__.cshtml" t="Include" />
+            <e p="__StudentNotices__.cshtml" t="Include" />
             <e p="__teacher__.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
@@ -58,6 +70,7 @@
             <e p="Error.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LayoutStudent.cshtml" t="Include" />
+            <e p="_LayoutStudentClassroom.cshtml" t="Include" />
             <e p="_LayoutTeacher.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           </e>
@@ -85,6 +98,12 @@
         </e>
         <e p="src.csproj" t="IncludeRecursive" />
         <e p="wwwroot" t="Include">
+          <e p="api" t="Include">
+            <e p="scripts" t="Include">
+              <e p="GetExperimentsOfChemistry.js" t="Include" />
+              <e p="GetExperimentsOfPhysics.js" t="Include" />
+            </e>
+          </e>
           <e p="app" t="Include">
             <e p="lib" t="Include">
               <e p="images" t="Include">
@@ -114,11 +133,13 @@
               <e p="scripts" t="Include">
                 <e p="__ClassroomJoin.js" t="Include" />
                 <e p="__classroomCreate.js" t="Include" />
+                <e p="__initStudentClassroomLayout__.js" t="Include" />
                 <e p="__initStudentLayout__.js" t="Include" />
                 <e p="__initTeacherLayout__.js" t="Include" />
                 <e p="__initialize___.js" t="Include" />
               </e>
               <e p="stylesheets" t="Include">
+                <e p="__initStudentClassroomLayout__.css" t="Include" />
                 <e p="__initStudentLayout__.css" t="Include" />
                 <e p="__initTeacherLayout__.css" t="Include" />
                 <e p="__initialize__.css" t="Include" />

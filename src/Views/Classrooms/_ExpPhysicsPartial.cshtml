@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="col s12 l12">
+        <div class="card horizontal hoverable">
+            <div class="card-image" id="coverImage">
+                <img src="~/app/lib/images/undraw_science_fqhl.svg" alt="gif">
+            </div>
+            <div class="row">
+                <div class="col s12 l6">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="imageOfFame card-image"></div>
+                            <p class="justifyText">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l6">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p class="justifyText">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 l2">
+        <div class="card hoverable">
+            <div class="card-content">
+                <p><b>Upcoming</b></p>
+                <br>
+                <p>Woohoo, no work due soon!</p>
+            </div>
+            <div class="card-action">
+                <a href="#">View all</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 l10">
+        <div class="row">
+            <div class="col s12 l12">
+                <div class="card hoverable">
+                    <div class="card-content">
+                        <form>
+                            <div class="input-field">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input type="text" id="autocomplete-input" class="autocomplete">
+                                <label for="textarea1">Share something with your class</label>
+                            </div>
+                            <p class="right-align">
+                                <a class="waves-effect waves-light btn transparent grey-text text-darken-2">Cancel</a>
+                                &nbsp; <a class="waves-effect waves-light btn materialize-indigo">Post</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp01-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp01Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp02-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp02Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp03-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp03Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp04-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp04Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp05-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp05Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp06-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp06Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <!--exp07-->
+                <div class="row">
+                    <div class="card hoverable">
+                        <table class="responsive-table" id="exp07Phy"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experiments -->
+        <input type="hidden" id="StudentIdFromViewBag" value="@ViewBag.SID"/>
+        <input type="hidden" id="ClassroomIdFromViewBag" value="@ViewBag.CID"/>
+        
+        <div id="experiments" class="row"></div>
+        
+    </div>
+</div>
+
+<script src="~/api/scripts/GetExperimentsOfPhysics.js"></script>
