@@ -1,4 +1,5 @@
-let initialLengthOfPhyExp = [];
+let initialLengthOfPhyExp = {};
+let submissionTableApi = [];
 
 $(document).ready(function () {
     $("#tabStudentExperiments").attr('class', 'active');
@@ -8,9 +9,19 @@ $(document).ready(function () {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', { studentId: studentId, classroomId : classroomId }, function(data) {
         for (let i=0; i< data.length; i++) {
             InitiateExperiments(data[i]);
+            submissionTableApi.push(data[i]);
         }
     });
-    console.log(initialLengthOfPhyExp);
+    
+    $('.btnPhy').click(function () {
+        let btnIdValue = this.id;
+        let clickedTableID = btnIdValue.replace("btn", "exp");
+        let clickedTableCurrentLength = initialLengthOfPhyExp[clickedTableID][clickedTableID];
+        
+        
+    });
+    
+    console.log(submissionTableApi);
 });
 
 function InitiateExperiments(submission) {
@@ -19,7 +30,6 @@ function InitiateExperiments(submission) {
     let tableIdQueryable = '#' + tableIdName;
     let tableDataQueryable = tableIdQueryable + ' td';
     let expTable = $(tableIdQueryable);
-    console.log(submission);
     let initialRowLength;
     null==submission["apiData"]? initialRowLength = setBody(setHeaders(experimentalBaseMSONStructure,expTable),expTable,experimentalBaseMSONStructure)
                                : initialRowLength = setBody(setHeaders(JSON.parse(submission["apiData"]),expTable),expTable,JSON.parse(submission["apiData"]));
@@ -27,7 +37,7 @@ function InitiateExperiments(submission) {
     
     let objectOfEachExpPhy = {};
     objectOfEachExpPhy[tableIdName] = initialRowLength;
-    initialLengthOfPhyExp.push(objectOfEachExpPhy);
+    initialLengthOfPhyExp[tableIdName] = objectOfEachExpPhy;
 }
 
 
@@ -115,7 +125,7 @@ function setBody(columns, expTable, exp) {
             if (val === "") val = ""; 
                 row.append($('<td/>').html(val));
         }
-        if(i + 1 === exp.length) console.log(row.html());
+        //if(i + 1 === exp.length) console.log(row.html());
         // Adding each row to the table 
         $(expTable).append(row); 
     }
