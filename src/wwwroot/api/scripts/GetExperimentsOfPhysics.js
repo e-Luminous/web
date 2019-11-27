@@ -19,7 +19,7 @@ function InitiateExperiments(submission) {
     let tableIdQueryable = '#' + tableIdName;
     let tableDataQueryable = tableIdQueryable + ' td';
     let expTable = $(tableIdQueryable);
-
+    console.log(submission);
     let initialRowLength;
     null==submission["apiData"]? initialRowLength = setBody(setHeaders(experimentalBaseMSONStructure,expTable),expTable,experimentalBaseMSONStructure)
                                : initialRowLength = setBody(setHeaders(JSON.parse(submission["apiData"]),expTable),expTable,JSON.parse(submission["apiData"]));
