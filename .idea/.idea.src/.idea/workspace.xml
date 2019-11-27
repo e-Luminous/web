@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,7 +125,7 @@
       <workItem from="1574782298326" duration="1963000" />
       <workItem from="1574792243174" duration="414000" />
       <workItem from="1574843988569" duration="3086000" />
-      <workItem from="1574848709726" duration="5406000" />
+      <workItem from="1574848709726" duration="8555000" />
     </task>
     <servers />
   </component>

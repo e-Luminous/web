@@ -11,7 +11,10 @@ $(document).ready(function () {
             InitiateExperiments(data[i]);
             submissionTableApi.push(data[i]);
         }
+        console.log($('#exp03Phy').html());
     });
+    
+    
     
     $('.btnPhy').click(function () {
         let btnIdValue = this.id;
@@ -20,7 +23,17 @@ $(document).ready(function () {
         
         //let submissionAPIIndex = Object.keys(submissionTableApi["experiment"]).indexOf(keytoFind);
         let tBody = findBaseTBody(clickedTableID);
+
+        clickedTableCurrentLength++;
+        
+        tBody = tBody.replace(/"group"/g, "'group"+ clickedTableCurrentLength + "'");
+        tBody = tBody.replace(/"typeOf"/g, "'typeOf"+ clickedTableCurrentLength + "'");
+        
+        initialLengthOfPhyExp[clickedTableID][clickedTableID] = clickedTableCurrentLength;
+        
         console.log(tBody);
+        $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
+        console.log("Now length : " + clickedTableCurrentLength);
     });
     
     
@@ -127,7 +140,8 @@ function setBody(columns, expTable, exp) {
             if(val.length > 0) {
                 let subRow = $("<tr/>");
                 val.forEach(element => {
-                    subRow.append($('<tr/>').html(element)); 
+                    subRow.append($('<tr/>').html(element));
+                    //subRow.append($('<td/>').html('</tr>'));
                 });
                 row.append($('<td/>').html(subRow));
                 continue;
