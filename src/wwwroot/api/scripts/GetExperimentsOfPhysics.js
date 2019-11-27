@@ -18,11 +18,22 @@ $(document).ready(function () {
         let clickedTableID = btnIdValue.replace("btn", "exp");
         let clickedTableCurrentLength = initialLengthOfPhyExp[clickedTableID][clickedTableID];
         
-        
+        //let submissionAPIIndex = Object.keys(submissionTableApi["experiment"]).indexOf(keytoFind);
+        let tBody = findBaseTBody(clickedTableID);
+        console.log(tBody);
     });
     
-    console.log(submissionTableApi);
+    
 });
+
+function findBaseTBody(expName) {
+    for (let pos = 0; pos < submissionTableApi.length; pos++){
+        if(submissionTableApi[pos]["experiment"]["scriptFunctionToEvaluateExperiment"]
+            === expName){
+            return submissionTableApi[pos]["experiment"]["experimentalTableBodyMarkUp"];
+        }
+    }
+}
 
 function InitiateExperiments(submission) {
     let experimentalBaseMSONStructure = JSON.parse(submission["experiment"]["experimentalTableJsonStructure"]);
