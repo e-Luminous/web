@@ -1,3 +1,5 @@
+let initialLengthOfPhyExp = [];
+
 $(document).ready(function () {
     $("#tabStudentExperiments").attr('class', 'active');
     let studentId = $('#StudentIdFromViewBag').val();
@@ -8,23 +10,32 @@ $(document).ready(function () {
             InitiateExperiments(data[i]);
         }
     });
+    console.log(initialLengthOfPhyExp);
 });
 
 function InitiateExperiments(submission) {
     let experimentalBaseMSONStructure = JSON.parse(submission["experiment"]["experimentalTableJsonStructure"]);
-    let tableIdQueryable = '#' + submission["experiment"]["scriptFunctionToEvaluateExperiment"];
+    let tableIdName = submission["experiment"]["scriptFunctionToEvaluateExperiment"];
+    let tableIdQueryable = '#' + tableIdName;
     let tableDataQueryable = tableIdQueryable + ' td';
     let expTable = $(tableIdQueryable);
 
-    null==submission["apiData"]?setBody(setHeaders(experimentalBaseMSONStructure,expTable),expTable,experimentalBaseMSONStructure):setBody(setHeaders(JSON.parse(submission["apiData"]),expTable),expTable,JSON.parse(submission["apiData"]));
+    let initialRowLength;
+    null==submission["apiData"]? initialRowLength = setBody(setHeaders(experimentalBaseMSONStructure,expTable),expTable,experimentalBaseMSONStructure)
+                               : initialRowLength = setBody(setHeaders(JSON.parse(submission["apiData"]),expTable),expTable,JSON.parse(submission["apiData"]));
     $(tableDataQueryable).attr('contenteditable','true');
+    
+    let objectOfEachExpPhy = {};
+    objectOfEachExpPhy[tableIdName] = initialRowLength;
+    initialLengthOfPhyExp.push(objectOfEachExpPhy);
 }
+
 
 /* Set All Table Header */
 function setHeaders(list, expTable) { 
     let columns = []; 
     let header = $('<tr/>'); 
-    console.log(list);
+    //console.log(list);
     
     for (let each in list[0]) { 
         if ($.inArray(each, columns) === -1) { 
@@ -39,8 +50,8 @@ function setHeaders(list, expTable) {
 
 
 /* Set All Body Info */
-function setBody(columns, expTable, exp) { 
-
+function setBody(columns, expTable, exp) {
+    
     // Traversing the JSON data 
     for (let i = 0; i < exp.length; i++) { 
         let row = $('<tr/>'); 
@@ -53,7 +64,7 @@ function setBody(columns, expTable, exp) {
             if(columns[0] === "চাপ" && colIndex === 0) {
                 let radioString = ' ';
 
-                console.log("Nth radio checked : " + val);
+                //console.log("Nth radio checked : " + val);
 
                 if(val === 0){
                     radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>' + '<br>';
@@ -71,7 +82,7 @@ function setBody(columns, expTable, exp) {
                     radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
 
-                console.log(radioString);
+                //console.log(radioString);
                 row.append($('<tr/>').html(radioString));
                 continue;
             }
@@ -104,7 +115,10 @@ function setBody(columns, expTable, exp) {
             if (val === "") val = ""; 
                 row.append($('<td/>').html(val));
         }
+        if(i + 1 === exp.length) console.log(row.html());
         // Adding each row to the table 
         $(expTable).append(row); 
     }
+    return exp.length;
+    //console.log(exp.length);
 } 
