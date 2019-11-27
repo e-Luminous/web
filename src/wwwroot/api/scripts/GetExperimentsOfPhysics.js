@@ -11,7 +11,7 @@ $(document).ready(function () {
             InitiateExperiments(data[i]);
             submissionTableApi.push(data[i]);
         }
-        console.log($('#exp03Phy').html());
+        //console.log($('#exp03Phy').html());
     });
     
     
@@ -31,9 +31,9 @@ $(document).ready(function () {
         
         initialLengthOfPhyExp[clickedTableID][clickedTableID] = clickedTableCurrentLength;
         
-        console.log(tBody);
+        //console.log(tBody);
         $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
-        console.log("Now length : " + clickedTableCurrentLength);
+        //console.log("Now length : " + clickedTableCurrentLength);
     });
     
     
@@ -82,78 +82,104 @@ function setHeaders(list, expTable) {
     return columns;
 }	 
 
-
 /* Set All Body Info */
 function setBody(columns, expTable, exp) {
     
+    let maxRowSpan = 0;
+
+    //Find max rowSpan
+    
+    for(let poscol = 0; poscol < columns.length; poscol++){
+        if(exp[0][columns[poscol]].length > 0){
+            maxRowSpan = Math.max(exp[0][columns[poscol]].length, maxRowSpan);
+        }
+    }
+
+    //console.log("max row " + maxRowSpan);
+    
     // Traversing the JSON data 
     for (let i = 0; i < exp.length; i++) { 
-        let row = $('<tr/>'); 
-        for (let colIndex = 0; colIndex < columns.length; colIndex++) 
-        { 
-            let val = exp[i][columns[colIndex]]; 
-            
-            // console.log("val : " + val + " size : " + val.length);
+        //let row = $('<tr/>'); 
+        let rowStr = "<tr>";
 
-            if(columns[0] === "চাপ" && colIndex === 0) {
-                let radioString = ' ';
+        if(maxRowSpan === 0){
+            for (let colIndex = 0; colIndex < columns.length; colIndex++){
+                rowStr += "<td>"+exp[i][columns[colIndex]]+"</td>";
+            }
+            rowStr += "</tr>";
+        }
+        else {
 
-                //console.log("Nth radio checked : " + val);
-
-                if(val === 0){
-                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>' + '<br>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+            let value = exp[i][columns[0]];
+            let radioString = "";
+            //চাপ
+            if(columns[0] === "চাপ") {
+                rowStr += "<td rowspan="+maxRowSpan+">";
+                
+                if(value === 0){
+                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
                     radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
-                else if(val === 1){
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>' + '<br>';
-                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+                else if(value === 1){
+                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
                     radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
-                else if(val === 2){
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>'+'<br>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>' + '<br>';
+                else if(value === 2){
+                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
                     radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
-
-                //console.log(radioString);
-                row.append($('<tr/>').html(radioString));
-                continue;
+                rowStr += radioString + "</td>";
             }
 
-            if(columns[0] === "ব্যবস্থা" && colIndex === 0) {
-                let radioString = ' ';
+            //ব্যবস্থা
+            if(columns[0] === "ব্যবস্থা") {
+               
+                rowStr += "<td rowspan="+maxRowSpan+">";
 
-                if(val === 0){
+                if(value === 0){
                     radioString += '<label><input type="radio" name="typeOf'+i+'" checked/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
                     radioString += '<label><input type="radio" name="typeOf'+i+'"/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
                 }
-                else if(val === 1){
-                    radioString += '<label><input type="radio" name="typeOf'+i+'" /> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
+                else if(value === 1){
+                    radioString += '<label><input type="radio" name="typeOf'+i+'"/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
                     radioString += '<label><input type="radio" name="typeOf'+i+'" checked/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
                 }
+                rowStr += radioString + "</td>";
+            }
+
+            for (let colIndex = 0; colIndex < columns.length; colIndex++){
                 
-                row.append($('<tr/>').html(radioString));
-                continue;
-            }
+                if((columns[0] === "ব্যবস্থা" || columns[0] ==="চাপ") && (colIndex === 0)) continue;
+                let eachVal = exp[i][columns[colIndex]];
 
-            if(val.length > 0) {
-                let subRow = $("<tr/>");
-                val.forEach(element => {
-                    subRow.append($('<tr/>').html(element));
-                    //subRow.append($('<td/>').html('</tr>'));
-                });
-                row.append($('<td/>').html(subRow));
-                continue;
+                if(eachVal.length > 1){
+                    rowStr += "<td>"+eachVal[0]+"</td>";
+                }
+                else {
+                    rowStr += "<td rowspan="+maxRowSpan+">"+eachVal+"</td>";
+                }
             }
+            rowStr += "</tr>";
 
-            if (val === "") val = ""; 
-                row.append($('<td/>').html(val));
+            let posCnt = 1;
+            while(posCnt < maxRowSpan){
+                rowStr += "<tr>";
+                for (let colIndex = 0; colIndex < columns.length; colIndex++){
+                    let eachVal = exp[i][columns[colIndex]];
+                    if(eachVal.length > 1){
+                        rowStr += "<td>"+eachVal[posCnt]+"</td>";
+                    }
+                }
+                posCnt++;
+                rowStr += "</tr>";
+            }
         }
-        //if(i + 1 === exp.length) console.log(row.html());
-        // Adding each row to the table 
-        $(expTable).append(row); 
+
+        $(expTable).append(rowStr); 
     }
     return exp.length;
-    //console.log(exp.length);
+
 } 
