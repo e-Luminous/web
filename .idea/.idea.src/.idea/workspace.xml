@@ -4,7 +4,6 @@
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/scripts/GetExperimentsOfPhysics.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +122,7 @@
       <workItem from="1574792243174" duration="414000" />
       <workItem from="1574843988569" duration="3086000" />
       <workItem from="1574848709726" duration="8555000" />
-      <workItem from="1574964839751" duration="2160000" />
+      <workItem from="1574964839751" duration="3564000" />
     </task>
     <servers />
   </component>
