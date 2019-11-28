@@ -32,7 +32,11 @@ $(document).ready(function () {
         initialLengthOfPhyExp[clickedTableID][clickedTableID] = clickedTableCurrentLength;
         
         //console.log(tBody);
-        $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
+        if(tBody.includes("rowspan")) {
+            $('#'+clickedTableID).append(tBody);
+        } else {
+            $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
+        }
         //console.log("Now length : " + clickedTableCurrentLength);
     });
     
