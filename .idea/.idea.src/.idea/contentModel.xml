@@ -3,12 +3,13 @@
   <component name="ContentModelStore">
     <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_cdn.jsdelivr.net_npm_table-to-json@0.13.0_lib_jquery.tabletojson.js" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_code.jquery.com_jquery-3.4.1.js" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_src.-1975900731.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="src" t="IncludeRecursive">
-        <e p=".gitignore" t="Include" />
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
           <e p="ClassroomsController.cs" t="Include" />
@@ -99,7 +100,60 @@
         <e p="node_modules/del" t="IncludeRecursive" />
         <e p="node_modules/gulp" t="IncludeRecursive" />
         <e p="node_modules/jquery" t="IncludeRecursive" />
-        <e p="node_modules/typescript" t="IncludeRecursive" />
+        <e p="node_modules/typescript" t="IncludeRecursive">
+          <e p="lib/lib.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.dom.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.dom.iterable.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.collection.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.core.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.generator.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.iterable.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.promise.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.proxy.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.reflect.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.symbol.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2016.array.include.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2016.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2016.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.intl.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.object.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.string.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.asyncgenerator.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.asynciterable.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.intl.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.promise.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2018.regexp.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.array.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.object.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.string.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2019.symbol.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2020.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2020.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2020.string.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es2020.symbol.wellknown.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es5.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.es6.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.array.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.bigint.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.full.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.intl.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.esnext.symbol.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.scripthost.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.webworker.d.ts" t="IncludeRecursive" />
+          <e p="lib/lib.webworker.importscripts.d.ts" t="IncludeRecursive" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -121,6 +175,7 @@
             <e p="scripts" t="Include">
               <e p="GetExperimentsOfChemistry.js" t="Include" />
               <e p="GetExperimentsOfPhysics.js" t="Include" />
+              <e p="PostPhysicsExperiments.js" t="Include" />
             </e>
           </e>
           <e p="app" t="Include">
