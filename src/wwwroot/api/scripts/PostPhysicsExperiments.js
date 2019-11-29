@@ -5,9 +5,9 @@ $(function() {
         let jQFormat = '#'+nearestExperimentTableId;
 
         let table = convertTable(jQFormat);
-        console.log(table);
-        /*let json = JSON.stringify(table);
-        console.log(json);*/
+        //console.log(table);
+        let json = JSON.stringify(table);
+        console.log(json);
         /*let res = document.getElementById("res");
         res.value = json;*/
     });
