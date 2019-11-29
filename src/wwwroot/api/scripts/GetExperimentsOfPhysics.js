@@ -37,7 +37,6 @@ $(document).ready(function () {
         } else {
             $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
         }
-        console.log($('#'+clickedTableID).html());
         //console.log("Now length : " + clickedTableCurrentLength);
     });
     

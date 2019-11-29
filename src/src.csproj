@@ -7,9 +7,11 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+      <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.2" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     </ItemGroup>
 
@@ -37,6 +39,10 @@
       <UpToDateCheckInput Remove="Views\Account\Details.cshtml" />
       <UpToDateCheckInput Remove="Views\Account\Edit.cshtml" />
       <UpToDateCheckInput Remove="Views\Account\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <TypeScriptCompile Include="wwwroot\api\modules\_PostPhysicsExperiments.ts" />
     </ItemGroup>
 
 </Project>
