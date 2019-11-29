@@ -10,7 +10,8 @@ $(function() {
         console.log(json);*/
         /*let res = document.getElementById("res");
         res.value = json;*/
-    });    
+    });
+
 });
 
 function convertTable (tableId, opts) {
@@ -56,9 +57,26 @@ function convertTable (tableId, opts) {
         let value, result;
         if (!ignoredColumn(cellIndex)) {
             let override = $(cell).data('override');
+            
             if (opts.allowHTML) {
-                value = $.trim($(cell).html());
-            } else {
+                let cellHTML = $(cell).html();
+                
+                if(cellHTML.includes("বায়ু মন্ডলের চাপ")){
+                    let groupStr = cellHTML.indexOf("group");
+                    let groupNum = cellHTML.charAt(groupStr+5);
+                    let groupName = 'group' + groupNum.toString();
+                    value = $("input[name='"+groupName+"']:checked").val();
+                } else if(cellHTML.includes("লম্বিক ব্যবস্থা")){
+                    let typeStr = cellHTML.indexOf("typeOf");
+                    let typeNum = cellHTML.charAt(typeStr+6);
+                    let typeName = 'typeOf' + typeNum.toString();
+                    value = $("input[name='"+typeName+"']:checked").val();
+                } else {
+                    value = $.trim($(cell).html());
+                }
+            } 
+            
+            else {
                 value = $.trim($(cell).text());
             }
             result = notNull(override) ? override : value;
@@ -86,7 +104,8 @@ function convertTable (tableId, opts) {
             tmpArray = [],
             cellIndex = 0,
             result = [];
-        table.children('tbody,*').children('tr').each(function(rowIndex, row) {
+        
+        table.children('tr').each(function(rowIndex, row) {
             if (rowIndex > 0 || notNull(opts.headings)) {
                 $row = $(row);
                 if ($row.is(':visible') || !opts.ignoreHiddenRows) {
@@ -135,6 +154,7 @@ function convertTable (tableId, opts) {
                 }
             }
         });
+
         $.each(tmpArray, function(i, row) {
             if (notNull(row)) {
                 txt = arraysToHash(headings, row);
@@ -148,7 +168,10 @@ function convertTable (tableId, opts) {
     let headings = getHeadings($(tableId));
     return construct($(tableId), headings);
 }
-  
+
+function isNumber(n) { 
+    return /^-?[\d.]+(?:e-?\d+)?$/.test(n); 
+}
 
 
   
