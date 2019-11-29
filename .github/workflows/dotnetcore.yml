@@ -14,5 +14,6 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Build with dotnet
+      run: npm-install
       run: dotnet build --configuration Release
 

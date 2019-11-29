@@ -90,6 +90,8 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="eLuminous.db" t="Include" />
+        <e p="eLuminous.db-shm" t="Include" />
+        <e p="eLuminous.db-wal" t="Include" />
         <e p="node_modules/@types" t="IncludeRecursive">
           <e p="events" t="IncludeRecursive" />
           <e p="jquery" t="IncludeRecursive" />
@@ -175,7 +177,6 @@
             <e p="scripts" t="Include">
               <e p="GetExperimentsOfChemistry.js" t="Include" />
               <e p="GetExperimentsOfPhysics.js" t="Include" />
-              <e p="PostPhysicsExperiments.js" t="Include" />
             </e>
           </e>
           <e p="app" t="Include">
