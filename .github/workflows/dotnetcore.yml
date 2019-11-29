@@ -16,6 +16,9 @@ jobs:
     - name: npm install
       run: npm install
 
+    - name: npm jquery
+      run: npm i @types/jquery
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
