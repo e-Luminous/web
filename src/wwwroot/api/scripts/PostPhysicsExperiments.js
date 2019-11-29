@@ -157,6 +157,8 @@ function convertTable (tableId, opts) {
 
         $.each(tmpArray, function(i, row) {
             if (notNull(row)) {
+                // filter table inputs to number
+                row = convertArrayToFloat(row);
                 txt = arraysToHash(headings, row);
                 result[result.length] = txt;
             }
@@ -171,6 +173,12 @@ function convertTable (tableId, opts) {
 
 function isNumber(n) { 
     return /^-?[\d.]+(?:e-?\d+)?$/.test(n); 
+}
+  
+function convertArrayToFloat(arr) {
+    return arr.map(function (x) {
+        return isNumber(x) ? parseFloat(x) : 0;
+    });
 }
 
 
