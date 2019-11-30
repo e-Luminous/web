@@ -3,6 +3,7 @@ let submissionTableApi = [];
 
 $(document).ready(function () {
     $("#tabStudentExperiments").attr('class', 'active');
+    
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
@@ -31,8 +32,13 @@ $(document).ready(function () {
         
         initialLengthOfPhyExp[clickedTableID][clickedTableID] = clickedTableCurrentLength;
         
-        //console.log(tBody);
-        $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
+        // console.log(tBody);
+        
+        if(tBody.includes("rowspan")) {
+            $('#'+clickedTableID).append(tBody);
+        } else {
+            $('#'+clickedTableID).append('<tr>' + tBody + '</tr>');
+        }
         //console.log("Now length : " + clickedTableCurrentLength);
     });
     
@@ -62,6 +68,10 @@ function InitiateExperiments(submission) {
     let objectOfEachExpPhy = {};
     objectOfEachExpPhy[tableIdName] = initialRowLength;
     initialLengthOfPhyExp[tableIdName] = objectOfEachExpPhy;
+
+    /*Design Initiation*/
+    let collapsibleHeaderToTarget = '#' + tableIdName.replace('exp', 'ch');
+    $(collapsibleHeaderToTarget).append(submission["experiment"]["experimentName"]);
 }
 
 
@@ -117,19 +127,19 @@ function setBody(columns, expTable, exp) {
                 rowStr += "<td rowspan="+maxRowSpan+">";
                 
                 if(value === 0){
-                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                    radioString += '<label><input type="radio" value="0" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" value="1" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
+                    radioString += '<label><input type="radio" value="2" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
                 else if(value === 1){
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                    radioString += '<label><input type="radio" value="0" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" value="1" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
+                    radioString += '<label><input type="radio" value="2" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
                 else if(value === 2){
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
-                    radioString += '<label><input type="radio" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
+                    radioString += '<label><input type="radio" value="0" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপ</span> </label>';
+                    radioString += '<label><input type="radio" value="1" name="group'+i+'"/> <span>বায়ু মন্ডলের চাপের বেশী</span> </label>';
+                    radioString += '<label><input type="radio" value="2" name="group'+i+'" checked/> <span>বায়ু মন্ডলের চাপের কম</span> </label>';
                 }
                 rowStr += radioString + "</td>";
             }
@@ -140,12 +150,12 @@ function setBody(columns, expTable, exp) {
                 rowStr += "<td rowspan="+maxRowSpan+">";
 
                 if(value === 0){
-                    radioString += '<label><input type="radio" name="typeOf'+i+'" checked/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
-                    radioString += '<label><input type="radio" name="typeOf'+i+'"/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" value="0" name="typeOf'+i+'" checked/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" value="1" name="typeOf'+i+'"/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
                 }
                 else if(value === 1){
-                    radioString += '<label><input type="radio" name="typeOf'+i+'"/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
-                    radioString += '<label><input type="radio" name="typeOf'+i+'" checked/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" value="0" name="typeOf'+i+'"/> <span>লম্বিক ব্যবস্থা</span> </label>' + '<br>';
+                    radioString += '<label><input type="radio" value="1" name="typeOf'+i+'" checked/> <span>আড়াআড়ি ব্যবস্থা</span> </label>' + '<br>';
                 }
                 rowStr += radioString + "</td>";
             }

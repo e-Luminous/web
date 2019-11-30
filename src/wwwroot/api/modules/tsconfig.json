@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "target": "es6"
+  },
+  "files": [
+    "./_PostPhysicsExperiments.ts"
+  ],
+  "compileOnSave": true
+}
