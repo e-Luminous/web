@@ -256,7 +256,8 @@ function isNumber(n) {
 
 function convertArrayToFloat(arr) {
     return arr.map(function (x) {
-        return isNumber(x) ? parseFloat(x) : 0;
+        //return isNumber(x) ? parseFloat(x) : 0;
+        return isNaN(x) ? 0 : parseFloat(x);
     });
 }
 
