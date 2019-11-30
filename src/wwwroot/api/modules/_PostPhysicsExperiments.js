@@ -1,4 +1,17 @@
 $(function () {
+    let submissions = [];
+    let studentId = $('#StudentIdFromViewBag').val();
+    let classroomId = $('#ClassroomIdFromViewBag').val();
+    $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
+        studentId: studentId,
+        classroomId: classroomId
+    }, function (data) {
+        for (let i = 0; i < data.length; i++) {
+            submissions.push(data[i]);
+        }
+    }).then(function () {
+        //console.log(submissions );
+    });
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
         let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
@@ -7,8 +20,76 @@ $(function () {
         let functionToCall = btnClickedId.replace('convert', 'mapReduce');
         let reducedDataSet = JSON.stringify(window[functionToCall](table));
         console.log(reducedDataSet);
+        //test 
+        let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] == nearestExperimentTableId);
+        let experimentBaseStructure = JSON.parse(submissions[indexInSubmission]["experiment"]["experimentalTableJsonStructure"])[0];
+        let keysWithRowSpans = [];
+        let maxLengthOfAnArray = 0;
+        for (let key in experimentBaseStructure) {
+            if (experimentBaseStructure.hasOwnProperty(key) && Array.isArray(experimentBaseStructure[key])) {
+                keysWithRowSpans.push(key);
+                maxLengthOfAnArray = Math.max(maxLengthOfAnArray, experimentBaseStructure[key].length);
+            }
+        }
+        let tempArrayOfObject = [];
+        for (let x = 0; x < table.length; x++) {
+            if (x % maxLengthOfAnArray === 0) {
+                for (let y = 0; y < keysWithRowSpans.length; y++) {
+                    let tmpObj = {};
+                    if (tmpObj.hasOwnProperty(keysWithRowSpans[y]) == false) {
+                        tmpObj[keysWithRowSpans[y]] = [table[x][keysWithRowSpans[y]]];
+                    }
+                    tempArrayOfObject.push(tmpObj);
+                }
+            }
+        }
+        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+        /*console.log(tempObject);
+
+        console.log(maxLengthOfAnArray);
+        console.log(keysWithRowSpans);*/
+        //test 
     });
 });
+function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
+    /*    console.log(data);
+        console.log(keysWithRowSpans);
+        console.log(maxRowSpans);
+        console.log(initObj);*/
+    let spanLength = keysWithRowSpans.length;
+    let initAOBLength = initArrayOfObjects.length;
+    if (maxRowSpans === 0) {
+        return data;
+    }
+    else {
+        let traverseStart = 0;
+        let traverseEnd = spanLength - 1;
+        return data.reduce((r, e, i, a) => {
+            if (i % maxRowSpans === 0) {
+                /// console.log('hitting' + i);
+                const next = [];
+                // assuming minRowSpan is at least 2
+                for (let x = 1; x < maxRowSpans; x++) {
+                    next.push(a[i + x]);
+                }
+                /// console.log(next);
+                let obj = Object.assign({}, e);
+                let yy = -1;
+                for (let xx = traverseStart; xx <= traverseEnd; xx++) {
+                    const tempObject = initArrayOfObjects[xx];
+                    obj = Object.assign(Object.assign({}, obj), tempObject);
+                    yy = xx;
+                }
+                if (yy !== initAOBLength - 1) {
+                    traverseStart += spanLength;
+                    traverseEnd += spanLength;
+                }
+                console.log(obj);
+            }
+            return r;
+        }, []);
+    }
+}
 function convertTable(tableId, opts) {
     // Set options
     let defaults = {
