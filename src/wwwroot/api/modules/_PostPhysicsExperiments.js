@@ -10,17 +10,13 @@ $(function () {
             submissions.push(data[i]);
         }
     }).then(function () {
-        //console.log(submissions );
+        // Ready to explore
     });
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
         let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
         let jQFormat = '#' + nearestExperimentTableId;
         let table = convertTable(jQFormat, {});
-        let functionToCall = btnClickedId.replace('convert', 'mapReduce');
-        let reducedDataSet = JSON.stringify(window[functionToCall](table));
-        console.log(reducedDataSet);
-        //test 
         let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] == nearestExperimentTableId);
         let experimentBaseStructure = JSON.parse(submissions[indexInSubmission]["experiment"]["experimentalTableJsonStructure"])[0];
         let keysWithRowSpans = [];
@@ -44,18 +40,10 @@ $(function () {
             }
         }
         let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        /*console.log(tempObject);
-
-        console.log(maxLengthOfAnArray);
-        console.log(keysWithRowSpans);*/
-        //test 
+        console.log(JSON.stringify(red));
     });
 });
 function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
-    /*    console.log(data);
-        console.log(keysWithRowSpans);
-        console.log(maxRowSpans);
-        console.log(initObj);*/
     let spanLength = keysWithRowSpans.length;
     let initAOBLength = initArrayOfObjects.length;
     if (maxRowSpans === 0) {
@@ -66,13 +54,10 @@ function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
         let traverseEnd = spanLength - 1;
         return data.reduce((r, e, i, a) => {
             if (i % maxRowSpans === 0) {
-                /// console.log('hitting' + i);
                 const next = [];
-                // assuming minRowSpan is at least 2
                 for (let x = 1; x < maxRowSpans; x++) {
                     next.push(a[i + x]);
                 }
-                /// console.log(next);
                 let obj = Object.assign({}, e);
                 let yy = -1;
                 for (let xx = traverseStart; xx <= traverseEnd; xx++) {
@@ -84,14 +69,20 @@ function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
                     traverseStart += spanLength;
                     traverseEnd += spanLength;
                 }
-                console.log(obj);
+                for (let index = 0; index < next.length; index++) {
+                    if (next[index]) {
+                        for (let spanKey = 0; spanKey < spanLength; spanKey++) {
+                            obj[keysWithRowSpans[spanKey]].push(next[index][keysWithRowSpans[spanKey]]);
+                        }
+                    }
+                }
+                r.push(obj);
             }
             return r;
         }, []);
     }
 }
 function convertTable(tableId, opts) {
-    // Set options
     let defaults = {
         ignoreColumns: [],
         onlyColumns: null,
@@ -100,7 +91,6 @@ function convertTable(tableId, opts) {
         allowHTML: true
     };
     opts = $.extend(defaults, opts);
-    // console.log(opts);
     let notNull = function (value) {
         return value !== undefined && value !== null;
     };
@@ -235,108 +225,5 @@ function convertArrayToFloat(arr) {
     return arr.map(function (x) {
         return isNumber(x) ? parseFloat(x) : 0;
     });
-}
-/** Library for JSON Reducer **/
-/* Experiment 01 */
-function mapReduce01Phy(data) {
-    return data.reduce((r, e, i, a) => {
-        if (i % 3 === 0) {
-            const next = [];
-            next.push(a[i + 1]);
-            next.push(a[i + 2]);
-            const obj = Object.assign(Object.assign({}, e), { "সময়, t(s)": [e["সময়, t(s)"]] });
-            for (let i = 0; i < next.length; i++) {
-                if (next[i]) {
-                    obj["সময়, t(s)"].push(next[i]["সময়, t(s)"]);
-                }
-            }
-            r.push(obj);
-        }
-        return r;
-    }, []);
-}
-function mapReduce02Phy(data) {
-    return data;
-}
-function mapReduce03Phy(data) {
-    return data.reduce((r, e, i, a) => {
-        if (i % 3 === 0) {
-            const next = [];
-            next.push(a[i + 1]);
-            next.push(a[i + 2]);
-            const obj = Object.assign(Object.assign({}, e), { "১০টি দোলনের জন্য সময়, t(s)": [e["১০টি দোলনের জন্য সময়, t(s)"]], "দোলনকাল,t/10 (s)": [e["দোলনকাল,t/10 (s)"]] });
-            for (let i = 0; i < next.length; i++) {
-                if (next[i]) {
-                    obj["১০টি দোলনের জন্য সময়, t(s)"].push(next[i]["১০টি দোলনের জন্য সময়, t(s)"]);
-                    obj["দোলনকাল,t/10 (s)"].push(next[i]["দোলনকাল,t/10 (s)"]);
-                }
-            }
-            r.push(obj);
-        }
-        return r;
-    }, []);
-}
-function mapReduce04Phy(data) {
-    return data;
-}
-function mapReduce05Phy(data) {
-    return data.reduce((r, e, i, a) => {
-        if (i % 3 === 0) {
-            const next = [];
-            next.push(a[i + 1]);
-            next.push(a[i + 2]);
-            const obj = Object.assign(Object.assign({}, e), { "২০টি দোলনের সময়, t(s)": [e["২০টি দোলনের সময়, t(s)"]], "দোলনকাল, t/20 (s)": [e["দোলনকাল, t/20 (s)"]] });
-            for (let i = 0; i < next.length; i++) {
-                if (next[i]) {
-                    obj["২০টি দোলনের সময়, t(s)"].push(next[i]["২০টি দোলনের সময়, t(s)"]);
-                    obj["দোলনকাল, t/20 (s)"].push(next[i]["দোলনকাল, t/20 (s)"]);
-                }
-            }
-            r.push(obj);
-        }
-        return r;
-    }, []);
-}
-function mapReduce06Phy(data) {
-    return data.reduce((r, e, i, a) => {
-        if (i % 3 === 0) {
-            const next = [];
-            next.push(a[i + 1]);
-            next.push(a[i + 2]);
-            const obj = Object.assign(Object.assign({}, e), { "আবদ্ধনলের উপর প্রান্তের পাঠ, a(cm)": [e["আবদ্ধনলের উপর প্রান্তের পাঠ, a(cm)"]], "আবদ্ধনলের পারদ প্রান্তের পাঠ, b(cm)": [e["আবদ্ধনলের পারদ প্রান্তের পাঠ, b(cm)"]], "খোলানলের পারদ শীর্ষের পাঠ, c(cm)": [e["খোলানলের পারদ শীর্ষের পাঠ, c(cm)"]], "বায়ু স্তম্ভের দৈর্ঘ্য, L = a-b (cm)": [e["বায়ু স্তম্ভের দৈর্ঘ্য, L = a-b (cm)"]], "বদ্ধ ও খোলা নলের পারদ শীর্ষের পাঠ পার্থক্য, h = c~b (cm)": [e["বদ্ধ ও খোলা নলের পারদ শীর্ষের পাঠ পার্থক্য, h = c~b (cm)"]], "আবদ্ধ বায়ুর মোট চাপ H±h (Pa)": [e["আবদ্ধ বায়ুর মোট চাপ H±h (Pa)"]], "গুণফল, H±h * L": [e["গুণফল, H±h * L"]] });
-            for (let i = 0; i < next.length; i++) {
-                if (next[i]) {
-                    obj["আবদ্ধনলের উপর প্রান্তের পাঠ, a(cm)"].push(next[i]["আবদ্ধনলের উপর প্রান্তের পাঠ, a(cm)"]);
-                    obj["আবদ্ধনলের পারদ প্রান্তের পাঠ, b(cm)"].push(next[i]["আবদ্ধনলের পারদ প্রান্তের পাঠ, b(cm)"]);
-                    obj["খোলানলের পারদ শীর্ষের পাঠ, c(cm)"].push(next[i]["খোলানলের পারদ শীর্ষের পাঠ, c(cm)"]);
-                    obj["বায়ু স্তম্ভের দৈর্ঘ্য, L = a-b (cm)"].push(next[i]["বায়ু স্তম্ভের দৈর্ঘ্য, L = a-b (cm)"]);
-                    obj["বদ্ধ ও খোলা নলের পারদ শীর্ষের পাঠ পার্থক্য, h = c~b (cm)"].push(next[i]["বদ্ধ ও খোলা নলের পারদ শীর্ষের পাঠ পার্থক্য, h = c~b (cm)"]);
-                    obj["আবদ্ধ বায়ুর মোট চাপ H±h (Pa)"].push(next[i]["আবদ্ধ বায়ুর মোট চাপ H±h (Pa)"]);
-                    obj["গুণফল, H±h * L"].push(next[i]["গুণফল, H±h * L"]);
-                }
-            }
-            r.push(obj);
-        }
-        return r;
-    }, []);
-}
-function mapReduce07Phy(data) {
-    return data.reduce((r, e, i, a) => {
-        if (i % 3 === 0) {
-            const next = [];
-            next.push(a[i + 1]);
-            next.push(a[i + 2]);
-            const obj = Object.assign(Object.assign({}, e), { "সুতারটান": [e["সুতারটান"]], "তরঙ্গদৈর্ঘ্য": [e["তরঙ্গদৈর্ঘ্য"]], "সুরশলাকার কম্পাঙ্ক": [e["সুরশলাকার কম্পাঙ্ক"]] });
-            for (let i = 0; i < next.length; i++) {
-                if (next[i]) {
-                    obj["সুতারটান"].push(next[i]["সুতারটান"]);
-                    obj["তরঙ্গদৈর্ঘ্য"].push(next[i]["তরঙ্গদৈর্ঘ্য"]);
-                    obj["সুরশলাকার কম্পাঙ্ক"].push(next[i]["সুরশলাকার কম্পাঙ্ক"]);
-                }
-            }
-            r.push(obj);
-        }
-        return r;
-    }, []);
 }
 //# sourceMappingURL=_PostPhysicsExperiments.js.map

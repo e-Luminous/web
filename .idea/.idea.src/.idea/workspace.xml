@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/eLuminous.db-shm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/eLuminous.db-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js" afterDir="false" />
@@ -161,7 +163,7 @@
       <workItem from="1575020742658" duration="5158000" />
       <workItem from="1575028841211" duration="22722000" />
       <workItem from="1575062148722" duration="638000" />
-      <workItem from="1575083254397" duration="21477000" />
+      <workItem from="1575083254397" duration="23539000" />
     </task>
     <servers />
   </component>
