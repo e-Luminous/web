@@ -149,3 +149,18 @@ th {
 td {
     font-family: 'Hind Siliguri', sans-serif;
 }
+
+.collapsible-body, .collapsible, ul.collapsible>li
+{
+    margin: 0!important;;
+    padding: 0!important;
+    border: 0!important;
+    box-shadow: none!important;
+    background: #fff;
+}
+
+.collapsible-header {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
+}
+

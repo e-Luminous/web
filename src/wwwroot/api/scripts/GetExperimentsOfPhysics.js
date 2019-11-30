@@ -67,6 +67,10 @@ function InitiateExperiments(submission) {
     let objectOfEachExpPhy = {};
     objectOfEachExpPhy[tableIdName] = initialRowLength;
     initialLengthOfPhyExp[tableIdName] = objectOfEachExpPhy;
+
+    /*Design Initiation*/
+    let collapsibleHeaderToTarget = '#' + tableIdName.replace('exp', 'ch');
+    $(collapsibleHeaderToTarget).append(submission["experiment"]["experimentName"]);
 }
 
 
