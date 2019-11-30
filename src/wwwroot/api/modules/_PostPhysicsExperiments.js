@@ -10,7 +10,7 @@ $(function () {
             submissions.push(data[i]);
         }
     }).then(function () {
-        // Ready to explore
+        showMaterialToast("Ready to explore", "grey darken-3");
     });
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
@@ -224,6 +224,12 @@ function isNumber(n) {
 function convertArrayToFloat(arr) {
     return arr.map(function (x) {
         return isNumber(x) ? parseFloat(x) : 0;
+    });
+}
+function showMaterialToast(data, style) {
+    M.toast({
+        html: data,
+        classes: style
     });
 }
 //# sourceMappingURL=_PostPhysicsExperiments.js.map
