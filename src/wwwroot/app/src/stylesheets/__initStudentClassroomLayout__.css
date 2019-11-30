@@ -1,6 +1,6 @@
 #contents {
     display: none;
-    margin-top: 90px;
+    margin-top: 70px;
 }
 
 #page-logo{
@@ -28,7 +28,6 @@
 
 .tabs .tab a:focus.active {
     background-color:transparent;
-
 }
 
 #load{
@@ -100,6 +99,10 @@ label{
 
 /*mobile*/
 @media only screen and (max-width: 600px) {
+    .tblOverflow {
+        display: block;
+        overflow: scroll;
+    }
     .tabDivs{
         margin-top: 130px;
     }
@@ -125,6 +128,10 @@ label{
 @media only screen and (max-width: 768px) {
     .tabDivs{
         margin-top: 130px;
+    }
+    .tblOverflow {
+        display: block;
+        overflow: scroll;
     }
 }
 
@@ -162,5 +169,31 @@ td {
 .collapsible-header {
     font-family: 'Hind Siliguri', sans-serif;
     font-size: 18px;
+}
+
+#cTba .indicator { 
+    display: none;
+}
+
+#cTba a.active {
+    color:#1565c0;
+    border-radius: 9px;
+    font-weight: bolder;
+    text-decoration: underline;
+    position: relative;
+}
+
+#cTba a {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 20px;
+    color:#bdbdbd;
+}
+
+@media only screen and (max-width: 600px) {
+    #cTba a {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-size: 15px;
+        color:#bdbdbd;
+    }
 }
 
