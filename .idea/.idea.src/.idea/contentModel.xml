@@ -87,8 +87,10 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="eLuminous.db" t="Include" />
         <e p="node_modules/@types" t="IncludeRecursive">
+          <e p="cash" t="IncludeRecursive" />
           <e p="events" t="IncludeRecursive" />
           <e p="jquery" t="IncludeRecursive" />
+          <e p="materialize-css" t="IncludeRecursive" />
           <e p="minimatch" t="IncludeRecursive" />
           <e p="node" t="IncludeRecursive" />
           <e p="sizzle" t="IncludeRecursive" />

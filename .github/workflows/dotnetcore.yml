@@ -19,6 +19,9 @@ jobs:
     - name: npm jquery
       run: npm i @types/jquery
 
+    - name: npm materialize
+      run: npm install --save @types/materialize-css
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
