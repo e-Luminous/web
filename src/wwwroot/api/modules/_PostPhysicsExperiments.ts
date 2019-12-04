@@ -45,6 +45,7 @@ $(function () {
             }
         }
         let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+        
         console.log(JSON.stringify(red));
     });
 
