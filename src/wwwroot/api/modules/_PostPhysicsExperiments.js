@@ -2,16 +2,7 @@ $(function () {
     let submissions = [];
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
-    $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
-        studentId: studentId,
-        classroomId: classroomId
-    }, function (data) {
-        for (let i = 0; i < data.length; i++) {
-            submissions.push(data[i]);
-        }
-    }).then(function () {
-        showMaterialToast("Ready to explore", "grey darken-3");
-    });
+    getTableData(studentId, classroomId, submissions);
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
         let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
@@ -40,9 +31,32 @@ $(function () {
             }
         }
         let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        console.log(JSON.stringify(red));
+        let submissionID = submissions[indexInSubmission]["submissionId"];
+        let SubmitStatus = submissions[indexInSubmission]["status"];
+        //console.log(submissions);
+        $.post('/Classrooms/PostPhysicsSubmissionOfTheStudent', {
+            SubmitStatus: SubmitStatus,
+            postJsonPhy: JSON.stringify(red),
+            submissionID: submissionID
+        }, function (responseData) {
+            if (responseData === "success") {
+                showMaterialToast("Data Save", "green darken-3");
+            }
+        });
     });
 });
+function getTableData(studentId, classroomId, submissions) {
+    $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
+        studentId: studentId,
+        classroomId: classroomId
+    }, function (data) {
+        for (let i = 0; i < data.length; i++) {
+            submissions.push(data[i]);
+        }
+    }).then(function () {
+        showMaterialToast("Ready to explore", "grey darken-3");
+    });
+}
 function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
     let spanLength = keysWithRowSpans.length;
     let initAOBLength = initArrayOfObjects.length;
