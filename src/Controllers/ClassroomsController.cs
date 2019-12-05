@@ -91,5 +91,34 @@ namespace src.Controllers
                 });
             }
         }
+
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
+        {
+            try
+            {
+                //var student = _context.Students.FirstOrDefaultAsync(f => f.Account.UserId == studentId);
+                
+                var submissionObj = new Submission
+                {
+                    Status = SubmitStatus,
+                    SubmissionId = submissionID,
+                    LastUpdated = DateTime.Now,
+                    ApiData = postJsonPhy,
+                };
+                _context.Update(submissionObj);
+                await _context.SaveChangesAsync();
+                return Json("success");
+            }
+            catch (Exception e)
+            {
+                return Json(new ToastErrorModel
+                {
+                    ErrorMessage = "Something Went Wrong",
+                    ToastColor = "red darken-1",
+                    ToastDescription = e.Message,
+                    ErrorContentDetails = e.StackTrace
+                });
+            }
+        }
     }
 }
