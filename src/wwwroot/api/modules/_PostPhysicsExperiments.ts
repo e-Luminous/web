@@ -51,6 +51,48 @@ $(function () {
             }
         });
     });
+    
+    //Analysis Part
+    $('.btnMLPhy').on("click", function () {
+        let btnMLClickedId = this.id;
+        let nearestExperimentTableId = btnMLClickedId.replace('btnML', 'exp');
+        let jQFormat = '#' + nearestExperimentTableId;
+        let table = convertTable(jQFormat, {});
+        let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] == nearestExperimentTableId);
+        let experimentBaseStructure = JSON.parse(submissions[indexInSubmission]["experiment"]["experimentalTableJsonStructure"])[0];
+        let keysWithRowSpans = [];
+        let maxLengthOfAnArray = 0;
+
+        for (let key in experimentBaseStructure) {
+            if (experimentBaseStructure.hasOwnProperty(key) && Array.isArray(experimentBaseStructure[key])) {
+                keysWithRowSpans.push(key);
+                maxLengthOfAnArray = Math.max(maxLengthOfAnArray, experimentBaseStructure[key].length);
+            }
+        }
+
+        let tempArrayOfObject = [];
+        for (let x = 0; x < table.length; x++) {
+            if (x % maxLengthOfAnArray === 0) {
+                for (let y = 0; y < keysWithRowSpans.length; y++) {
+                    let tmpObj = {};
+                    if (tmpObj.hasOwnProperty(keysWithRowSpans[y]) == false) {
+                        tmpObj[keysWithRowSpans[y]] = [table[x][keysWithRowSpans[y]]];
+                    }
+                    tempArrayOfObject.push(tmpObj);
+                }
+            }
+        }
+        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+
+        let submissionID = submissions[indexInSubmission]["submissionId"];
+        //let SubmitStatus = submissions[indexInSubmission]["status"];
+        let jsonStr = JSON.stringify(red);
+
+        
+        console.log(jsonStr);
+        console.log(submissionID);
+        console.log(submissions);
+    });
 
 });
 
