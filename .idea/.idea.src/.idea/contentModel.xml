@@ -24,6 +24,8 @@
           <e p="20191122175422_AddExperimentFeature.cs" t="Include" />
           <e p="20191123055438_UpdateExperimentalFeature.Designer.cs" t="Include" />
           <e p="20191123055438_UpdateExperimentalFeature.cs" t="Include" />
+          <e p="20191206132140_InitialFormatter.Designer.cs" t="Include" />
+          <e p="20191206132140_InitialFormatter.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
