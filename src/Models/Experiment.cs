@@ -14,6 +14,20 @@ namespace src.Models
          * Extending features
          * prior to override described in doc
          **************************************/
+
+        public bool HasRadioButton { get; set; }
+
+        public string RadioStringKeyword { get; set; }
+
+        public string RadioGroupNameAttribute { get; set; }
+
+        [DataType(DataType.Html)]
+        public string RadioBasicMarkup { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string StandardJsonForMachineLearning { get; set; }
+        
+        
         [DataType(DataType.Html)]
         public string ExperimentTableHeaderMarkUp { get; set; }
 
