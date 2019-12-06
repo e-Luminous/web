@@ -76,9 +76,11 @@ $(function () {
         let submissionID = submissions[indexInSubmission]["submissionId"];
         //let SubmitStatus = submissions[indexInSubmission]["status"];
         let jsonStr = JSON.stringify(red);
+        let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
+        let headerArray = Object.keys(standardJsonForMachineLearning[0]);
         console.log(jsonStr);
         console.log(submissionID);
-        console.log(submissions);
+        console.log(standardJsonForMachineLearning.length);
     });
 });
 function getTableData(studentId, classroomId, submissions) {
