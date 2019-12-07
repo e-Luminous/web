@@ -81,12 +81,15 @@ $(function () {
         for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++) {
             Euclidean_Distance(minimumDistance, maximumDistance, standardJsonForMachineLearning, headerTable, reduceJson, posReduce);
         }
-        //Euclidean_Distance
-        console.log(minimumDistance);
-        //Maximum Distance
-        console.log(maximumDistance);
+        constructAnalyticalModel(minimumDistance, maximumDistance, submissions[indexInSubmission]);
     });
 });
+function constructAnalyticalModel(minDistance, maxDistance, submissionRequested) {
+    $('#analyticalModal').modal('open');
+    $('#analyticalModalHeader').text(submissionRequested["experiment"]["experimentName"]);
+    console.log(minDistance);
+    console.log(maxDistance);
+}
 function Euclidean_Distance(minimumDistance, maximumDistance, standardJsonForMachineLearning, headerTable, reduceJson, posReduce) {
     let headerLength = headerTable.length;
     let standardJsonLength = standardJsonForMachineLearning.length;
