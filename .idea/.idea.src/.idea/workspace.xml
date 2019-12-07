@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eeee2cd-aa70-4ddc-bba6-802acc7f157f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/eLuminous.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eLuminous.db-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/wwwroot/api/modules/_PostPhysicsExperiments.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -173,7 +166,7 @@
       <workItem from="1575483464533" duration="7870000" />
       <workItem from="1575649875357" duration="486000" />
       <workItem from="1575651752267" duration="12116000" />
-      <workItem from="1575693956270" duration="6408000" />
+      <workItem from="1575693956270" duration="6721000" />
     </task>
     <servers />
   </component>

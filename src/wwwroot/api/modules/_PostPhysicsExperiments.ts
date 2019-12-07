@@ -97,39 +97,44 @@ $(function () {
         let headerTable = Object.keys(standardJsonForMachineLearning[0]);
         
         
-        let saveDataArray = [];
-        
+        let minimumDistance = [];
+        let maximumDistance = [];
         for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++){
-            Euclidean_Distance(saveDataArray,standardJsonForMachineLearning,headerTable,reduceJson,posReduce)
+            Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce)
         }
 
-        console.log(saveDataArray);
-        
+        console.log(minimumDistance);
+        console.log(maximumDistance);
     });
 
 });
 
-function Euclidean_Distance(saveDataArray,standardJsonForMachineLearning,headerTable,reduceJson,posReduce) {
+function Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce) {
     let headerLength = headerTable.length;
     let standardJsonLength = standardJsonForMachineLearning.length;
     
-    let best = new Array(headerLength).fill(1000);
+    let miniBest = new Array(headerLength).fill(1000);
+    let maxiBest = new Array(headerLength).fill(0);
     for(let posStandard = 0; posStandard < standardJsonLength; posStandard++){
 
         for(let posHeader = 0; posHeader < headerLength; posHeader++){
             let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
                 - reduceJson[posReduce][headerTable[posHeader]]);
-            best[posHeader] = Math.min(best[posHeader], tempDistance);
+            miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
+            maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
             //console.log(tempDistance);
         }
     }
-    let tempobj= {};
+    let tempObjMinimum= {}, tempObjMaximum = {};
     for(let posHeader = 0; posHeader < headerLength; posHeader++){
         let keys = headerTable[posHeader];
-        let distance = best[posHeader];
-        tempobj[keys] = distance;
+        let miniDistance = miniBest[posHeader];
+        let maxDistance = maxiBest[posHeader];
+        tempObjMinimum[keys] = miniDistance;
+        tempObjMaximum[keys] = maxDistance;
     }
-    saveDataArray.push(tempobj);
+    minimumDistance.push(tempObjMinimum);
+    maximumDistance.push(tempObjMaximum);
 }
 
 
