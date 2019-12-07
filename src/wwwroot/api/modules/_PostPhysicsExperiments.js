@@ -2,7 +2,7 @@ $(function () {
     let submissions = [];
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
-    getTableData(studentId, classroomId, submissions);
+    setTableData(studentId, classroomId, submissions);
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
         let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
@@ -47,7 +47,7 @@ $(function () {
         });
     });
 });
-function getTableData(studentId, classroomId, submissions) {
+function setTableData(studentId, classroomId, submissions) {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
         studentId: studentId,
         classroomId: classroomId

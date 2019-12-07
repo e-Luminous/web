@@ -55,14 +55,27 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
     $('#analyticalModal').modal('open');
     $('#analyticalModalHeader').text(submissionRequested["experiment"]["experimentName"]);
     
+
+    // taking min, max sub rows
     minDistance.forEach(function (element) {
        Object.keys(element).forEach(function (key) {
-           console.log(key, element[key]);
+           if (Array.isArray(element[key])){
+               element[key] = Math.min(...element[key]);
+           }
        }) 
     });
+
+    maxDistance.forEach(function (element) {
+        Object.keys(element).forEach(function (key) {
+            if (Array.isArray(element[key])){
+                element[key] = Math.max(...element[key]);
+            }
+        })
+    });
     
-    console.log(minDistance);
-    console.log(maxDistance);
+    
+    $('#min').text(JSON.stringify(minDistance));
+    $('#max').text(JSON.stringify(maxDistance));
 }
 
 
@@ -123,7 +136,9 @@ function getTableData(studentId, classroomId, submissions) {
             submissions.push(data[i]);
         }
     }).then(function () {
-        showMaterialToast("Ready to explore", "grey darken-3");
+        setTimeout(function () {
+            showMaterialToast("Analytics are ready", "blue-grey darken-3");
+        }, 5500);
     });
 }
 

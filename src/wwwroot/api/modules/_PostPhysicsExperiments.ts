@@ -3,7 +3,7 @@ $(function () {
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
-    getTableData(studentId, classroomId, submissions);
+    setTableData(studentId, classroomId, submissions);
 
 
     $('.conPhy').on("click", function () {
@@ -55,7 +55,7 @@ $(function () {
     });
 });
 
-function getTableData(studentId, classroomId, submissions) {
+function setTableData(studentId, classroomId, submissions) {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
         studentId: studentId,
         classroomId: classroomId
