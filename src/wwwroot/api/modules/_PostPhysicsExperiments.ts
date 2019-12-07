@@ -83,19 +83,11 @@ $(function () {
             }
         }
         
-
-        //let submissionID = submissions[indexInSubmission]["submissionId"];
-        //let SubmitStatus = submissions[indexInSubmission]["status"];
-        
         let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
-        
-
-        //console.log(standardJsonForMachineLearning);
         let reduceJson = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
         let reduceJsonLength = reduceJson.length;
         
         let headerTable = Object.keys(standardJsonForMachineLearning[0]);
-        
         
         let minimumDistance = [];
         let maximumDistance = [];
@@ -103,7 +95,9 @@ $(function () {
             Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce)
         }
 
+        //Euclidean_Distance
         console.log(minimumDistance);
+        //Maximum Distance
         console.log(maximumDistance);
     });
 
@@ -113,21 +107,40 @@ function Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachi
     let headerLength = headerTable.length;
     let standardJsonLength = standardJsonForMachineLearning.length;
     
-    let miniBest = new Array(headerLength).fill(1000);
+    let miniBest = new Array(headerLength).fill(10000);
     let maxiBest = new Array(headerLength).fill(0);
+    let hmm = reduceJson[posReduce];
+    //console.log(hmm["সময়, t(s)"].length);
     for(let posStandard = 0; posStandard < standardJsonLength; posStandard++){
-
         for(let posHeader = 0; posHeader < headerLength; posHeader++){
-            let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
-                - reduceJson[posReduce][headerTable[posHeader]]);
-            miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
-            maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
-            //console.log(tempDistance);
+            let keyName = headerTable[posHeader];
+            if(keyName === "ব্যবস্থা" || keyName === "চাপ") continue;
+            let objStandard = standardJsonForMachineLearning[posStandard][keyName];
+            let objReduce = reduceJson[posReduce][keyName];
+            
+            if(objReduce.length > 0) {
+                if(posStandard == 0){
+                    miniBest[posHeader] = new Array(objReduce.length).fill(10000);
+                    maxiBest[posHeader] = new Array(objReduce.length).fill(0);
+                } 
+                for(let subpos = 0; subpos < objReduce.length; subpos++) {
+                    let tempDistance = Math.abs(objStandard[subpos] - objReduce[subpos]);
+                    miniBest[posHeader][subpos] = Math.min(miniBest[posHeader][subpos], tempDistance);
+                    maxiBest[posHeader][subpos] = Math.max(maxiBest[posHeader][subpos], tempDistance);
+                }
+            }
+            else{
+                let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
+                    - reduceJson[posReduce][headerTable[posHeader]]);
+                miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
+                maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
+            }
         }
     }
     let tempObjMinimum= {}, tempObjMaximum = {};
     for(let posHeader = 0; posHeader < headerLength; posHeader++){
         let keys = headerTable[posHeader];
+        if(keys === "ব্যবস্থা" || keys === "চাপ") continue;
         let miniDistance = miniBest[posHeader];
         let maxDistance = maxiBest[posHeader];
         tempObjMinimum[keys] = miniDistance;
