@@ -72,17 +72,40 @@ $(function () {
                 }
             }
         }
-        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        let submissionID = submissions[indexInSubmission]["submissionId"];
+        //let submissionID = submissions[indexInSubmission]["submissionId"];
         //let SubmitStatus = submissions[indexInSubmission]["status"];
-        let jsonStr = JSON.stringify(red);
         let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
-        let headerArray = Object.keys(standardJsonForMachineLearning[0]);
-        console.log(jsonStr);
-        console.log(submissionID);
-        console.log(standardJsonForMachineLearning.length);
+        //console.log(standardJsonForMachineLearning);
+        let reduceJson = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+        let reduceJsonLength = reduceJson.length;
+        let headerTable = Object.keys(standardJsonForMachineLearning[0]);
+        let saveDataArray = [];
+        for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++) {
+            Euclidean_Distance(saveDataArray, standardJsonForMachineLearning, headerTable, reduceJson, posReduce);
+        }
+        console.log(saveDataArray);
     });
 });
+function Euclidean_Distance(saveDataArray, standardJsonForMachineLearning, headerTable, reduceJson, posReduce) {
+    let headerLength = headerTable.length;
+    let standardJsonLength = standardJsonForMachineLearning.length;
+    let best = new Array(headerLength).fill(1000);
+    for (let posStandard = 0; posStandard < standardJsonLength; posStandard++) {
+        for (let posHeader = 0; posHeader < headerLength; posHeader++) {
+            let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
+                - reduceJson[posReduce][headerTable[posHeader]]);
+            best[posHeader] = Math.min(best[posHeader], tempDistance);
+            //console.log(tempDistance);
+        }
+    }
+    let tempobj = {};
+    for (let posHeader = 0; posHeader < headerLength; posHeader++) {
+        let keys = headerTable[posHeader];
+        let distance = best[posHeader];
+        tempobj[keys] = distance;
+    }
+    saveDataArray.push(tempobj);
+}
 function getTableData(studentId, classroomId, submissions) {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
         studentId: studentId,

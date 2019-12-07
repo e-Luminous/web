@@ -88,8 +88,6 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="eLuminous.db" t="Include" />
-        <e p="eLuminous.db-shm" t="Include" />
-        <e p="eLuminous.db-wal" t="Include" />
         <e p="node_modules/@types" t="IncludeRecursive">
           <e p="cash" t="IncludeRecursive" />
           <e p="events" t="IncludeRecursive" />
