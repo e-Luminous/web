@@ -3,15 +3,14 @@ $(function () {
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
-    setTableData(studentId, classroomId, submissions);
-
-
-    $('.conPhy').on("click", function () {
-        let btnClickedId = this.id;
-        let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
+    getTableData(studentId, classroomId, submissions);
+    
+    $('.btnMLPhy').on("click", function () {
+        let btnMLClickedId = this.id;
+        let nearestExperimentTableId = btnMLClickedId.replace('btnML', 'exp');
         let jQFormat = '#' + nearestExperimentTableId;
         let table = convertTable(jQFormat, {});
-        let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] == nearestExperimentTableId);
+        let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] === nearestExperimentTableId);
         let experimentBaseStructure = JSON.parse(submissions[indexInSubmission]["experiment"]["experimentalTableJsonStructure"])[0];
         let keysWithRowSpans = [];
         let maxLengthOfAnArray = 0;
@@ -28,34 +27,248 @@ $(function () {
             if (x % maxLengthOfAnArray === 0) {
                 for (let y = 0; y < keysWithRowSpans.length; y++) {
                     let tmpObj = {};
-                    if (tmpObj.hasOwnProperty(keysWithRowSpans[y]) == false) {
+                    if (tmpObj.hasOwnProperty(keysWithRowSpans[y]) === false) {
                         tmpObj[keysWithRowSpans[y]] = [table[x][keysWithRowSpans[y]]];
                     }
                     tempArrayOfObject.push(tmpObj);
                 }
             }
         }
-        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        
-        let submissionID = submissions[indexInSubmission]["submissionId"];
-        let SubmitStatus = submissions[indexInSubmission]["status"];
-        //console.log(submissions);
-        
-        $.post('/Classrooms/PostPhysicsSubmissionOfTheStudent', {
-            SubmitStatus: SubmitStatus,
-            postJsonPhy: JSON.stringify(red),
-            submissionID: submissionID
-        }, function (responseData) {
-            if (responseData === "success") {
-                showMaterialToast("Date saved successfully", "green darken-1");
-            }
-        }).then(function () {
-            showMaterialToast("Keep continuing", "blue darken-3");
-        }) ;
+
+        let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
+        let reduceJson = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+        let reduceJsonLength = reduceJson.length;
+
+        let headerTable = Object.keys(standardJsonForMachineLearning[0]);
+
+        let minimumDistance = [];
+        let maximumDistance = [];
+        for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++){
+            Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce)
+        }
+        constructAnalyticalModel(minimumDistance, maximumDistance, submissions[indexInSubmission]);
     });
+
 });
 
-function setTableData(studentId, classroomId, submissions) {
+function constructAnalyticalModel(minDistance, maxDistance, submissionRequested) {
+    $('#analyticalModal').modal('open');
+    $('#analyticalModalHeader').text(submissionRequested["experiment"]["experimentName"]);
+    
+
+    // taking min, max sub rows
+    minDistance.forEach(function (element) {
+       Object.keys(element).forEach(function (key) {
+           if (Array.isArray(element[key])){
+               element[key] = Math.min(...element[key]);
+           }
+       }) 
+    });
+
+    maxDistance.forEach(function (element) {
+        Object.keys(element).forEach(function (key) {
+            if (Array.isArray(element[key])){
+                element[key] = Math.max(...element[key]);
+            }
+        })
+    });
+
+    // ChartForMinimum
+    let chartJSDataSet = [];
+    let chartJSLabelSet = [];
+    let headers = Object.keys(minDistance[0]);
+    let headerTraverse = 0;
+    
+    headers.forEach(function (element) {
+        let eachHeadArray = minDistance.map(a => a[headers[headerTraverse]]);
+        //console.log(eachHead);
+        let eachDataSetObject = {
+            label: headers[headerTraverse],
+            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            data: eachHeadArray
+        };
+        chartJSDataSet.push(eachDataSetObject);
+        headerTraverse++;
+    });
+    
+    // initiate labels
+    // Covert english number to bengali
+    String.prototype.toBengaliDigits= function(){
+        let id= ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];;
+        return this.replace(/[0-9]/g, function(w){
+            return id[+w]
+        });
+    };
+    
+    for (let ind = 0; ind < minDistance.length; ind++) {
+        chartJSLabelSet.push('পর্যবেক্ষণ ' + (ind+1).toString().toBengaliDigits());
+    }
+    drawChart(chartJSLabelSet, chartJSDataSet);
+    
+    // Chart For Max
+
+    let chartJSDataSetForMax = [];
+    let headersForMax = Object.keys(maxDistance[0]);
+    let headerTraverseForMax = 0;
+
+    headersForMax.forEach(function (element) {
+        let eachHeadArrayForMax = maxDistance.map(a => a[headersForMax[headerTraverseForMax]]);
+        
+        let eachDataSetObjectForMax = {
+            label: headersForMax[headerTraverseForMax],
+            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            data: eachHeadArrayForMax
+        };
+        chartJSDataSetForMax.push(eachDataSetObjectForMax);
+        headerTraverseForMax++;
+    });
+    drawChartForMax(chartJSLabelSet, chartJSDataSetForMax);
+    
+    
+    console.log(chartJSDataSet);
+    console.log(chartJSLabelSet);
+    console.log(minDistance);
+}
+
+function drawChart(setOfLabels, datasetForChart) {
+    document.querySelector("#chartDiv").innerHTML = '<canvas id="minEuclideanChart"></canvas>';
+    let ctx = document.getElementById("minEuclideanChart").getContext('2d');
+    let myChart;
+    
+    if(myChart != null){
+        myChart.destroy();
+    }
+    
+    
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: setOfLabels,
+            datasets: datasetForChart,
+        },
+        options: {
+            tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: { position: 'bottom' },
+        }
+    });
+}
+
+function drawChartForMax(setOfLabelsForMax, setOfDataForMax) {
+    document.querySelector("#chartDivForMax").innerHTML = '<canvas id="maxEuclideanChart"></canvas>';
+    let ctxForMax = document.getElementById("maxEuclideanChart").getContext('2d');
+    let myChartForMax;
+
+    if(myChartForMax != null){
+        myChartForMax.destroy();
+    }
+
+
+    myChartForMax = new Chart(ctxForMax, {
+        type: 'bar',
+        data: {
+            labels: setOfLabelsForMax,
+            datasets: setOfDataForMax,
+        },
+        options: {
+            tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: { position: 'bottom' },
+        }
+    });
+}
+
+function Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce) {
+    let headerLength = headerTable.length;
+    let standardJsonLength = standardJsonForMachineLearning.length;
+
+    let miniBest = new Array(headerLength).fill(10000);
+    let maxiBest = new Array(headerLength).fill(0);
+    
+    for(let posStandard = 0; posStandard < standardJsonLength; posStandard++){
+        for(let posHeader = 0; posHeader < headerLength; posHeader++){
+            let keyName = headerTable[posHeader];
+            if(keyName === "ব্যবস্থা" || keyName === "চাপ") continue;
+            let objStandard = standardJsonForMachineLearning[posStandard][keyName];
+            let objReduce = reduceJson[posReduce][keyName];
+
+            if(objReduce.length > 0) {
+                if(posStandard === 0){
+                    miniBest[posHeader] = new Array(objReduce.length).fill(10000);
+                    maxiBest[posHeader] = new Array(objReduce.length).fill(0);
+                }
+                for(let subpos = 0; subpos < objReduce.length; subpos++) {
+                    let tempDistance = Math.abs(objStandard[subpos] - objReduce[subpos]);
+                    miniBest[posHeader][subpos] = Math.min(miniBest[posHeader][subpos], tempDistance);
+                    maxiBest[posHeader][subpos] = Math.max(maxiBest[posHeader][subpos], tempDistance);
+                }
+            }
+            else{
+                let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
+                    - reduceJson[posReduce][headerTable[posHeader]]);
+                miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
+                maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
+            }
+        }
+    }
+
+    let tempObjMinimum= {}, tempObjMaximum = {};
+    for(let posHeader = 0; posHeader < headerLength; posHeader++){
+        let keys = headerTable[posHeader];
+        if(keys === "ব্যবস্থা" || keys === "চাপ") continue;
+        let miniDistance = miniBest[posHeader];
+        let maxDistance = maxiBest[posHeader];
+        tempObjMinimum[keys] = miniDistance;
+        tempObjMaximum[keys] = maxDistance;
+    }
+    minimumDistance.push(tempObjMinimum);
+    maximumDistance.push(tempObjMaximum);
+}
+
+
+function getTableData(studentId, classroomId, submissions) {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
         studentId: studentId,
         classroomId: classroomId
@@ -64,7 +277,9 @@ function setTableData(studentId, classroomId, submissions) {
             submissions.push(data[i]);
         }
     }).then(function () {
-        showMaterialToast("Ready to explore", "grey darken-3");
+        setTimeout(function () {
+            showMaterialToast("Analytics are ready", "blue-grey darken-3");
+        }, 5500);
     });
 }
 
@@ -81,11 +296,11 @@ function mapReduce(data, keysWithRowSpans, maxRowSpans, initArrayOfObjects) {
         return data.reduce((r, e, i, a) => {
             if (i % maxRowSpans === 0) {
                 const next = [];
-                
+
                 for (let x = 1; x < maxRowSpans; x++) {
                     next.push(a[i + x]);
                 }
-                
+
                 let obj = {...e};
                 let yy = -1;
 
@@ -268,6 +483,7 @@ function convertTable(tableId, opts) {
     return construct($(tableId), headings);
 }
 
+
 function convertArrayToFloat(arr) {
     return arr.map(function (x) {
         //return isNumber(x) ? parseFloat(x) : 0;
@@ -281,4 +497,3 @@ function showMaterialToast(data, style) {
         classes : style
     });
 }
-

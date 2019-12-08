@@ -2,7 +2,7 @@ $(function () {
     let submissions = [];
     let studentId = $('#StudentIdFromViewBag').val();
     let classroomId = $('#ClassroomIdFromViewBag').val();
-    getTableData(studentId, classroomId, submissions);
+    setTableData(studentId, classroomId, submissions);
     $('.conPhy').on("click", function () {
         let btnClickedId = this.id;
         let nearestExperimentTableId = btnClickedId.replace('convert', 'exp');
@@ -40,100 +40,14 @@ $(function () {
             submissionID: submissionID
         }, function (responseData) {
             if (responseData === "success") {
-                showMaterialToast("Data Save", "green darken-3");
+                showMaterialToast("Date saved successfully", "green darken-1");
             }
+        }).then(function () {
+            showMaterialToast("Keep continuing", "blue darken-3");
         });
     });
-    //Analysis Part
-    $('.btnMLPhy').on("click", function () {
-        let btnMLClickedId = this.id;
-        let nearestExperimentTableId = btnMLClickedId.replace('btnML', 'exp');
-        let jQFormat = '#' + nearestExperimentTableId;
-        let table = convertTable(jQFormat, {});
-        let indexInSubmission = submissions.findIndex(p => p["experiment"]["scriptFunctionToEvaluateExperiment"] == nearestExperimentTableId);
-        let experimentBaseStructure = JSON.parse(submissions[indexInSubmission]["experiment"]["experimentalTableJsonStructure"])[0];
-        let keysWithRowSpans = [];
-        let maxLengthOfAnArray = 0;
-        for (let key in experimentBaseStructure) {
-            if (experimentBaseStructure.hasOwnProperty(key) && Array.isArray(experimentBaseStructure[key])) {
-                keysWithRowSpans.push(key);
-                maxLengthOfAnArray = Math.max(maxLengthOfAnArray, experimentBaseStructure[key].length);
-            }
-        }
-        let tempArrayOfObject = [];
-        for (let x = 0; x < table.length; x++) {
-            if (x % maxLengthOfAnArray === 0) {
-                for (let y = 0; y < keysWithRowSpans.length; y++) {
-                    let tmpObj = {};
-                    if (tmpObj.hasOwnProperty(keysWithRowSpans[y]) == false) {
-                        tmpObj[keysWithRowSpans[y]] = [table[x][keysWithRowSpans[y]]];
-                    }
-                    tempArrayOfObject.push(tmpObj);
-                }
-            }
-        }
-        let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
-        let reduceJson = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        let reduceJsonLength = reduceJson.length;
-        let headerTable = Object.keys(standardJsonForMachineLearning[0]);
-        let minimumDistance = [];
-        let maximumDistance = [];
-        for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++) {
-            Euclidean_Distance(minimumDistance, maximumDistance, standardJsonForMachineLearning, headerTable, reduceJson, posReduce);
-        }
-        //Euclidean_Distance
-        console.log(minimumDistance);
-        //Maximum Distance
-        console.log(maximumDistance);
-    });
 });
-function Euclidean_Distance(minimumDistance, maximumDistance, standardJsonForMachineLearning, headerTable, reduceJson, posReduce) {
-    let headerLength = headerTable.length;
-    let standardJsonLength = standardJsonForMachineLearning.length;
-    let miniBest = new Array(headerLength).fill(10000);
-    let maxiBest = new Array(headerLength).fill(0);
-    let hmm = reduceJson[posReduce];
-    //console.log(hmm["সময়, t(s)"].length);
-    for (let posStandard = 0; posStandard < standardJsonLength; posStandard++) {
-        for (let posHeader = 0; posHeader < headerLength; posHeader++) {
-            let keyName = headerTable[posHeader];
-            if (keyName === "ব্যবস্থা" || keyName === "চাপ")
-                continue;
-            let objStandard = standardJsonForMachineLearning[posStandard][keyName];
-            let objReduce = reduceJson[posReduce][keyName];
-            if (objReduce.length > 0) {
-                if (posStandard == 0) {
-                    miniBest[posHeader] = new Array(objReduce.length).fill(10000);
-                    maxiBest[posHeader] = new Array(objReduce.length).fill(0);
-                }
-                for (let subpos = 0; subpos < objReduce.length; subpos++) {
-                    let tempDistance = Math.abs(objStandard[subpos] - objReduce[subpos]);
-                    miniBest[posHeader][subpos] = Math.min(miniBest[posHeader][subpos], tempDistance);
-                    maxiBest[posHeader][subpos] = Math.max(maxiBest[posHeader][subpos], tempDistance);
-                }
-            }
-            else {
-                let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
-                    - reduceJson[posReduce][headerTable[posHeader]]);
-                miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
-                maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
-            }
-        }
-    }
-    let tempObjMinimum = {}, tempObjMaximum = {};
-    for (let posHeader = 0; posHeader < headerLength; posHeader++) {
-        let keys = headerTable[posHeader];
-        if (keys === "ব্যবস্থা" || keys === "চাপ")
-            continue;
-        let miniDistance = miniBest[posHeader];
-        let maxDistance = maxiBest[posHeader];
-        tempObjMinimum[keys] = miniDistance;
-        tempObjMaximum[keys] = maxDistance;
-    }
-    minimumDistance.push(tempObjMinimum);
-    maximumDistance.push(tempObjMaximum);
-}
-function getTableData(studentId, classroomId, submissions) {
+function setTableData(studentId, classroomId, submissions) {
     $.get('/Classrooms/GetPhysicsSubmissionOfTheStudent', {
         studentId: studentId,
         classroomId: classroomId
@@ -319,9 +233,6 @@ function convertTable(tableId, opts) {
     // Run
     let headings = getHeadings($(tableId));
     return construct($(tableId), headings);
-}
-function isNumber(n) {
-    return /^-?[\d.]+(?:e-?\d+)?$/.test(n);
 }
 function convertArrayToFloat(arr) {
     return arr.map(function (x) {

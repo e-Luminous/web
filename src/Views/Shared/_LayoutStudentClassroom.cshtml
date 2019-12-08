@@ -26,6 +26,7 @@
     <environment exclude="Development">
         <link rel="stylesheet" href="~/app/lib/stylesheets/materialize.min.css" >
     </environment>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <header>
@@ -84,8 +85,8 @@
     <environment exclude="Development">
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/app/lib/scripts/materialize.min.js"></script>
-    </environment>    
+    </environment>
 
-    @RenderSection("Scripts", required: false)
+@RenderSection("Scripts", required: false)
 </body>
 </html>

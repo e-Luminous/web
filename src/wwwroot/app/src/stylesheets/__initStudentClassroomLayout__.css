@@ -197,3 +197,22 @@ td {
     }
 }
 
+hr {
+    border-top: 1px dashed rebeccapurple;
+}
+
+
+.wrapperForChart{
+    width:60%;
+    display:block;
+    overflow:hidden;
+    margin:0 auto;
+    padding: 60px 50px;
+    background:#fff;
+    border-radius:4px;
+}
+
+canvas{
+    background:#fff;
+    height:400px;
+}
