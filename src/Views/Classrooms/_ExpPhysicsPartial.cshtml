@@ -238,6 +238,14 @@
               <h5 id="analyticalModalHeader" class="bengaliText"></h5>
                 <p id="min"></p>
                 <p id="max"></p>
+                
+                <div id="chartDiv" class="wrapperForChart">
+                    <canvas id="minEuclideanChart"></canvas>
+                </div>
+                
+                <div id="chartDivForMax" class="wrapperForChart">
+                    <canvas id="maxEuclideanChart"></canvas>
+                </div>
             </div>
             <div class="modal-footer">
               <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -253,6 +261,7 @@
     </div>
 </div>
 
+<script src="~/app/lib/chartjs/chart.js"></script>
 <script src="~/api/scripts/GetExperimentsOfPhysics.js"></script>
 <script src="~/api/modules/_PostPhysicsExperiments.js"></script>
 <script src="~/api/modules/_AnalysisContext.js"></script>

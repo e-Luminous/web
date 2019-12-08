@@ -72,12 +72,80 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
             }
         })
     });
+
+    // ChartForMinimum
+    let chartJSDataSet = [];
+    let chartJSLabelSet = [];
+    let headers = Object.keys(minDistance[0]);
+    let headerTraverse = 0;
     
+    headers.forEach(function (element) {
+        let eachHeadArray = minDistance.map(a => a[headers[headerTraverse]]);
+        //console.log(eachHead);
+        let eachDataSetObject = {
+            label: headers[headerTraverse],
+            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            data: eachHeadArray
+        };
+        chartJSDataSet.push(eachDataSetObject);
+        headerTraverse++;
+    });
     
-    $('#min').text(JSON.stringify(minDistance));
-    $('#max').text(JSON.stringify(maxDistance));
+    // initiate labels
+    for (let ind = 0; ind < minDistance.length; ind++) {
+        chartJSLabelSet.push('পর্যবেক্ষণ ' + (ind+1).toString());
+    }
+    
+    drawChart(chartJSLabelSet, chartJSDataSet);
+    console.log(chartJSDataSet);
+    console.log(chartJSLabelSet);
+    console.log(minDistance);
 }
 
+function drawChart(setOfLabels, datasetForChart) {
+    document.querySelector("#chartDiv").innerHTML = '<canvas id="minEuclideanChart"></canvas>';
+    let ctx = document.getElementById("minEuclideanChart").getContext('2d');
+    let myChart;
+    
+    if(myChart != null){
+        myChart.destroy();
+    }
+    
+    
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: setOfLabels,
+            datasets: datasetForChart,
+        },
+        options: {
+            tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: { position: 'bottom' },
+        }
+    });
+}
 
 function Euclidean_Distance(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce) {
     let headerLength = headerTable.length;
