@@ -95,8 +95,28 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
     for (let ind = 0; ind < minDistance.length; ind++) {
         chartJSLabelSet.push('পর্যবেক্ষণ ' + (ind+1).toString());
     }
-    
     drawChart(chartJSLabelSet, chartJSDataSet);
+    
+    // Chart For Max
+
+    let chartJSDataSetForMax = [];
+    let headersForMax = Object.keys(maxDistance[0]);
+    let headerTraverseForMax = 0;
+
+    headersForMax.forEach(function (element) {
+        let eachHeadArrayForMax = maxDistance.map(a => a[headersForMax[headerTraverseForMax]]);
+        
+        let eachDataSetObjectForMax = {
+            label: headersForMax[headerTraverseForMax],
+            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            data: eachHeadArrayForMax
+        };
+        chartJSDataSetForMax.push(eachDataSetObjectForMax);
+        headerTraverseForMax++;
+    });
+    drawChartForMax(chartJSLabelSet, chartJSDataSetForMax);
+    
+    
     console.log(chartJSDataSet);
     console.log(chartJSLabelSet);
     console.log(minDistance);
@@ -117,6 +137,51 @@ function drawChart(setOfLabels, datasetForChart) {
         data: {
             labels: setOfLabels,
             datasets: datasetForChart,
+        },
+        options: {
+            tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: { position: 'bottom' },
+        }
+    });
+}
+
+function drawChartForMax(setOfLabelsForMax, setOfDataForMax) {
+    document.querySelector("#chartDivForMax").innerHTML = '<canvas id="maxEuclideanChart"></canvas>';
+    let ctxForMax = document.getElementById("maxEuclideanChart").getContext('2d');
+    let myChartForMax;
+
+    if(myChartForMax != null){
+        myChartForMax.destroy();
+    }
+
+
+    myChartForMax = new Chart(ctxForMax, {
+        type: 'bar',
+        data: {
+            labels: setOfLabelsForMax,
+            datasets: setOfDataForMax,
         },
         options: {
             tooltips: {
