@@ -17,6 +17,10 @@ namespace src.Models
         [DataType(DataType.DateTime)]
         public DateTime LastUpdated { get; set; }
 
+        public float QualityRatio { get; set; }
+
+        public string QualityStatus { get; set; }
+
         //Relations 
         public Student Student { get; set; }
         public Experiment Experiment { get; set; }
