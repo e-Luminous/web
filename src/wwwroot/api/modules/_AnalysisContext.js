@@ -92,8 +92,16 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
     });
     
     // initiate labels
+    // Covert english number to bengali
+    String.prototype.toBengaliDigits= function(){
+        let id= ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];;
+        return this.replace(/[0-9]/g, function(w){
+            return id[+w]
+        });
+    };
+    
     for (let ind = 0; ind < minDistance.length; ind++) {
-        chartJSLabelSet.push('পর্যবেক্ষণ ' + (ind+1).toString());
+        chartJSLabelSet.push('পর্যবেক্ষণ ' + (ind+1).toString().toBengaliDigits());
     }
     drawChart(chartJSLabelSet, chartJSDataSet);
     
