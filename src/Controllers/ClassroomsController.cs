@@ -32,7 +32,9 @@ namespace src.Controllers
         [HttpGet("Classrooms/__teacher__/{tid}/{cid}")]
         public IActionResult __teacher__(string tid, string cid)
         {
-            return Ok("Teacher Id: "+tid + " " +"Classroom Id: "+ cid);
+            ViewBag.TID = tid;
+            ViewBag.CID = cid;
+            return View();
         }
         
         
