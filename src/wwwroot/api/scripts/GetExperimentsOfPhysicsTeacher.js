@@ -15,7 +15,13 @@ $(document).ready(function () {
                 }
                 for(let pos = 0; pos < data.length; pos++){
                     tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
-                    makeTable(tableID, data[pos], pos);
+                    setTableRow(tableID, data[pos]);
+                }
+
+                for(let pos = 0; pos < 7; pos++){
+                    let btnID = "btn0" + (pos + 1) + "Phy";
+                    tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
+                    $('#' + tableID).append("<td><a class=\"right-align btn-floating btn-large waves-effect waves-light materialize-indigo btnPhyTec\" id=\""+btnID+"\"><i class=\"material-icons\">save</i></a></td>");
                 }
             }
         })
@@ -32,8 +38,7 @@ function setTableTitleandHead(data, pos, tableID) {
     $('#' + tableID).append(tableHead);
 }
 
-function makeTable(tableID, data, btnPOs) {
-    let btnID = "savePhyCol" + btnPOs;
+function setTableRow(tableID, data) {
     let tableRow = "<tr>";
     tableRow += "<td>"+ data["student"]["collegeId"] +"</td>";
     tableRow += "<td>"+ data["student"]["hscBatch"] +"</td>";
@@ -41,7 +46,6 @@ function makeTable(tableID, data, btnPOs) {
     tableRow += "<td>"+ data["qualityRatio"] +"</td>";
     tableRow += "<td>"+ data["qualityStatus"] +"</td>";
     tableRow += "<td contenteditable='true'>"+ data["marksGiven"] +"</td>";
-    tableRow += "<td><a class=\"right-align btn-floating waves-effect waves-light materialize-indigo conPhy\" id=\""+btnID+"\"><i class=\"material-icons\">save</i></a></td>";
     tableRow += "</tr>";
     $('#' + tableID).append(tableRow);
 }
