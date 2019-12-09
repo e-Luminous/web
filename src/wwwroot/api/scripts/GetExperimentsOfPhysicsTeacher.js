@@ -6,25 +6,44 @@ $(document).ready(function () {
 
     $.get('/Classrooms/GetPhysicsSubmissionOfTheTeacher', 
         { teacherId: teacherId, classroomId : classroomId }, function(data) {
-        console.log(data);      
-            if(data.length > 0) {
-                let tableID;
-                for(let pos = 0; pos < 7; pos++){
-                    tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
-                    setTableTitleandHead(data[pos], pos + 1, tableID);
-                }
-                for(let pos = 0; pos < data.length; pos++){
-                    tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
-                    setTableRow(tableID, data[pos]);
-                }
-
-                for(let pos = 0; pos < 7; pos++){
-                    let btnID = "btn0" + (pos + 1) + "Phy";
-                    tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
-                    $('#' + tableID).append("<td><a class=\"right-align btn-floating btn-large waves-effect waves-light materialize-indigo btnPhyTec\" id=\""+btnID+"\"><i class=\"material-icons\">save</i></a></td>");
-                }
+        //console.log(data);      
+        if(data.length > 0) {
+            let tableID;
+            for(let pos = 0; pos < 7; pos++){
+                tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
+                setTableTitleandHead(data[pos], pos + 1, tableID);
             }
-        })
+            for(let pos = 0; pos < data.length; pos++){
+                tableID = data[pos]["experiment"]["scriptFunctionToEvaluateExperiment"];
+                setTableRow(tableID, data[pos]);
+            }
+        }
+    });
+    
+    $('.btnPhyTec').click(function () {
+        let btnIdValue = this.id;
+        let clickedTableID = btnIdValue.replace("btn", "exp");
+
+        let submissionID = $('#' + clickedTableID + ' td:nth-child(1)').map(function(){
+            return $(this).text();
+        }).get();
+        
+        let marksGiven = $('#' + clickedTableID + ' td:nth-child(7)').map(function(){
+            return $(this).text();
+        }).get();
+
+        let allSubmissions = [];
+        
+        for (let pos = 0; pos < marksGiven.length; pos++){
+            let objsubmission = {
+                "submissionId" : submissionID[pos],
+                "marksGiven" : marksGiven[pos]
+            };
+            allSubmissions.push(objsubmission);
+        }
+        console.log(allSubmissions);
+    });
+    
 });
 
 function setTableTitleandHead(data, pos, tableID) {
