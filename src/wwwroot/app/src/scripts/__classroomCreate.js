@@ -83,7 +83,6 @@ function removeInputFieldDataTeacher() {
 function getClassRoom() {
 
     let classrooms = $('#classRooms');
-    console.log("Tid is : " + temptid);
 
     $.get('/Teachers/__getClassRoom___', {tid : temptid}, function (res) {
         if(res.length === 0){
@@ -122,7 +121,6 @@ function getClassRoom() {
             cardsForEachClassrooms += "</div>";
 
             classrooms.html(cardsForEachClassrooms);
-            console.log(res);
         }
     })
 }

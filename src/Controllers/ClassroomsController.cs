@@ -106,6 +106,31 @@ namespace src.Controllers
             }
         }
 
+        public async Task<JsonResult> GetPhysicsSubmissionOfTheTeacher(string teacherId, string classroomId)
+        {
+            try
+            {
+                var allSubmissionsOfTheTeacherInTheClassroomAsync = await _context
+                    .Submissions
+                    .Include(exp => exp.Experiment)
+                    .Include(std => std.Student)
+                    .Where(submission => submission.Classroom.ClassroomId == classroomId)
+                    .ToListAsync();
+                
+                return Json(allSubmissionsOfTheTeacherInTheClassroomAsync);
+            }
+            catch (Exception e)
+            {
+                return Json(new ToastErrorModel
+                {
+                    ErrorMessage = "Something Went Wrong",
+                    ToastColor = "red darken-1",
+                    ToastDescription = e.Message,
+                    ErrorContentDetails = e.StackTrace
+                });
+            }
+        }
+        
         public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
         {
             try

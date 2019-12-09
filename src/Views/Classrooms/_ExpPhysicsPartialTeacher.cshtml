@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col s12 l10">
+        <div class="row">
+            <div class="col s12 card">
+                <div class="card-content">
+                    <ul id="cTba" class="tabs">
+                        <li class="tab" id="phy01tab"><a href="#paper1">পদার্থবিজ্ঞান প্রথম পত্র</a></li>
+                        <li class="tab"><a href="#paper2">পদার্থবিজ্ঞান দ্বিতীয় পত্র</a></li>
+                    </ul>
+                     
+                    <ul id="paper1" class="collapsible">
+                        <li class="active">
+                            <div class="collapsible-header" id="ch01Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp01Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch02Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp02Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch03Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp03Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch04Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp04Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch05Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp05Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch06Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp06Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="ch07Phy"><i class="material-icons">play_for_work</i><b>পরীক্ষণের নাম : </b></div>
+                            <div class="collapsible-body">
+                                <div class="card hoverable">
+                                    <div class="card-content">
+                                        <table class="tblOverflow" id="exp07Phy"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul id="paper2" class="collapsible">
+                        <li>
+                            <div class="collapsible-header">Under construction</div>
+                            <div class="collapsible-body">Test</div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header">Under construction</div>
+                            <div class="collapsible-body">Test</div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header">Under construction</div>
+                            <div class="collapsible-body">Test</div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header">Under construction</div>
+                            <div class="collapsible-body">Test</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiments -->
+        <input type="hidden" id="TeacherIdFromViewBag" value="@ViewBag.TID"/>
+        <input type="hidden" id="ClassroomIdFromViewBag" value="@ViewBag.CID"/>
+    </div>
+</div>
+
+<script src="~/api/scripts/GetExperimentsOfPhysicsTeacher.js"></script>
