@@ -1,0 +1,218 @@
+#contents {
+    display: none;
+    margin-top: 70px;
+}
+
+#page-logo{
+    font-family: 'Google Sans', monospace;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-top: -2px;
+}
+#page-logo-icon{
+    margin-right: 1px;
+}
+.materialize-indigo {
+    background-color:#3A53AF !important
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.tabDivs{
+    margin-top: 80px;
+}
+
+.tabs .tab a:focus.active {
+    background-color:transparent;
+}
+
+#load{
+    margin-top: 65px;
+}
+
+.nav-fixed{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.nav-fixed {
+    top: 0;
+}
+
+#coverImage{
+    width: 50%;
+}
+
+@media (min-width: 768px)
+{
+    .nav-fixed{
+        border-radius: 0;
+    }
+}
+
+.bengaliText {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.bengaliTextHeader {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+}
+
+h4 {
+    font-family: 'Google Sans', monospace;
+}
+
+a{
+    font-family: 'Product Sans', monospace;
+}
+
+p{
+    font-family: 'Product Sans', monospace;
+}
+
+.collapsible-header{
+    font-family: 'Product Sans', monospace;
+}
+
+.collapsible-body{
+    font-family: 'Product Sans', monospace;
+}
+
+input{
+    font-family: 'Google Sans', monospace;
+}
+
+label{
+    font-family: 'Google Sans', monospace;
+}
+
+.card-title{
+    font-family: 'Google Sans', monospace;
+}
+
+/*mobile*/
+@media only screen and (max-width: 600px) {
+    .tblOverflow {
+        display: block;
+        overflow: scroll;
+    }
+    .tabDivs{
+        margin-top: 130px;
+    }
+    #load{
+        margin-top: 105px;
+    }
+    #coverImage{
+        display: none;
+    }
+    div.imageOfFame{
+        content:url(../../lib/images/undraw_science_fqhl.png);
+        /*Centering Image*/
+        display: block;
+        margin: 0 auto;
+    }
+    .bengaliText {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-size: 10px;
+    }
+}
+
+/*iPad*/
+@media only screen and (max-width: 768px) {
+    .tabDivs{
+        margin-top: 130px;
+    }
+    .tblOverflow {
+        display: block;
+        overflow: scroll;
+    }
+}
+
+#nav-mobile{
+    margin-top: -50px;
+}
+
+.justifyText{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/*rounded*/
+.card{
+    border-radius: 9px;
+}
+
+th {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+td {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.collapsible-body, .collapsible, ul.collapsible>li
+{
+    margin: 0!important;;
+    padding: 0!important;
+    border: 0!important;
+    box-shadow: none!important;
+    background: #fff;
+}
+
+.collapsible-header {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
+}
+
+#cTba .indicator {
+    display: none;
+}
+
+#cTba a.active {
+    color:#1565c0;
+    border-radius: 9px;
+    font-weight: bolder;
+    text-decoration: underline;
+    position: relative;
+}
+
+#cTba a {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 20px;
+    color:#bdbdbd;
+}
+
+@media only screen and (max-width: 600px) {
+    #cTba a {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-size: 15px;
+        color:#bdbdbd;
+    }
+}
+
+hr {
+    border-top: 1px dashed rebeccapurple;
+}
+
+
+.wrapperForChart{
+    width:60%;
+    display:block;
+    overflow:hidden;
+    margin:0 auto;
+    padding: 60px 50px;
+    background:#fff;
+    border-radius:4px;
+}
+
+canvas{
+    background:#fff;
+    height:400px;
+}
