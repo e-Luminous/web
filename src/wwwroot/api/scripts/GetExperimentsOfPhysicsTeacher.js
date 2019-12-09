@@ -5,7 +5,7 @@ $(document).ready(function () {
     let classroomId = $('#ClassroomIdFromViewBag').val();
 
     $.get('/Classrooms/GetPhysicsSubmissionOfTheTeacher', 
-        { teacherId: teacherId, classroomId : classroomId }, function(data) {
+        { classroomId : classroomId }, function(data) {
         //console.log(data);      
         if(data.length > 0) {
             let tableID;
@@ -35,13 +35,18 @@ $(document).ready(function () {
         let allSubmissions = [];
         
         for (let pos = 0; pos < marksGiven.length; pos++){
-            let objsubmission = {
+            let objSubmission = {
                 "submissionId" : submissionID[pos],
                 "marksGiven" : marksGiven[pos]
             };
-            allSubmissions.push(objsubmission);
+            allSubmissions.push(objSubmission);
         }
-        console.log(allSubmissions);
+        //console.log(allSubmissions);
+        
+        $.post('/Classrooms/PostPhysicsSubmissionOfTheTeacher', 
+            {allSubmissions : allSubmissions}, function (res) {
+            if(res === "success") showMaterialToast("Data Stored Successfully", "green darken-1");
+        })
     });
     
 });
@@ -68,4 +73,11 @@ function setTableRow(tableID, data) {
     tableRow += "<td contenteditable='true'>"+ data["marksGiven"] +"</td>";
     tableRow += "</tr>";
     $('#' + tableID).append(tableRow);
+}
+
+function showMaterialToast(data, style) {
+    M.toast({
+        html : data,
+        classes : style
+    });
 }

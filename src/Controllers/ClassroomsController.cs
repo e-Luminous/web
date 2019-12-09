@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -105,8 +106,37 @@ namespace src.Controllers
                 });
             }
         }
+        
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
+        {
+            try
+            {
+                //var student = _context.Students.FirstOrDefaultAsync(f => f.Account.UserId == studentId);
+                
+                var submissionObj = new Submission
+                {
+                    Status = SubmitStatus,
+                    SubmissionId = submissionID,
+                    LastUpdated = DateTime.Now,
+                    ApiData = postJsonPhy,
+                };
+                _context.Update(submissionObj);
+                await _context.SaveChangesAsync();
+                return Json("success");
+            }
+            catch (Exception e)
+            {
+                return Json(new ToastErrorModel
+                {
+                    ErrorMessage = "Something Went Wrong",
+                    ToastColor = "red darken-1",
+                    ToastDescription = e.Message,
+                    ErrorContentDetails = e.StackTrace
+                });
+            }
+        }
 
-        public async Task<JsonResult> GetPhysicsSubmissionOfTheTeacher(string teacherId, string classroomId)
+        public async Task<JsonResult> GetPhysicsSubmissionOfTheTeacher(string classroomId)
         {
             try
             {
@@ -131,20 +161,14 @@ namespace src.Controllers
             }
         }
         
-        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheTeacher(List<Submission> allSubmissions)
         {
             try
             {
-                //var student = _context.Students.FirstOrDefaultAsync(f => f.Account.UserId == studentId);
-                
-                var submissionObj = new Submission
+                for (int i = 0; i < allSubmissions.Count; i++)
                 {
-                    Status = SubmitStatus,
-                    SubmissionId = submissionID,
-                    LastUpdated = DateTime.Now,
-                    ApiData = postJsonPhy,
-                };
-                _context.Update(submissionObj);
+                    _context.Update(allSubmissions[i]);
+                }
                 await _context.SaveChangesAsync();
                 return Json("success");
             }
