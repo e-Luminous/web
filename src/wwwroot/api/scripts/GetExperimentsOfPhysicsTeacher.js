@@ -32,14 +32,15 @@ function setTableTitleandHead(data, pos, tableID) {
     $('#' + expTitle).append(data["experiment"]["experimentName"]);
 
     let tableHead = "<tr>";
-    tableHead += "<td>College Id</td>" + "<td>HSC Batch</td>" + "<td>shift</td>";
-    tableHead += "<td>QualityRatio</td>" + "<td>QualityStatus</td>" + "<td>MarksGiven</td>";
+    tableHead += "<th>Submission Id</th>" + "<th>College Id</th>" + "<th>HSC Batch</th>" + "<th>Shift</th>";
+    tableHead += "<th>Quality Ratio</th>" + "<th>Quality Status</th>" + "<th>Marks Given</th>";
     tableHead += "</tr>";
     $('#' + tableID).append(tableHead);
 }
 
 function setTableRow(tableID, data) {
     let tableRow = "<tr>";
+    tableRow += "<td>"+ data["submissionId"] + "</td>";
     tableRow += "<td>"+ data["student"]["collegeId"] +"</td>";
     tableRow += "<td>"+ data["student"]["hscBatch"] +"</td>";
     tableRow += "<td>"+ data["student"]["shift"] +"</td>";
