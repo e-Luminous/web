@@ -29,14 +29,6 @@ namespace src.Controllers
          * @Param cid -> login teacher's classroom id.
          * @Return just check tid & cid
          */
-        [HttpGet("Classrooms/__teacher__/{tid}/{cid}")]
-        public IActionResult __teacher__(string tid, string cid)
-        {
-            ViewBag.TID = tid;
-            ViewBag.CID = cid;
-            return View();
-        }
-        
         
         [HttpGet("Classrooms/__StudentNotices__/{sid}/{cid}")]
         public IActionResult __StudentNotices__(string sid, string cid)
