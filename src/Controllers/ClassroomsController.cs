@@ -59,6 +59,19 @@ namespace src.Controllers
             return View(classroomInformationAsync.Course);
         }
         
+        [HttpGet("Classrooms/__StudentExperimentsForTeacher__/{tid}/{cid}")]
+        public async Task<IActionResult>__StudentExperimentsForTeacher__(string tid, string cid)
+        {
+            var classroomInformationAsync = await _context
+                .Classrooms
+                .Include(cls => cls.Course)
+                .SingleOrDefaultAsync(cls => cls.ClassroomId == cid);
+            
+            ViewBag.TID = tid;
+            ViewBag.CID = cid;
+            return View(classroomInformationAsync.Course);
+        }
+        
         [HttpGet("Classrooms/__StudentFriends__/{sid}/{cid}")]
         public IActionResult __StudentFriends__(string sid, string cid)
         {
@@ -67,6 +80,13 @@ namespace src.Controllers
             return View();
         }
         
+        [HttpGet("Classrooms/__StudentList__/{tid}/{cid}")]
+        public IActionResult __StudentList__(string tid, string cid)
+        {
+            ViewBag.TID = tid;
+            ViewBag.CID = cid;
+            return View();
+        }
         
         /** API **/
         

@@ -40,10 +40,10 @@
                 </a>
                 <ul id="navtabs" class="tabs tabs-transparent">
                     <li class="tab">
-                        <a id="tabTeacherExperiments" target="_self" asp-action="__StudentExperiments__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">Experiments</a>
+                        <a id="tabTeacherExperiments" target="_self" asp-action="__StudentExperimentsForTeacher__" asp-controller="Classrooms" asp-route-tid="@ViewBag.TID" asp-route-cid="@ViewBag.CID">Experiments</a>
                     </li>
                     <li class="tab">
-                        <a id="tabStudentList" target="_self" asp-action="__StudentFriends__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">People</a>
+                        <a id="tabStudentList" target="_self" asp-action="__StudentList__" asp-controller="Classrooms" asp-route-tid="@ViewBag.TID" asp-route-cid="@ViewBag.CID">People</a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -54,8 +54,8 @@
             </div>
         </nav>
         <ul class="sidenav" id="mobile-nav">
-            <li><a class="title" asp-action="__StudentExperiments__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">Experiments</a></li>
-            <li><a class="title" asp-action="__StudentFriends__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">People</a></li>
+            <li><a class="title" asp-action="__StudentExperimentsForTeacher__" asp-controller="Classrooms" asp-route-tid="@ViewBag.TID" asp-route-cid="@ViewBag.CID">Experiments</a></li>
+            <li><a class="title" asp-action="__StudentList__" asp-controller="Classrooms" asp-route-tid="@ViewBag.TID" asp-route-cid="@ViewBag.CID">People</a></li>
             <li>
                 <a asp-action="Logout" asp-controller="Account" class="waves-effect waves-light"><i class="material-icons left">power_settings_new</i>Logout</a>
             </li>
