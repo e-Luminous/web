@@ -1,8 +1,46 @@
+@using System.Globalization
+@model List<Submission> 
 @{
     Layout = "_LayoutStudentClassroom";
 }
 
-<h1>Notices</h1>
+@if (Model.Count == 0)
+{
+    <br/>
+    <h5 class="center-align">You have no Notices yet</h5>
+}
+
+@if (Model.Count > 0)
+{
+    <div class="card hoverable">
+        <br/>
+        <h5 class="center-align">Exprement Marks in your labroom</h5>
+        <br/>
+        <div class="row">
+            <div class="collection">
+                <table class="highlight">
+                    <tr>
+                        <th>Submission Id</th>
+                        <th>Quality Ratio</th>
+                        <th>Quality Status</th>
+                        <th>Marks Given</th>
+                        <th>Last Updated</th>
+                    </tr>
+                    @foreach (var eachStudent in Model)
+                    {
+                        <tr>
+                            <td>@eachStudent.SubmissionId</td>
+                            <td>@eachStudent.QualityRatio</td>
+                            <td>@eachStudent.QualityStatus</td>
+                            <td>@eachStudent.MarksGiven</td>
+                            <td>@eachStudent.LastUpdated</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+}
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript">

@@ -34,9 +34,14 @@ namespace src.Controllers
         [HttpGet("Classrooms/__StudentNotices__/{sid}/{cid}")]
         public IActionResult __StudentNotices__(string sid, string cid)
         {
+            var stdSubmissionInfo = _context
+                .Submissions
+                .Where(std => std.Student.Account.UserId == sid)
+                .ToList();
+
             ViewBag.SID = sid;
             ViewBag.CID = cid;
-            return View();
+            return View(stdSubmissionInfo);
         }
         
         [HttpGet("Classrooms/__StudentExperiments__/{sid}/{cid}")]
@@ -180,9 +185,9 @@ namespace src.Controllers
         {
             try
             {
-                for (int i = 0; i < allSubmissions.Count; i++)
+                foreach (var eachSubmission in allSubmissions)
                 {
-                    _context.Update(allSubmissions[i]);
+                    _context.Update(eachSubmission);
                 }
                 await _context.SaveChangesAsync();
                 return Json("success");
