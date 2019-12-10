@@ -83,7 +83,6 @@ function removeInputFieldDataTeacher() {
 function getClassRoom() {
 
     let classrooms = $('#classRooms');
-    console.log("Tid is : " + temptid);
 
     $.get('/Teachers/__getClassRoom___', {tid : temptid}, function (res) {
         if(res.length === 0){
@@ -107,7 +106,7 @@ function getClassRoom() {
                     "                    </div>\n" +
                     "                    <div class=\"card-content\">\n" +
                     "                        <img src=\"https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/avatar/avatar-7.png\" alt=\"\" class=\"circle responsive-img activator card-profile-image cyan lighten-1 padding-2\" />\n" +
-                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light " + colorArray[randomIndex] + " z-depth-4 right\" href=\"/Classrooms/__teacher__/" + temptid + "/" + res[i]["classroomId"] + "\">" +
+                    "                        <a target='_blank' class=\"btn-floating activator btn-move-up waves-effect waves-light " + colorArray[randomIndex] + " z-depth-4 right\" href=\"/Classrooms/__StudentExperimentsForTeacher__/" + temptid + "/" + res[i]["classroomId"] + "\">" +
                     "                            <i class=\"material-icons\">send</i>\n" +
                     "                        </a>\n" +
                     "                        <h5 class=\"card-title activator grey-text text-darken-4\">" + res[i]["classroomTitle"] + "</h5>\n" +
@@ -122,7 +121,6 @@ function getClassRoom() {
             cardsForEachClassrooms += "</div>";
 
             classrooms.html(cardsForEachClassrooms);
-            console.log(res);
         }
     })
 }
