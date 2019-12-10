@@ -1,0 +1,39 @@
+@using System.Globalization
+@model List<Classroom>
+@{
+    ViewData["Title"] = "Public Keys";
+}
+
+@if (Model.Count == 0)
+{
+    <h5>No classrooms available yet</h5>
+}
+
+@{
+    var colors = new List<string> {"green", "blue", "pink", "purple", "orange", "teal", "cyan", "red", "deep-purple"};
+    var textInfo = new CultureInfo("en-US", false).TextInfo;
+}
+
+@if (Model.Count > 0)
+{
+    <div class="card hoverable">
+        <ul class="collection">
+            @foreach (var eachClassroom in Model)
+            {
+                <li class="collection-item avatar">
+                    <i class="material-icons circle @colors[new Random().Next(colors.Count)]">accessibility_new</i>
+                    <span class="title">@eachClassroom.ClassroomTitle</span>
+                    <p><b>Teacher</b> @textInfo.ToTitleCase(eachClassroom.Teacher.Account.UserName)<br>
+                        @eachClassroom.Teacher.Institution.InstitutionName
+                    </p>
+                    <p class="code">
+                        <b>Labroom Access Code : @eachClassroom.AccessCode</b>
+                    </p>
+                    <a id="@eachClassroom.AccessCode" class="secondary-content"><i class="material-icons">file_copy</i></a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+
