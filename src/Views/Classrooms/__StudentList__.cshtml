@@ -1,0 +1,38 @@
+@using System.Globalization
+@model List<Student>
+@{
+    Layout = "_LayoutTeacherClassroom";
+}
+
+@if (Model.Count == 0)
+{
+    <h6 class="center-align">You have no students yet</h6>
+}
+
+@{
+    var colors = new List<string> {"green", "blue", "pink", "purple", "orange", "teal", "cyan", "red", "deep-purple"};
+    var textInfo = new CultureInfo("en-US", false).TextInfo;
+}
+@if (Model.Count > 0)
+{
+    <div class="card hoverable">
+        <h5 class="center-align">Students who have enrolled in your labroom</h5>
+        <ul class="collection">
+            @foreach (var eachStudent in Model)
+            {
+                <li class="collection-item avatar">
+                    <i class="material-icons circle @colors[new Random().Next(colors.Count)]">accessibility_new</i>
+                    <span class="title">@textInfo.ToTitleCase(eachStudent.Account.UserName)</span>
+                    <p>@eachStudent.Institution.InstitutionName<br>
+                        @eachStudent.Institution.InstitutionLocation
+                    </p>
+                    <p><b>HSC Batch :</b> @eachStudent.HscBatch (@eachStudent.Shift)</p>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/api/scripts/GetListOfStudentsForTeacher.js"></script>

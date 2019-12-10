@@ -68,17 +68,32 @@ namespace src.Controllers
         [HttpGet("Classrooms/__StudentFriends__/{sid}/{cid}")]
         public IActionResult __StudentFriends__(string sid, string cid)
         {
+            var enrollments = _context.StudentEnrollments.Include(sub => sub.Student)
+                .Include(stu => stu.Student.Account)
+                .Include(stu => stu.Student.Institution)
+                .Where(cls => cls.ClassroomId == cid)
+                .ToList();
+            var students = enrollments.Select(eachEnrollment => eachEnrollment.Student).ToList();
+            
             ViewBag.SID = sid;
             ViewBag.CID = cid;
-            return View();
+            return View(students);
         }
         
         [HttpGet("Classrooms/__StudentList__/{tid}/{cid}")]
         public IActionResult __StudentList__(string tid, string cid)
         {
+            var enrollments = _context.StudentEnrollments.Include(sub => sub.Student)
+                .Include(stu => stu.Student.Account)
+                .Include(stu => stu.Student.Institution)
+                .Where(cls => cls.ClassroomId == cid)
+                .ToList();
+
+            var students = enrollments.Select(eachEnrollment => eachEnrollment.Student).ToList();
+
             ViewBag.TID = tid;
             ViewBag.CID = cid;
-            return View();
+            return View(students);
         }
         
         /** API **/

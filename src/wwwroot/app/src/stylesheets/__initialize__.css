@@ -11,6 +11,18 @@
     background-color:#3A53AF !important
 }
 
+.title {
+    font-family: 'Product Sans', monospace;
+}
+
+p {
+    font-family: 'Product Sans', monospace;
+}
+
+h5 {
+    font-family: 'Product Sans', monospace;
+}
+
 .nav-fixed{
     position: fixed;
     right: 0;
