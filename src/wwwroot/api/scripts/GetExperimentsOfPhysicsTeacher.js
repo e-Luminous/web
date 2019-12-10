@@ -18,6 +18,16 @@ $(document).ready(function () {
                 setTableRow(tableID, data[pos]);
             }
         }
+        else {
+            for(let pos = 1; pos <= 7; pos++){
+                let titleID = "ch0" + pos + "Phy";
+                let tableID = "exp0" + pos + "Phy";
+                $('#' + titleID).hide();
+                $('#' + tableID).hide();
+            }
+            $('.btnPhyTec').hide();
+            $('.phy1Remove').hide();
+        }
     });
     
     $('.btnPhyTec').click(function () {
