@@ -69,7 +69,15 @@ h4 {
     font-family: 'Google Sans', monospace;
 }
 
+h5 {
+    font-family: 'Google Sans', monospace;
+}
+
 a{
+    font-family: 'Product Sans', monospace;
+}
+
+.title {
     font-family: 'Product Sans', monospace;
 }
 
