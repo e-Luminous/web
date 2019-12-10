@@ -180,9 +180,9 @@ namespace src.Controllers
         {
             try
             {
-                for (int i = 0; i < allSubmissions.Count; i++)
+                foreach (var eachSubmission in allSubmissions)
                 {
-                    _context.Update(allSubmissions[i]);
+                    _context.Update(eachSubmission);
                 }
                 await _context.SaveChangesAsync();
                 return Json("success");
