@@ -34,9 +34,14 @@ namespace src.Controllers
         [HttpGet("Classrooms/__StudentNotices__/{sid}/{cid}")]
         public IActionResult __StudentNotices__(string sid, string cid)
         {
+            var stdSubmissionInfo = _context
+                .Submissions
+                .Where(std => std.Student.Account.UserId == sid)
+                .ToList();
+
             ViewBag.SID = sid;
             ViewBag.CID = cid;
-            return View();
+            return View(stdSubmissionInfo);
         }
         
         [HttpGet("Classrooms/__StudentExperiments__/{sid}/{cid}")]
