@@ -1,6 +1,6 @@
 # e-Luminous!
 
-<img src="https://raw.githubusercontent.com/e-Luminous/src/master/src/wwwroot/app/lib/images/undraw_science_fqhl.png" alt="Screen"/>
+<img src="https://user-images.githubusercontent.com/29749035/70659525-77d90f80-1c8a-11ea-9203-9ee5b6284792.jpg" alt="Screen"/>
 
 -   Help students understand their scope of application while they are currently in a process of some sort of experiment through artificial intelligence and using twitter api through scrapping latest relevant scientific technologies are popular currently.
     
