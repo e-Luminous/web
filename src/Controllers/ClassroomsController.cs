@@ -127,7 +127,7 @@ namespace src.Controllers
             }
         }
         
-        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string statusNow, string postJsonPhy, string submissionId)
         {
             try
             {
@@ -135,8 +135,8 @@ namespace src.Controllers
                 
                 var submissionObj = new Submission
                 {
-                    Status = SubmitStatus,
-                    SubmissionId = submissionID,
+                    Status = statusNow, 
+                    SubmissionId = submissionId,
                     LastUpdated = DateTime.Now,
                     ApiData = postJsonPhy,
                 };

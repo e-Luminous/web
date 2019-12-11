@@ -35,22 +35,21 @@ $(function () {
                 }
             }
         }
-        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
+        let reducedJSON = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
         
         let submissionID = submissions[indexInSubmission]["submissionId"];
-        let SubmitStatus = submissions[indexInSubmission]["status"];
         //console.log(submissions);
         
         $.post('/Classrooms/PostPhysicsSubmissionOfTheStudent', {
-            SubmitStatus: SubmitStatus,
-            postJsonPhy: JSON.stringify(red),
-            submissionID: submissionID
+            statusNow: "Pending",
+            postJsonPhy: JSON.stringify(reducedJSON),
+            submissionId: submissionID
         }, function (responseData) {
             if (responseData === "success") {
-                showMaterialToast("Date saved successfully", "green darken-1");
+                showMaterialToast("Stored Successfully", "green darken-1");
             }
         }).then(function () {
-            showMaterialToast("Keep continuing", "blue darken-3");
+            console.log("posted one experiment");
         }) ;
     });
 });
