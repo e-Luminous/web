@@ -35,22 +35,53 @@ $(function () {
                 }
             }
         }
-        let red = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
-        
+        let reducedJSON = mapReduce(table, keysWithRowSpans, maxLengthOfAnArray, tempArrayOfObject);
         let submissionID = submissions[indexInSubmission]["submissionId"];
-        let SubmitStatus = submissions[indexInSubmission]["status"];
-        //console.log(submissions);
+        
+        let standardJsonForMachineLearning = JSON.parse(submissions[indexInSubmission]["experiment"]["standardJsonForMachineLearning"]);
+        let reduceJsonLength = reducedJSON.length;
+        
+        // Analysis before posting
+        let headerTable = Object.keys(standardJsonForMachineLearning[0]);
+        let minimumDistance = [];
+        let maximumDistance = [];
+        
+        for (let posReduce = 0; posReduce < reduceJsonLength; posReduce++){
+            Euclidean_Distance_Quality(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reducedJSON,posReduce)
+        }
+        constructQualityModel(minimumDistance);
+        
+        // *********** Ratio Calculation **************
+        let qualityRatio: number;
+        let qualityStatus: string;
+        
+        let qualityScale = 0;
+        let countScale = 0;
+        
+        for(let indexOfMin = 0; indexOfMin < minimumDistance.length; indexOfMin++){
+            console.log(minimumDistance[indexOfMin]);
+            qualityScale += sum(minimumDistance[indexOfMin]);
+            countScale++;
+        }
+        
+        qualityRatio = (qualityScale/countScale)%10;
+        qualityStatus = GetQualityStatus(qualityRatio);
+        // *********** Ratio Calculation **************
+        
+        // Analysis End
         
         $.post('/Classrooms/PostPhysicsSubmissionOfTheStudent', {
-            SubmitStatus: SubmitStatus,
-            postJsonPhy: JSON.stringify(red),
-            submissionID: submissionID
+            statusNow: "Pending",
+            postJsonPhy: JSON.stringify(reducedJSON),
+            submissionId: submissionID,
+            qualityRatio: qualityRatio,
+            qualityStatus: qualityStatus
         }, function (responseData) {
             if (responseData === "success") {
-                showMaterialToast("Date saved successfully", "green darken-1");
+                showMaterialToast("Stored Successfully", "green darken-1");
             }
         }).then(function () {
-            showMaterialToast("Keep continuing", "blue darken-3");
+            console.log("posted one experiment");
         }) ;
     });
 });
@@ -280,5 +311,86 @@ function showMaterialToast(data, style) {
         html : data,
         classes : style
     });
+}
+
+// Machine Learning
+
+function Euclidean_Distance_Quality(minimumDistance,maximumDistance,standardJsonForMachineLearning,headerTable,reduceJson,posReduce) {
+    let headerLength = headerTable.length;
+    let standardJsonLength = standardJsonForMachineLearning.length;
+
+    let miniBest = new Array(headerLength).fill(10000);
+    let maxiBest = new Array(headerLength).fill(0);
+
+    for(let posStandard = 0; posStandard < standardJsonLength; posStandard++){
+        for(let posHeader = 0; posHeader < headerLength; posHeader++){
+            let keyName = headerTable[posHeader];
+            if(keyName === "ব্যবস্থা" || keyName === "চাপ") continue;
+            let objStandard = standardJsonForMachineLearning[posStandard][keyName];
+            let objReduce = reduceJson[posReduce][keyName];
+
+            if(objReduce.length > 0) {
+                if(posStandard === 0){
+                    miniBest[posHeader] = new Array(objReduce.length).fill(10000);
+                    maxiBest[posHeader] = new Array(objReduce.length).fill(0);
+                }
+                for(let subpos = 0; subpos < objReduce.length; subpos++) {
+                    let tempDistance = Math.abs(objStandard[subpos] - objReduce[subpos]);
+                    miniBest[posHeader][subpos] = Math.min(miniBest[posHeader][subpos], tempDistance);
+                    maxiBest[posHeader][subpos] = Math.max(maxiBest[posHeader][subpos], tempDistance);
+                }
+            }
+            else{
+                let tempDistance = Math.abs(standardJsonForMachineLearning[posStandard][headerTable[posHeader]]
+                    - reduceJson[posReduce][headerTable[posHeader]]);
+                miniBest[posHeader] = Math.min(miniBest[posHeader], tempDistance);
+                maxiBest[posHeader] = Math.max(maxiBest[posHeader], tempDistance);
+            }
+        }
+    }
+
+    let tempObjMinimum= {}, tempObjMaximum = {};
+    for(let posHeader = 0; posHeader < headerLength; posHeader++){
+        let keys = headerTable[posHeader];
+        if(keys === "ব্যবস্থা" || keys === "চাপ") continue;
+        let miniDistance = miniBest[posHeader];
+        let maxDistance = maxiBest[posHeader];
+        tempObjMinimum[keys] = miniDistance;
+        tempObjMaximum[keys] = maxDistance;
+    }
+    minimumDistance.push(tempObjMinimum);
+    maximumDistance.push(tempObjMaximum);
+}
+
+function constructQualityModel(minDistance) {
+    minDistance.forEach(function (element) {
+        Object.keys(element).forEach(function (key) {
+            if (Array.isArray(element[key])) {
+                element[key] = Math.min(...element[key]);
+            }
+        })
+    });
+}
+
+function sum(obj) {
+    let sum = 0;
+    for( let el in obj ) {
+        if( obj.hasOwnProperty( el ) ) {
+            sum += parseFloat( obj[el] );
+        }
+    }
+    return sum;
+}
+
+function GetQualityStatus(Modulus) {
+    if(Modulus <= 2){
+        return "Excellent";
+    } else if(Modulus > 2 && Modulus <= 4){
+        return "Good";
+    } else if(Modulus > 4 && Modulus <= 6){
+        return "Average";
+    } else {
+        return "Improper Observations";
+    }
 }
 

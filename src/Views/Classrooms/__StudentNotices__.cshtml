@@ -12,31 +12,37 @@
 
 @if (Model.Count > 0)
 {
-    <div class="card hoverable">
-        <br/>
-        <h5 class="center-align">Exprement Marks in your labroom</h5>
-        <br/>
-        <div class="row">
-            <div class="collection">
-                <table class="highlight">
-                    <tr>
-                        <th>Submission Id</th>
-                        <th>Quality Ratio</th>
-                        <th>Quality Status</th>
-                        <th>Marks Given</th>
-                        <th>Last Updated</th>
-                    </tr>
-                    @foreach (var eachStudent in Model)
-                    {
-                        <tr>
-                            <td>@eachStudent.SubmissionId</td>
-                            <td>@eachStudent.QualityRatio</td>
-                            <td>@eachStudent.QualityStatus</td>
-                            <td>@eachStudent.MarksGiven</td>
-                            <td>@eachStudent.LastUpdated</td>
-                        </tr>
-                    }
-                </table>
+    <div class="row">
+        <div class="col s12 l12">
+            <div class="card horizontal hoverable">
+                <div class="card-image">
+                    <img id="assesmentImage" src="~/app/lib/images/private/undraw_children_4rtb.svg" alt="">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-title">
+                        <h4>Assessment Sheet</h4>
+                    </div>
+                    <div class="card-content">
+                        <ul class="collection">
+                            @foreach (var eachSubmission in Model)
+                            {
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle grey darken-3">school</i>
+                                    <span class="title">@eachSubmission.Experiment.ExperimentName</span>
+                                    <p><b>Quality Ratio : </b>@eachSubmission.QualityRatio<br>
+                                        <b>Quality Status : </b>
+                                        @eachSubmission.QualityStatus
+                                    </p>
+                                    <p><b>Marks :</b> @eachSubmission.MarksGiven</p>
+                                    <p><b>Last updated at :</b> @eachSubmission.LastUpdated</p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                        <a class="blue-text text-darken-3"><b>Invent something together</b></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

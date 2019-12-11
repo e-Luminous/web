@@ -29,7 +29,7 @@
 </head>
 <body>
     <header>
-        <nav id="navExt" class="nav-extended nav-fixed materialize-indigo z-depth-0">
+        <nav id="navExt" class="nav-extended nav-fixed blue darken-3 z-depth-0">
             <div class="nav-wrapper">
                 <a class="brand-logo" id="page-logo">
                     <i class="material-icons" id="page-logo-icon">brightness_7</i> &nbsp; eLuminous
@@ -71,13 +71,18 @@
                 </ul>
             </div>
             
-            <div class="nav-content indigo darken-3">
+            <div class="nav-content blue darken-4">
                 <ul class="tabs tabs-transparent">
                     <li class="tab">
                         <a id="_tabStudentProfile" target="_self" asp-action="__init__" asp-controller="Students" asp-route-sid="@ViewBag.studentAccountId">Profile</a>
                     </li>
                     <li class="tab">
                         <a id="_tabStudentClassroom" target="_self" asp-action="__classrooms___" asp-controller="Students" asp-route-sid="@ViewBag.studentAccountId" >Classrooms</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a id="modalOpenerStudent" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-2 hoverable modal-trigger" href="#joinClassroomModal"><i class="material-icons">add</i></a>
                     </li>
                 </ul>
             </div>
@@ -96,7 +101,7 @@
         </header>
         
         <div id="load" class="progress orange lighten-5">
-            <div id="progressBar" class="determinate deep-orange accent-2" style="width: 0%"></div>
+            <div id="progressBar" class="determinate orange darken-1" style="width: 0%"></div>
         </div>
 
         <div id="contents">

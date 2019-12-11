@@ -28,7 +28,7 @@
 </head>
 <body>
     <header>
-        <nav id="navExt" class="nav-extended nav-fixed materialize-indigo z-depth-0">
+        <nav id="navExt" class="nav-extended nav-fixed blue darken-3 z-depth-0">
             <div class="nav-wrapper">
                 <a class="brand-logo" id="page-logo">
                     <i class="material-icons" id="page-logo-icon">brightness_7</i> &nbsp; eLuminous
@@ -70,13 +70,18 @@
                 </ul>
             </div>
             
-            <div class="nav-content indigo darken-3">
+            <div class="nav-content blue darken-4">
                 <ul class="tabs tabs-transparent">
                     <li class="tab">
                         <a id="_tabTeacherProfile" target="_self" asp-action="__init__" asp-controller="Teachers" asp-route-tid="@ViewBag.teacherAccountId">Profile</a>
                     </li>
                     <li class="tab">
                         <a id="_tabTeacherClassroom" target="_self" asp-action="__classrooms___" asp-controller="Teachers" asp-route-tid="@ViewBag.teacherAccountId">Classrooms</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a id="modalOpenerTeacher" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-2 hoverable modal-trigger" href="#createClassroomModal"><i class="material-icons">add</i></a>
                     </li>
                 </ul>
             </div>

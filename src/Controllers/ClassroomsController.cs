@@ -36,6 +36,7 @@ namespace src.Controllers
         {
             var stdSubmissionInfo = _context
                 .Submissions
+                .Include(sub => sub.Experiment)
                 .Where(std => std.Student.Account.UserId == sid)
                 .ToList();
 
@@ -127,18 +128,18 @@ namespace src.Controllers
             }
         }
         
-        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string SubmitStatus, string postJsonPhy, string submissionID)
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string statusNow, string postJsonPhy, string submissionId, float qualityRatio, string qualityStatus)
         {
             try
             {
-                //var student = _context.Students.FirstOrDefaultAsync(f => f.Account.UserId == studentId);
-                
                 var submissionObj = new Submission
                 {
-                    Status = SubmitStatus,
-                    SubmissionId = submissionID,
+                    Status = statusNow, 
+                    SubmissionId = submissionId,
                     LastUpdated = DateTime.Now,
                     ApiData = postJsonPhy,
+                    QualityRatio = qualityRatio,
+                    QualityStatus = qualityStatus
                 };
                 _context.Update(submissionObj);
                 await _context.SaveChangesAsync();
@@ -187,7 +188,14 @@ namespace src.Controllers
             {
                 foreach (var eachSubmission in allSubmissions)
                 {
-                    _context.Update(eachSubmission);
+                    var submission = _context.Submissions.SingleOrDefault(su =>
+                        su.SubmissionId == eachSubmission.SubmissionId);
+
+                    if (submission != null)
+                    {
+                        submission.MarksGiven = eachSubmission.MarksGiven;
+                        _context.Update(submission);
+                    }
                 }
                 await _context.SaveChangesAsync();
                 return Json("success");
