@@ -127,18 +127,18 @@ namespace src.Controllers
             }
         }
         
-        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string statusNow, string postJsonPhy, string submissionId)
+        public async Task<JsonResult> PostPhysicsSubmissionOfTheStudent(string statusNow, string postJsonPhy, string submissionId, float qualityRatio, string qualityStatus)
         {
             try
             {
-                //var student = _context.Students.FirstOrDefaultAsync(f => f.Account.UserId == studentId);
-                
                 var submissionObj = new Submission
                 {
                     Status = statusNow, 
                     SubmissionId = submissionId,
                     LastUpdated = DateTime.Now,
                     ApiData = postJsonPhy,
+                    QualityRatio = qualityRatio,
+                    QualityStatus = qualityStatus
                 };
                 _context.Update(submissionObj);
                 await _context.SaveChangesAsync();
