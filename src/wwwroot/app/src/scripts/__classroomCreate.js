@@ -87,12 +87,12 @@ function getClassRoom() {
     $.get('/Teachers/__getClassRoom___', {tid : temptid}, function (res) {
         if(res.length === 0){
             let modalForCreateNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
-                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#createClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
+                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small blue darken-3 modal-trigger\" href=\"#createClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
 
             classrooms.html(modalForCreateNewClassroom);
         }else{
 
-            let cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#createClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
+            let cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small blue darken-3 modal-trigger\" href=\"#createClassroomModal\"><i class=\"material-icons left\">add</i>Create A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"temptid\" hidden value=\""+res[0]["teacher"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
