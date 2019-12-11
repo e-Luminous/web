@@ -52,7 +52,6 @@ $(function () {
             qualityScale += sum(minimumDistance[indexOfMin]);
             countScale++;
         }
-        console.log('av' + qualityScale / countScale);
         qualityRatio = (qualityScale / countScale) % 10;
         qualityStatus = GetQualityStatus(qualityRatio);
         // *********** Ratio Calculation **************

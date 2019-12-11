@@ -36,6 +36,7 @@ namespace src.Controllers
         {
             var stdSubmissionInfo = _context
                 .Submissions
+                .Include(sub => sub.Experiment)
                 .Where(std => std.Student.Account.UserId == sid)
                 .ToList();
 

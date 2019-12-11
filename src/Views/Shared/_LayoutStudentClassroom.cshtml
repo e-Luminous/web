@@ -30,7 +30,7 @@
 </head>
 <body>
     <header>
-        <nav class="nav-extended nav-fixed materialize-indigo">
+        <nav class="nav-extended nav-fixed blue darken-3">
             <div class="nav-wrapper">
                 <a class="brand-logo" id="page-logo" href="#">
                     <i class="material-icons" id="page-logo-icon">brightness_7</i> eLuminous
@@ -40,7 +40,7 @@
                 </a>
                 <ul id="navtabs" class="tabs tabs-transparent">
                     <li class="tab">
-                        <a id="tabStudentNotices" target="_self" asp-action="__StudentNotices__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">Notices</a>
+                        <a id="tabStudentNotices" target="_self" asp-action="__StudentNotices__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">Assesments</a>
                     </li>
                     <li class="tab">
                         <a id="tabStudentExperiments" target="_self" asp-action="__StudentExperiments__" asp-controller="Classrooms" asp-route-sid="@ViewBag.SID" asp-route-cid="@ViewBag.CID">Experiments</a>
@@ -66,8 +66,8 @@
         </ul>
     </header>
         
-    <div id="load" class="progress blue lighten-4">
-        <div class="indeterminate blue darken-4"></div>
+    <div id="load" class="progress orange lighten-4">
+        <div class="indeterminate orange darken-2"></div>
     </div>
 
     <div id="contents">
@@ -77,6 +77,7 @@
 <!-- Scripts that are going to work in Development Environment -->
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/ui.js"></script>
         <script src="~/app/lib/scripts/materialize.js"></script>
         <script src="~/app/src/scripts/__initStudentClassroomLayout__.js"></script>
     </environment>
@@ -84,6 +85,7 @@
     <!-- Scripts that are going to work in Non-Development Environment -->
     <environment exclude="Development">
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery/ui.js"></script>
         <script src="~/app/lib/scripts/materialize.min.js"></script>
     </environment>
 
