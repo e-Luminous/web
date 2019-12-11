@@ -188,7 +188,14 @@ namespace src.Controllers
             {
                 foreach (var eachSubmission in allSubmissions)
                 {
-                    _context.Update(eachSubmission);
+                    var submission = _context.Submissions.SingleOrDefault(su =>
+                        su.SubmissionId == eachSubmission.SubmissionId);
+
+                    if (submission != null)
+                    {
+                        submission.MarksGiven = eachSubmission.MarksGiven;
+                        _context.Update(submission);
+                    }
                 }
                 await _context.SaveChangesAsync();
                 return Json("success");
