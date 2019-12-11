@@ -1,3 +1,14 @@
+let colorArray = [
+    "#003f5c",
+    "#2f4b7c",
+    "#665191",
+    "#a05195",
+    "#d45087",
+    "#f95d6a",
+    "#ff7c43",
+    "#ffa600"
+];
+
 $(function () {
     let submissions = [];
     let studentId = $('#StudentIdFromViewBag').val();
@@ -84,7 +95,7 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
         //console.log(eachHead);
         let eachDataSetObject = {
             label: headers[headerTraverse],
-            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            backgroundColor: colorArray[headerTraverse],
             data: eachHeadArray
         };
         chartJSDataSet.push(eachDataSetObject);
@@ -116,7 +127,7 @@ function constructAnalyticalModel(minDistance, maxDistance, submissionRequested)
         
         let eachDataSetObjectForMax = {
             label: headersForMax[headerTraverseForMax],
-            backgroundColor: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+            backgroundColor: colorArray[headerTraverseForMax],
             data: eachHeadArrayForMax
         };
         chartJSDataSetForMax.push(eachDataSetObjectForMax);
@@ -147,6 +158,7 @@ function drawChart(setOfLabels, datasetForChart) {
             datasets: datasetForChart,
         },
         options: {
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Hind Siliguri'",
             tooltips: {
                 displayColors: true,
                 callbacks:{
