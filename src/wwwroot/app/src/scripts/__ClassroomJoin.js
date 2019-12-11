@@ -59,13 +59,13 @@ function getClassRoomForStudent() {
     $.get('/Students/__getClassRoom___', {sid : loggedInSid}, function (res) {
         if(res.length === 0){
             let modalToJoinNewClassroom = "<h5 class=\"center-align\">You have no classroom yet</h5>\n" +
-                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
+                "    <p class=\"center-align\"><a class=\"waves-effect waves-light btn-small blue darken-3 modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
 
             classrooms.html(modalToJoinNewClassroom);
         }
         else{
 
-            let cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small materialize-indigo modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
+            let cardsForEachClassrooms = "<p class=\"center-align\"><a class=\"waves-effect waves-light btn-small blue darken-3 modal-trigger\" href=\"#joinClassroomModal\"><i class=\"material-icons left\">add</i>Join A New One</a></p>";
             cardsForEachClassrooms += "<input id=\"loggedInSid\" hidden value=\""+res[0]["student"]["account"]["userId"]+"\" type=\"text\"/>";
             cardsForEachClassrooms += "<div class=\"row\">"
 
