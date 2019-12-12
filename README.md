@@ -1,7 +1,25 @@
 
 # e-Luminous!
 
-<img src="https://user-images.githubusercontent.com/29749035/70659525-77d90f80-1c8a-11ea-9203-9ee5b6284792.jpg" alt="Screen"/>
+<p align="left">
+<br>
+  <a href="https://action-badges.now.sh/e-Luminous/src">
+    <img src="https://action-badges.now.sh/e-Luminous/src" alt="github-actions">
+  </a>
+  <a href="https://img.shields.io/github/languages/count/e-Luminous/src">
+    <img src="https://img.shields.io/github/languages/count/e-Luminous/src" alt="languages">
+  </a>
+  <a href="https://img.shields.io/github/languages/top/e-Luminous/src">
+    <img src="https://img.shields.io/github/languages/top/e-Luminous/src" alt="top-language">
+  </a>
+  <a href="https://img.shields.io/github/repo-size/e-Luminous/src">
+    <img src="https://img.shields.io/github/repo-size/e-Luminous/src" alt="repo-size">
+  </a>
+  <a href="https://img.shields.io/github/languages/code-size/e-Luminous/src">
+    <img src="https://img.shields.io/github/languages/code-size/e-Luminous/src" alt="code-size">
+  </a>
+</p>
+
 
 In the College Labs of Bangladesh, students have to perform various experiments on Physics, Chemistry, Biology & Higher Math. While experiment is going on they have to note 3-5 test cases of their experimental observation especially in the labs of Physics and Chemistry. From our experience on college days, we have found that while students are in lab classes, they focus more on writing test cases on their notes because they need to prepare  a lab report of all experiments they do in their college sessions.
 
