@@ -1,5 +1,5 @@
 
-# e-Luminous!
+<center> <h1> eLuminous 1</h1> </center>
 
 <p align="left">
 <br>
@@ -22,6 +22,8 @@
 
 
 In the College Labs of Bangladesh, students have to perform various experiments on Physics, Chemistry, Biology & Higher Math. While experiment is going on they have to note 3-5 test cases of their experimental observation especially in the labs of Physics and Chemistry. From our experience on college days, we have found that while students are in lab classes, they focus more on writing test cases on their notes because they need to prepare  a lab report of all experiments they do in their college sessions.
+
+<img src="https://user-images.githubusercontent.com/29749035/70659525-77d90f80-1c8a-11ea-9203-9ee5b6284792.jpg" alt="Screen"/>
 
 Focusing so much on writing observation test cases and calculation in the lab doesn't really make sense because students aren't really focusing on what they should learn and what scopes they can use of their experiments to perform some additional operations.
 
