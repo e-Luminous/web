@@ -35,7 +35,7 @@ namespace src
              * net-core-3-upgrade-cors-and-json cycle-xmlhttprequest-error
              */
             services.AddMvc(option => option.EnableEndpointRouting = false)
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .SetCompatibilityVersion(CompatibilityVersion.Latest)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddDbContextPool<ApplicationDbContext>(options => 
