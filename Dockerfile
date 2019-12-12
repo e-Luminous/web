@@ -1,12 +1,16 @@
-FROM microsoft/dotnet:latest
-COPY . /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
 RUN dotnet restore
-RUN dotnet build
 
-EXPOSE 5000/tcp
-ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT docker
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-ENTRYPOINT [ "dotnet", "watch", "run", "--no-restore", "--urls", "http://0.0.0.0:5000" ]
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "aspnetcoreapp.dll"]

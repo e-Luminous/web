@@ -1,11 +1,35 @@
+
 # e-Luminous!
 
 <img src="https://user-images.githubusercontent.com/29749035/70659525-77d90f80-1c8a-11ea-9203-9ee5b6284792.jpg" alt="Screen"/>
 
--   Help students understand their scope of application while they are currently in a process of some sort of experiment through artificial intelligence and using twitter api through scrapping latest relevant scientific technologies are popular currently.
-    
--   Through our application we can reduce around 60% of lab report students had to prepare and calculate their test cases.
-    
--   According to our study it can save at least 30 minutes per experiment. That means if a student performs 20 lab experiments for each subject then it can save 10 Hours or, 600 minutes on which they can focus more on their experiments and learning what, how and why these experiments are correct or wrong.
-    
--   Helping students to find their experiment accuracy is another objective of our application where we will be training the server machine with a constructive data set and making it learn which experiment is good and which are not nearly correct. We hope that this feature might help students grow their interest in lab experiments.
+In the College Labs of Bangladesh, students have to perform various experiments on Physics, Chemistry, Biology & Higher Math. While experiment is going on they have to note 3-5 test cases of their experimental observation especially in the labs of Physics and Chemistry. From our experience on college days, we have found that while students are in lab classes, they focus more on writing test cases on their notes because they need to prepare  a lab report of all experiments they do in their college sessions.
+
+Focusing so much on writing observation test cases and calculation in the lab doesn't really make sense because students aren't really focusing on what they should learn and what scopes they can use of their experiments to perform some additional operations.
+
+We are trying to bring a solution that can help to overcome such obstacles of practicing science in a decent manner by:
+
+- Transforming "n" **(1 ≤ n ≤ N)** number of observation test cases into digital format
+- Helping to calculate their experiment results through automated system
+- Saving time and focusing more on their experiments
+- Helping them to understand the opportunities & scopes of what they can do more with their experiments
+- Helping them to understand how correct their experiments are going on to find out the nearest error free results by using **Euclidean Distance Algorithm**.
+
+
+## Features
+
+
+| Serial | Functional Requirements | Serial |Functional Requirements |
+|--------|-------------------------|-------------------------|-------------------------|
+| 01     |Role Based Custom User Sign-Up| 10     |Fetch and Set submission datasets|
+| 02     |3 Layer of User Authorization|11     |Expanding n-th rows in each experiment|
+| 03     |Upgrading profile : Teacher|12     |Convert experiments to a standard format (JSON)|
+| 04     |Create a new e-LabRoom|13     |Store experiments as submission|
+| 05     |Preview & Route created e-Labrooms|14     |Finding Euclidean Distance of Each Submission (Min & Max)|
+| 06     |Upgrading profile : Student|15     |Filter Euclidean Distance to Preview Analytical Charts|
+| 07     |Enrollment into a new e-LabRoom|16     |Check marks provided by teacher|
+| 08     |Preview & Route in Enrolled e-LabRooms|17     |Upgrade marks of each submission|
+| 09     |See other friends|18     |Preview public keys for enrollment in labrooms|
+
+
+
