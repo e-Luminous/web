@@ -4,7 +4,7 @@
   "dependencies": {
     "del": "5.1.0",
     "gulp": "4.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "typescript": "^3.7.2",
     "@types/jquery": "^3.3.31",
     "@types/materialize-css": "^1.0.6"
